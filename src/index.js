@@ -6,8 +6,6 @@ import 'semantic-ui-css/semantic.min.css';
 // Functions:
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { Router } from 'react-router';
-// import * as serviceWorker from './serviceWorker';
 // Components:
 import App from './App';
 import reducer from './reducers/combinedReducers';
