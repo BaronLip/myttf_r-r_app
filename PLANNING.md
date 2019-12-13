@@ -19,9 +19,9 @@
 ### App flow
 1. Login page:
     - Input fields:
-        1. Username
-        2. E-mail
-        3. Submit
+        1. ~Username~
+        2. ~E-mail~
+        3. ~Submit~
 2. Dashboard page:
     - Name
     - Stats:
@@ -49,4 +49,4 @@
 - Install redux-devtools
 - Created store
 - Used and imported combineReducers
-- Create login form
+- 

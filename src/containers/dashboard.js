@@ -1,21 +1,57 @@
 // Libraries:
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Components:
-import { Grid } from 'semantic-ui-react';
+import { Header, Grid, Image, Segment, Divider } from 'semantic-ui-react';
+import { MatchesForm } from '../components/MatchesForm'
 // Functions:
 
 
 class Dashboard extends Component {
     render() {
-        console.log("You are in containers/dashboard.js")
+        console.log("You are in containers/dashboard.js", this.props.players)
+        const player = this.props.players[0]
+
         return(
             <div>   
-                This is the dashboard
+                <Grid stackable columns={2} divided>
+                    <Grid.Column textAlign='center'>
+                        <Segment style={{height: "33vh"}}>
+                            <Header as='h3' block textAlign='center' color='blue'>
+                            Profile
+                            </Header>
+                            <Image bordered rounded size='large' src={ player.profileImage} style={{width: '200px', height: "auto"}}centered />
+                            <h5>{player.username}</h5>
+                            <p>Win : Loss</p>
+                            <span>{player.wins} : {player.losses} </span>          
+                        
+                        </Segment>
+                    </Grid.Column>
+                    
+                    <Grid.Column>
+                        <Segment style={{ height: "33vh" }} >
+                            
+                            <MatchesForm/>
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+                <Divider />
+                <Grid stackable columns={3} divided>
+
+                </Grid>
             </div>
         )
     }
 }
 
-export default Dashboard
+// ES6 destructured syntax.
+const mapStateToProps = ({players}) => ({
+    players
+})
+// const mapStateToProps = (state) => ({
+//     players: state
+// })
+
+export default connect(mapStateToProps)(Dashboard)
 

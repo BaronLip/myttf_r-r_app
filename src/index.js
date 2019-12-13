@@ -5,12 +5,14 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 // Functions:
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+
 // Components:
 import App from './App';
-import reducer from './reducers/combinedReducers';
 
-const store = createStore(reducer)
+import {store } from "./store"
+
+// Using store.getState() will show the current state.
+console.log("You've reached index.js", store.getState())
 
 ReactDOM.render(
     <Provider store={store}>

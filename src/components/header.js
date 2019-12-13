@@ -1,13 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
 import { Header, Button } from 'semantic-ui-react';
 
-
 const header = () => {
-    console.log("You've reached header.js");
+    console.log("You've reached Header.js");
     return (
-        <Header as='h1' block textAlign='Center' color='blue'>
+        <Header as='h1' block textAlign='center' color='blue'>
             Welcome to MyTTF
             <Link to='./dashboard'>
                 <Button floated='right'>Dashboard</Button>
