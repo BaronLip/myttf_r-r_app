@@ -1,16 +1,16 @@
 // Libraries:
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Components:
 import { Header, Grid, Image, Segment, Divider } from 'semantic-ui-react';
-import { MatchesForm } from '../components/MatchesForm'
+import MatchesForm from '../components/MatchesForm'
+import MatchesHeader from '../components/MatchesHeader';
 // Functions:
 
 
 class Dashboard extends Component {
     render() {
-        console.log("You are in containers/dashboard.js", this.props.players)
+        console.log("containers/dashboard.js", this.props.players)
         const player = this.props.players[0]
 
         return(
@@ -37,8 +37,10 @@ class Dashboard extends Component {
                     </Grid.Column>
                 </Grid>
                 <Divider />
+                
+                <MatchesHeader />
                 <Grid stackable columns={3} divided>
-
+                
                 </Grid>
             </div>
         )

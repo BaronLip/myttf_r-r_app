@@ -49,4 +49,4 @@
 - Install redux-devtools
 - Created store
 - Used and imported combineReducers
-- 
+- Create controlled form

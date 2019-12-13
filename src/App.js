@@ -8,11 +8,11 @@ import Dashboard from './containers/Dashboard';
 import { Container, Grid } from 'semantic-ui-react';
 // Functions:
 import header from './components/Header'
-import { MatchesHeader } from "./components/MatchesHeader";
+// import MatchesHeader from "./components/MatchesHeader";
 
 
 function App() {
-   console.log("You've reached App.js")
+   console.log("App.js")
    return (
       <Router>
          <Switch>
@@ -23,7 +23,7 @@ function App() {
                      
                      <Route path="/dashboard" exact component={Dashboard} />
                      
-                     <MatchesHeader />
+                     
                   </Grid.Column>
                   </Grid>
             </Container>

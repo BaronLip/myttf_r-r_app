@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Header, Button } from 'semantic-ui-react';
 
 const header = () => {
-    console.log("You've reached Header.js");
+    console.log("Header.js");
     return (
         <Header as='h1' block textAlign='center' color='blue'>
             Welcome to MyTTF
