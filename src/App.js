@@ -16,6 +16,7 @@ function App() {
    return (
       <Router>
          <Switch>
+            <>
             <Container>
                <Grid textAlign='center' style={{ height: '90vh' }} verticalAlign='top'>
                   <Grid.Column style={{ maxWidth: 1000 }}>
@@ -27,6 +28,7 @@ function App() {
                   </Grid.Column>
                   </Grid>
             </Container>
+            </ >
          </Switch>
       </Router>
    );

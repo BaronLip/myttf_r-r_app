@@ -54,14 +54,14 @@ class MatchesForm extends Component {
 
                     <label>Date:</label><br>
                     </br>
-                    <div class="ui input left icon">
-                        <i class="calendar icon"></i>
+                    <div className="ui input left icon">
+                        <i className="calendar icon"></i>
                         <input
                             type="date" 
                             placeholder="Date"
                             name="date"
                             onChange={this.handleOnChange}
-                            value={this.state.date}
+                            // value={this.state.date}
                         />
                     </div>
 

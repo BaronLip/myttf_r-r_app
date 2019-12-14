@@ -10,7 +10,7 @@ import MatchesHeader from '../components/MatchesHeader';
 
 class Dashboard extends Component {
     render() {
-        console.log("containers/dashboard.js", this.props.players)
+        console.log("containers/dashboard.js", this.props.players, this.props.matches)
         const player = this.props.players[0]
 
         return(
@@ -48,8 +48,9 @@ class Dashboard extends Component {
 }
 
 // ES6 destructured syntax.
-const mapStateToProps = ({players}) => ({
-    players
+const mapStateToProps = ({players, matches}) => ({
+    players,
+    matches
 })
 // const mapStateToProps = (state) => ({
 //     players: state
