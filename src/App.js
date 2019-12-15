@@ -17,17 +17,21 @@ function App() {
       <Router>
          <Switch>
             <>
-            <Container>
-               <Grid textAlign='center' style={{ height: '90vh' }} verticalAlign='top'>
-                  <Grid.Column style={{ maxWidth: 1000 }}>
-                     {header()}
-                     
-                     <Route path="/dashboard" exact component={Dashboard} />
-                     
-                     
-                  </Grid.Column>
+               <Container>
+                  <Grid 
+                     textAlign='center' 
+                     style={{ height: '90vh' }} 
+                     verticalAlign='top'
+                  >
+                     <Grid.Column style={{ maxWidth: 1000 }}>
+                        {header()}
+                        
+                        <Route path="/dashboard" exact component={Dashboard} />
+                        
+                        
+                     </Grid.Column>
                   </Grid>
-            </Container>
+               </Container>
             </ >
          </Switch>
       </Router>

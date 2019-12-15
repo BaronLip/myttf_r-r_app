@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { addMatch } from "../actions/MatchActions";
+import uuid from 'uuid'
 
 import {
     Button,
@@ -33,73 +34,63 @@ class MatchesForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.addMatch({...this.state});
+        this.props.addMatch({ ...this.state, id: uuid() });
         this.setState({
             date: "",
             opponent_name: "",
             match_type: "",
-            notes: ""
+            notes: "",
+            checked: false
         });
+
         console.log("Submit")
     }
 
     render() {
-        // const { value } = this.state
-        console.log("MatchesForm", this.state, this.props)
+        console.log("MatchesForm.js", this.state, this.props)
+        const { value } = this.state
         return (
-            <Form onSubmit={ event => this.handleSubmit(event)}>
+            <Form onSubmit={ event => this.handleSubmit(event) }>
                 <Header as='h3' block textAlign='center' color='blue'>
                     Create a Match
                 </Header>
-
-                    <label>Date:</label><br>
-                    </br>
-                    <div className="ui input left icon">
-                        <i className="calendar icon"></i>
-                        <input
-                            type="date" 
-                            placeholder="Date"
-                            name="date"
-                            onChange={this.handleOnChange}
-                            // value={this.state.date}
-                        />
-                    </div>
-
-
-                <Form.Group widths='equal'>
-                    <Form.Field
-                        name="opponent_name"
-                        control={Input}
-                        label='Opponent Name'
-                        placeholder='Opponent Name'
-                        value={this.state.opponent_name}
-                        onChange={this.handleOnChange}
-                    />
-                    
-                </Form.Group>
-                    <Form.Group inline>
-                        <label>Match Type</label>
-                        <Form.Field
-                            name="match_type"
-                            control={Radio}
-                            label='Best of 7'
-                            value='7'
-                            onChange={this.handleChecked}
-                        />
-                        <Form.Field
-                            name="match_type"
-                            control={Radio}
-                            label='Best of 5'
-                            value='5'
-                            onChange={this.handleChecked}
-                        />
-                </Form.Group>
+                
+                <Form.Input fluid label='Date' placeholder='Date:' type="date" name="date" onChange={this.handleOnChange}/>
 
                 <Form.Field
+                    name="opponent_name"
+                    control={Input}
+                    label='Opponent Name:'
+                    placeholder='Opponent Name'
+                    value={this.state.opponent_name}
+                    onChange={this.handleOnChange}
+                />
+
+                <Form.Group inline>
+                    <label>Match Type:</label>
+                    <Form.Radio
+                        name="match_type"
+                        control={Radio}
+                        label='Best of 7'
+                        value='7'
+                        checked={value === "7"}
+                        onChange={this.handleChecked}
+                    />
+                    <Form.Radio
+                        name="match_type"
+                        control={Radio}
+                        label='Best of 5'
+                        value='5'
+                        checked={value === "5"}
+                        onChange={this.handleChecked}
+                    />
+                </Form.Group>
+
+                <Form.TextArea
                     name="notes"
                     control={TextArea}
-                    label='Notes'
-                    placeholder='Think and record the significant moments of this match and what you want to remember.'
+                    label='Notes:'
+                    placeholder='Notes'
                     value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
