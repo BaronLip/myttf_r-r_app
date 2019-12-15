@@ -3,3 +3,8 @@ export const addMatch = (match) => {
     console.log("actions/MatchActions.js", match);
     return { type: "ADD_MATCH", match };
 }
+
+export const removeMatch = (matchId) => {
+    console.log("actions/MatchActions.js", matchId);
+    return { type: "REMOVE_MATCH", matchId }
+}

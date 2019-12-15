@@ -48,7 +48,9 @@ class MatchesForm extends Component {
 
     render() {
         console.log("MatchesForm.js", this.state, this.props)
-        const { value } = this.state
+        
+        // From Semantic UI but not needed.
+        // const { value } = this.state
         return (
             <Form onSubmit={ event => this.handleSubmit(event) }>
                 <Header as='h3' block textAlign='center' color='blue'>
@@ -73,7 +75,7 @@ class MatchesForm extends Component {
                         control={Radio}
                         label='Best of 7'
                         value='7'
-                        checked={value === "7"}
+                        checked={this.state.match_type === "7"}
                         onChange={this.handleChecked}
                     />
                     <Form.Radio
@@ -81,7 +83,7 @@ class MatchesForm extends Component {
                         control={Radio}
                         label='Best of 5'
                         value='5'
-                        checked={value === "5"}
+                        checked={this.state.match_type === "5"}
                         onChange={this.handleChecked}
                     />
                 </Form.Group>

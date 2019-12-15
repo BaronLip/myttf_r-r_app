@@ -1,9 +1,12 @@
 import React from 'react'
-import { Grid, Card, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { removeMatch } from '../actions/MatchActions';
+
+import { Grid, Card, Icon, Button } from 'semantic-ui-react'
 
 // You must pass in the received prop when creating a functional component.
 const MatchCard = (match) => {
-    console.log("MatchCard.js", match);
+    console.log("MatchCard.js", match, this.props);
     return (
         <Grid.Column>
             <Card>
@@ -16,13 +19,19 @@ const MatchCard = (match) => {
                     <Card.Description> Match Type: {match.match.match_type} </Card.Description>
                     <Card.Description> Notes: {match.match.notes} </Card.Description>
                 </Card.Content>
-                <Card.Content extra>
-                    <Icon name='user' />
+                <Card.Content extra>                
+                    <Button delete removeMatch={this.props.removeMatch}>Delete</Button>
                 </Card.Content>
             </Card>
         </Grid.Column>
-    )
-        
+    )   
 }
 
-export default MatchCard
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeMatch: () => { dispatch(removeMatch()) },
+    }
+
+}
+
+export default connect(null, mapDispatchToProps)(MatchCard)
