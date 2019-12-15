@@ -13,6 +13,7 @@ import {
 } from 'semantic-ui-react'
 
 class MatchesForm extends Component {
+    debugger
     constructor () {
         super();
         this.state = {
@@ -42,7 +43,6 @@ class MatchesForm extends Component {
             notes: "",
             checked: false
         });
-
         console.log("Submit")
     }
 
@@ -57,7 +57,14 @@ class MatchesForm extends Component {
                     Create a Match
                 </Header>
                 
-                <Form.Input fluid label='Date' placeholder='Date:' type="date" name="date" onChange={this.handleOnChange}/>
+                <Form.Input 
+                    fluid label='Date' 
+                    placeholder='Date:' 
+                    type="date" 
+                    name="date"
+                    // Date input does not need to be controlled form for value to pass into state. 
+                    // value={this.state.date}
+                    onChange={this.handleOnChange}/>
 
                 <Form.Field
                     name="opponent_name"

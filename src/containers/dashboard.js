@@ -7,11 +7,13 @@ import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 // Functions:
+import { removeMatch } from "../actions/MatchActions";
 
 
 class Dashboard extends Component {
     render() {
         console.log("containers/dashboard.js", this.props.players, this.props.matches)
+        // debugger
         const player = this.props.players[0]
         const matches = this.props.matches
         return(
@@ -32,7 +34,8 @@ class Dashboard extends Component {
                     <Grid.Column textAlign='left'>
                         <Segment style={{ height: "33vh" }} >
                             {/* CALLING MATCHESFORM */}
-                            <MatchesForm />
+                            <MatchesForm 
+                                />
                         </Segment>
                     </Grid.Column>
                 </Grid>
@@ -42,7 +45,9 @@ class Dashboard extends Component {
                     <Grid.Row columns={3}>
                         {/* CALLING MATCHCARD */}
                         {matches.map(m =>
-                            <MatchCard match={m} />
+                            <MatchCard 
+                                match={m}
+                                removeMatch={this.props.removeMatch}/>
                             )
                         }
                     </Grid.Row>
@@ -63,5 +68,12 @@ const mapStateToProps = ({players, matches}) => ({
 //      matches: 
 // })
 
-export default connect(mapStateToProps)(Dashboard)
+const mapDispatchToProps = (dispatch) => ({
+    // addMatch: () => dispatch(addMatch()),
+    removeMatch: () => dispatch(removeMatch())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+// ES6 syntax below:
+// export default connect(mapStateToProps, {addMatch, removeMatch})(Dashboard)
 
