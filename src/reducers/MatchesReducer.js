@@ -7,9 +7,9 @@ export default (state = [], action) => {
             console.log("You're adding a match", state, action);
             return [...state, action.match];
             
-            case "REMOVE_MATCH":
+        case "REMOVE_MATCH":
             console.log("You're removing a match", state, action)
-            // debugger;
+            debugger;
             return state.filter(match => match.id !== action.matchId)
 
         case "STAR_MATCH":

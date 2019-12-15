@@ -7,7 +7,7 @@ import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 // Functions:
-import { removeMatch } from "../actions/MatchActions";
+
 
 
 class Dashboard extends Component {
@@ -43,11 +43,12 @@ class Dashboard extends Component {
                 {MatchesHeader()}
                 <Grid divided='vertically'>
                     <Grid.Row columns={3}>
+                        
                         {/* CALLING MATCHCARD */}
                         {matches.map(m =>
                             <MatchCard 
                                 match={m}
-                                removeMatch={this.props.removeMatch}/>
+                                />
                             )
                         }
                     </Grid.Row>
@@ -67,13 +68,21 @@ const mapStateToProps = ({players, matches}) => ({
 //      players: state,
 //      matches: 
 // })
-
-const mapDispatchToProps = (dispatch) => ({
-    // addMatch: () => dispatch(addMatch()),
-    removeMatch: () => dispatch(removeMatch())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps)(Dashboard);
 // ES6 syntax below:
 // export default connect(mapStateToProps, {addMatch, removeMatch})(Dashboard)
+
+
+
+// -----SCRAP-----
+// // This is a mistake and will cause constant re-rendering.
+// import { removeMatch } from "../actions/MatchActions";
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addMatch: () => dispatch(addMatch()),
+//         removeMatch: () => dispatch(removeMatch())
+//     }
+// }
+
+
 

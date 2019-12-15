@@ -13,7 +13,7 @@ import {
 } from 'semantic-ui-react'
 
 class MatchesForm extends Component {
-    debugger
+    // debugger
     constructor () {
         super();
         this.state = {

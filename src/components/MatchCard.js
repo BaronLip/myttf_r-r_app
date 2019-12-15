@@ -1,14 +1,12 @@
-import React from 'react'
-// import { connect } from 'react-redux';
-// import { removeMatch } from '../actions/MatchActions';
-
-import { Grid, Card, Button } from 'semantic-ui-react'
+import React from 'react';
+import { Grid, Card, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { removeMatch } from "../actions/MatchActions";
 
 // You must pass in the received props when creating a functional component.
 // Imported functions must be passed in as well.
-const MatchCard = ({match, removeMatch}) => {
+const MatchCard = ({match}) => {
     console.log("MatchCard.js", match, removeMatch);
-    // debugger
     return (
         <Grid.Column>
             <Card>
@@ -24,20 +22,20 @@ const MatchCard = ({match, removeMatch}) => {
                 <Card.Content extra>                
                     <Button 
                         // delete
-                        onClick={ ()=>removeMatch(match)}>Delete</Button>
+                        onClick={()=>removeMatch(match.id)}>Delete</Button>
                 </Card.Content>
             </Card>
         </Grid.Column>
     )   
 }
 
-export default MatchCard
-
+const mapDispatchToProps = ({removeMatch}) => ({removeMatch})
+// // Longhand version:
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         removeMatch: () => { dispatch(removeMatch()) },
 //     }
-
 // }
 
-// export default connect(null, mapDispatchToProps)(MatchCard)
+export default connect(null, mapDispatchToProps)(MatchCard)
+// ---Component did not need to be a container.---
