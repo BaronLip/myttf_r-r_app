@@ -6,6 +6,6 @@ export const addMatch = (match) => {
 
 export const removeMatch = (matchId) => {
     console.log("actions/MatchActions.js removeMatch", matchId);
-    // debugger
+    debugger
     return { type: "REMOVE_MATCH", matchId }
 }
