@@ -10,13 +10,12 @@ import MatchCard from '../components/MatchCard'
 import { removeMatch } from "../actions/MatchActions";
 
 
-
 class Dashboard extends Component {
     render() {
-        console.log("containers/dashboard.js", this.props.players, this.props.matches)
-        // debugger
-        const player = this.props.players[0]
+        console.log("containers/dashboard.js", this.props.players, this.props.matches);
+        const player = this.props.players[0];
         const matches = this.props.matches
+        // debugger;
         return(
             <div>   
                 <Grid stackable columns={2} divided>
@@ -50,7 +49,7 @@ class Dashboard extends Component {
                             <MatchCard 
                                 match={m}
                                 key={m.id}
-                                removeMatch={this.props.removeMatch(m.id)}/>
+                                removeMatch={this.props.removeMatch}/>
                             )
                         }
                     </Grid.Row>
@@ -60,26 +59,32 @@ class Dashboard extends Component {
     }
 }
 
-// ES6 destructured syntax.
+// ES6 syntax.
 const mapStateToProps = ({players, matches}) => ({
     players,
     matches
 })
-// Longhand version:
+
+// //Longhand of mSTP:
 // const mapStateToProps = (state) => ({
-//      players: state,
-//      matches: 
+//      players: state.players,
+//      matches: state.matches
 // })
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeMatch: () => dispatch(removeMatch())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
 // ES6 syntax below:
-// export default connect(mapStateToProps, {addMatch, removeMatch})(Dashboard)
+export default connect(mapStateToProps, { removeMatch })(Dashboard);
+
+
+
+// Longhand of mDTP:
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         removeMatch: (matchId) => dispatch(removeMatch())
+//     }
+// }
+
+
+
 
 
 

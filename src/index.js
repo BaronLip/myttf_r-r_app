@@ -5,14 +5,12 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 // Functions:
 import { Provider } from 'react-redux';
-
 // Components:
 import App from './App';
-
-import {store } from "./store"
+import { store } from "./store";
 
 // Using store.getState() will show the current state.
-console.log("index.js", store.getState())
+console.log("Providing the store to App.js", store.getState())
 
 ReactDOM.render(
     <Provider store={store}>

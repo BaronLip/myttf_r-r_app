@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { addMatch } from "../actions/MatchActions";
-import uuid from 'uuid'
 
 import {
     Button,
@@ -35,7 +34,7 @@ class MatchesForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.addMatch({ ...this.state, id: uuid() });
+        this.props.addMatch({ ...this.state });
         this.setState({
             date: "",
             opponent_name: "",

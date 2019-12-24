@@ -1,3 +1,5 @@
+console.log("reducers/PlayersReducer.js")
+
 export default (state = 
     [
         {   
@@ -5,22 +7,16 @@ export default (state =
             profileImage: "/images/Bitmoji_Baron_lr.png",
             wins: 0,
             losses: 0,
-            matches: [
-                {
-                    playerScore: 11,
-                    opponentScore: 9,
-                }
-            ]
+            // matches: [
+            // ]
         }
     ]
     , action) => {
     
-    console.log("reducers/PlayersReducer.js")
-    
+
     switch (action.type) {
         case "ADD_PLAYER":
             console.log("You're adding a player", state, action);
-            
             return [...state, action.player];
     
         default:
