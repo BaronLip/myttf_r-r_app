@@ -13,5 +13,4 @@ Yarn - $ brew install yarn
 Semantic UI - 
     CDN - https://react.semantic-ui.com 
     $ yarn add semantic-ui-react
-$ 
-rails new myttf-api --api --database=postgresql
+$ rails new myttf-api --api --database=postgresql
