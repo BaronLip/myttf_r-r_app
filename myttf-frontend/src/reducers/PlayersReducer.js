@@ -15,16 +15,16 @@ export default (state =
     
 
     switch (action.type) {
-        case "ADD_PLAYER":
-            console.log("You're adding a player", state, action);
-            return [...state, action.player];
-
         case "FETCH_PLAYER":
             console.log("You're fetching a player", state, action);
-            return {
-                ...state
-            }
-    
+            // debugger
+            return [...state];
+        
+        case "ADD_PLAYER":
+            console.log("You're adding a player", state, action);
+            // debugger
+            return [...state, action.player];
+
         default:
             return state;
     }

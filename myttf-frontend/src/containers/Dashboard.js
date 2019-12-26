@@ -19,7 +19,7 @@ class Dashboard extends Component {
 
     render() {
         console.log("containers/dashboard.js", this.props.players, this.props.matches);
-        const player = this.props.players;
+        const player = this.props.players[0];
         const matches = this.props.matches;
         debugger;
         return(
@@ -33,7 +33,7 @@ class Dashboard extends Component {
                             <Image bordered rounded size='large' style={{width: '200px', height: "auto"}}centered />
                             <h5>{player.username}</h5>
                             <p>Win : Loss</p>
-                            <span>{player.wins} : {/*player.losses*/} </span>          
+                            <span>{player.wins} : {player.losses} </span>          
                         </Segment>
                     </Grid.Column>
                     
@@ -46,6 +46,7 @@ class Dashboard extends Component {
                     </Grid.Column>
                 </Grid>
                 <Divider />
+                {/* CALLING MATCHESHEADER */}
                 {MatchesHeader()}
                 <Grid divided='vertically'>
                     <Grid.Row columns={3}>
