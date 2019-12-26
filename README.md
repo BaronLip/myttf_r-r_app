@@ -15,3 +15,10 @@ Semantic UI -
     CDN - https://react.semantic-ui.com 
     $ yarn add semantic-ui-react
 $ rails new myttf-api --api --database=postgresql
+
+
+### Boot-up:
+cd to myttf-api directory.
+    $ rails s
+cd to myttf-frontend directory.
+    $ npm start

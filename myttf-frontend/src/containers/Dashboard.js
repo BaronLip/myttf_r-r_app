@@ -21,27 +21,26 @@ class Dashboard extends Component {
         console.log("containers/dashboard.js", this.props.players, this.props.matches);
         const player = this.props.players[0];
         const matches = this.props.matches;
-        debugger;
+        // debugger;
         return(
             <div>   
-                <Grid stackable columns={2} divided>
+                <Grid stackable columns={2} divided='vertically'>
                     <Grid.Column textAlign='center'>
                         <Segment style={{height: "33vh"}}>
                             <Header as='h3' block textAlign='center' color='blue'>
                             Profile
                             </Header>
                             <Image bordered rounded size='large' style={{width: '200px', height: "auto"}}centered />
-                            <h5>{player.username}</h5>
+                            <h5>{/*player.username*/}</h5>
                             <p>Win : Loss</p>
-                            <span>{player.wins} : {player.losses} </span>          
+                            <span>{/*player.wins*/} : {/*player.losses*/} </span>          
                         </Segment>
                     </Grid.Column>
                     
                     <Grid.Column textAlign='left'>
                         <Segment style={{ height: "33vh" }} >
                             {/* CALLING MATCHESFORM */}
-                            <MatchesForm 
-                                />
+                            <MatchesForm />
                         </Segment>
                     </Grid.Column>
                 </Grid>
