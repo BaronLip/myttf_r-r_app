@@ -7,19 +7,14 @@ import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 // Functions:
-import { addPlayer } from "../actions/PlayerActions";
+import { fetchPlayer } from "../actions/PlayerActions";
 import { removeMatch } from "../actions/MatchActions";
 
 
 class Dashboard extends Component {
     
-
-
     componentDidMount() {
-        fetch("http://localhost:3000/api/v1/players/1")
-        .then(response => response.json())
-        // .then(data => console.log(data))
-        .then(data => this.props.addPlayer(data))
+        this.props.fetchPlayer()
     }
 
     render() {
@@ -83,7 +78,7 @@ const mapStateToProps = ({players, matches}) => ({
 // })
 
 // ES6 syntax.
-export default connect(mapStateToProps, { removeMatch, addPlayer })(Dashboard);
+export default connect(mapStateToProps, { removeMatch, fetchPlayer })(Dashboard);
 
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {
