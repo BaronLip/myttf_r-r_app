@@ -12,7 +12,6 @@ import {
 } from 'semantic-ui-react'
 
 class MatchesForm extends Component {
-    // debugger
     constructor () {
         super();
         this.state = {
@@ -55,28 +54,29 @@ class MatchesForm extends Component {
                 <Header as='h3' block textAlign='center' color='blue'>
                     Create a Match
                 </Header>
-                
-                <Form.Input 
-                    fluid label='Date' 
-                    placeholder='Date:' 
-                    type="date" 
-                    name="date"
-                    // Date input does not need to be controlled form for value to pass into state. 
-                    // value={this.state.date}
-                    onChange={this.handleOnChange}/>
+                <Form.Group widths='equal'>
+                    <Form.Input 
+                        fluid label='Date' 
+                        placeholder='Date:' 
+                        type="date" 
+                        name="date"
+                        // Date input does not need to be controlled form for value to pass into state. 
+                        // value={this.state.date}
+                        onChange={this.handleOnChange}/>
 
-                <Form.Field
-                    name="opponent_name"
-                    control={Input}
-                    label='Opponent Name:'
-                    placeholder='Opponent Name'
-                    value={this.state.opponent_name}
-                    onChange={this.handleOnChange}
-                />
+                    <Form.Field
+                        name="opponent_name"
+                        control={Input}
+                        label='Opponent Name:'
+                        placeholder='Opponent Name'
+                        value={this.state.opponent_name}
+                        onChange={this.handleOnChange}
+                    />
+                </Form.Group>
 
                 <Form.Group inline>
                     <label>Match Type:</label>
-                    <Form.Radio
+                    <Form.Field
                         name="match_type"
                         control={Radio}
                         label='Best of 7'
@@ -84,7 +84,7 @@ class MatchesForm extends Component {
                         checked={this.state.match_type === "7"}
                         onChange={this.handleChecked}
                     />
-                    <Form.Radio
+                    <Form.Field
                         name="match_type"
                         control={Radio}
                         label='Best of 5'
@@ -94,7 +94,7 @@ class MatchesForm extends Component {
                     />
                 </Form.Group>
 
-                <Form.TextArea
+                <Form.Field style={{ minHeight: 90 }}
                     name="notes"
                     control={TextArea}
                     label='Notes:'
