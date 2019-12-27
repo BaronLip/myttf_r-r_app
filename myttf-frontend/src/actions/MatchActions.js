@@ -7,16 +7,21 @@ export const fetchMatches = () => {
         fetch("http://localhost:3000/api/v1/matches")
             .then(response => response.json())
             // .then(matches => console.log(matches))
-            .then(matches => matches.forEach(match => dispatch(addMatch(match))))
+            .then(matches => matches.forEach(match => dispatch(showMatch(match))))
             .catch(error => console.log(error))
     };
 }
 
-
+export const showMatch = (match) => {
+    console.log("actions/MatchActions.js showMatch", match);
+    return { type: "SHOW_MATCH", match };
+}
 
 // match arg is equal to {...this.state} from MatchesFrom at submission.
 export const addMatch = (match) => {
     console.log("actions/MatchActions.js addMatch", match);
+
+    
     return { type: "ADD_MATCH", match };
 }
 

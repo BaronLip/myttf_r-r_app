@@ -8,4 +8,4 @@ export default combineReducers({
     players, matches
 });
 
-// When importing state from reducers, players and matches is being named here as they are default exports from the individual reducers.
+// When importing state from reducers, players and matches is being named here, in the import statement, as they are default exports from the individual reducers.

@@ -18,6 +18,7 @@ class MatchesForm extends Component {
             opponent_name: "",
             match_type: "",
             notes: "",
+            bookmarked: false,
         }   
     }
 
@@ -32,16 +33,31 @@ class MatchesForm extends Component {
     handleChecked = (e, { value }) => this.setState({ match_type: value })
 
     handleSubmit = event => {
+        console.log("Submitting from MatchesForm.")
         event.preventDefault();
-        this.props.addMatch({ ...this.state });
+        
+        const newMatch = {
+            ...this.state,
+        }
+        debugger
+        // Post the fetch to the server...
+        fetch('http://localhost:3000/api/v1/matches', {
+            method: "POST",
+            headers: {
+                'Content-Type':'application/json'
+            }, 
+            body: JSON.stringify(newMatch)
+            })
+        .then(response => response.json())
+        // ...reflect the added match to the window.
+        .then(match => this.props.addMatch(match))
+        // Reset the form below.
         this.setState({
             date: "",
             opponent_name: "",
             match_type: "",
             notes: "",
-            checked: false
         });
-        console.log("Submit")
     }
 
     render() {
@@ -109,6 +125,10 @@ class MatchesForm extends Component {
             </Form>
         )
     }
+}
+
+function mapStateToProps(state) {
+    return { matches: state.matches };
 }
 
 const mapDispatchToProps = (dispatch) => {

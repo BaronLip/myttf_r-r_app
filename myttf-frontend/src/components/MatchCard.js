@@ -17,7 +17,6 @@ class MatchCard extends Component {
         console.log(event);
         // debugger
         event.target.querySelector('.bookmark').attributes.class.value = "bookmark outline small icon"
-
     }
     
     render() {
@@ -39,7 +38,7 @@ class MatchCard extends Component {
                         {/*CALLING BOOKMARK*/}
                         <Button onClick={this.toggle}>
                             <Icon
-                                class="bookmark"
+                                className="bookmark"
                                 name='bookmark'
                                 size='small'
                             />     
