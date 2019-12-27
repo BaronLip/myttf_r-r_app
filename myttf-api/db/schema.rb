@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_12_27_061515) do
     t.string "opponent_name"
     t.string "match_type"
     t.text "notes"
+    t.boolean "bookmarked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

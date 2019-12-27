@@ -35,3 +35,21 @@ Player.create([
     losses: 0,
     },
 ])
+
+Match.create([
+    {
+    date: "2019-12-26",
+    opponent_name: "Dani",
+    match_type: "5",
+    notes: "His serves are illusive, watch the spin carefully.",
+    bookmarked: false
+    },
+    {
+    date: "2019-12-20",
+    opponent_name: "Scott",
+    match_type: "5",
+    notes: "Close the angle more against his slow loops.",
+    bookmarked: false
+    },
+    
+])

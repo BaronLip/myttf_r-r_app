@@ -5,6 +5,8 @@ class CreateMatches < ActiveRecord::Migration[5.2]
          t.string :opponent_name
          t.string :match_type
          t.text :notes
+         t.boolean :bookmarked
+
          t.timestamps
       end
    end
