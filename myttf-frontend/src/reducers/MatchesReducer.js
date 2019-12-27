@@ -5,6 +5,11 @@ console.log("reducers/MatchesReducer.js")
 export default (state = [], action) => {
 
     switch (action.type) {
+        case "FETCH_MATCHES":
+            console.log("you're fetching all matches", state, action);
+            // debugger
+            return [...state];
+        
         case "ADD_MATCH":
             console.log("You're adding a match", state, action);
             const match = {
@@ -19,9 +24,9 @@ export default (state = [], action) => {
             // debugger;
             return state.filter((match) => match.id !== action.matchId)
 
-        case "STAR_MATCH":
-            console.log("You're staring a match", state, action)
-            return
+        case "BOOKMARK":
+            console.log("You're bookmarking a match", state, action)
+            return { ...state, value: action.value }
 
         default:
             return state;

@@ -8,13 +8,14 @@ import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 // Functions:
 import { fetchPlayer } from "../actions/PlayerActions";
-import { removeMatch } from "../actions/MatchActions";
+import { fetchMatches, removeMatch, bookmark } from "../actions/MatchActions";
 
 
 class Dashboard extends Component {
     
     componentDidMount() {
-        this.props.fetchPlayer()
+        this.props.fetchPlayer();
+        this.props.fetchMatches();
     }
 
     render() {
@@ -55,7 +56,9 @@ class Dashboard extends Component {
                             <MatchCard 
                                 match={m}
                                 key={m.id}
-                                removeMatch={this.props.removeMatch}/>
+                                removeMatch={this.props.removeMatch}
+                                bookmark={this.props.bookmark}    
+                            />
                             )
                         }
                     </Grid.Row>
@@ -78,7 +81,7 @@ const mapStateToProps = ({players, matches}) => ({
 // })
 
 // ES6 syntax.
-export default connect(mapStateToProps, { removeMatch, fetchPlayer })(Dashboard);
+export default connect(mapStateToProps, { removeMatch, bookmark, fetchPlayer, fetchMatches })(Dashboard);
 
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {
