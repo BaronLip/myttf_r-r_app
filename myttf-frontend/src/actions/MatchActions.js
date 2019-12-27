@@ -6,9 +6,9 @@ export const fetchMatches = () => {
 
         fetch("http://localhost:3000/api/v1/matches")
             .then(response => response.json())
-            .then(matches => console.log(matches))
-            // .then(matches => dispatch(addMatch(match)))
-            .catch(error => console.log(error));
+            // .then(matches => console.log(matches))
+            .then(matches => matches.forEach(match => dispatch(addMatch(match))))
+            .catch(error => console.log(error))
     };
 }
 
