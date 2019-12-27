@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addMatch } from "../actions/MatchActions";
+import { createMatch } from "../actions/MatchActions";
 
 import {
     Button,
@@ -35,29 +35,30 @@ class MatchesForm extends Component {
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.")
         event.preventDefault();
-        
-        const newMatch = {
-            ...this.state,
-        }
-        debugger
-        // Post the fetch to the server...
-        fetch('http://localhost:3000/api/v1/matches', {
-            method: "POST",
-            headers: {
-                'Content-Type':'application/json'
-            }, 
-            body: JSON.stringify(newMatch)
-            })
-        .then(response => response.json())
-        // ...reflect the added match to the window.
-        .then(match => this.props.addMatch(match))
-        // Reset the form below.
+        this.props.createMatch({...this.state, bookmarked: false });
+        // // Reset the form below.
         this.setState({
             date: "",
             opponent_name: "",
             match_type: "",
             notes: "",
+            bookmarked: false,
         });
+        // const newMatch = {
+        //     ...this.state,
+        // }
+        // debugger
+        // // Post the fetch to the server...
+        // fetch('http://localhost:3000/api/v1/matches', {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type':'application/json'
+        //     }, 
+        //     body: JSON.stringify(newMatch)
+        //     })
+        // .then(response => response.json())
+        // // ...reflect the added match to the window.
+        // .then(match => this.props.addMatch(match))
     }
 
     render() {
@@ -133,7 +134,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMatch: (formData) => dispatch(addMatch(formData))
+        createMatch: (formData) => dispatch(createMatch(formData))
     };
 };
 
