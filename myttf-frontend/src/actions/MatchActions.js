@@ -43,7 +43,6 @@ export const createMatch = (match) => {
 
 export const deleteMatch = (matchId) => {
     console.log("actions/MatchActions.js deleteMatch", matchId);
-    
     return dispatch =>
     fetch(`http://localhost:3000/api/v1/matches/${matchId}`, {
         method: "DELETE"
@@ -57,7 +56,16 @@ export const removeMatch = (matchId) => {
     return { type: "REMOVE_MATCH", matchId } 
 }
 
-export const bookmark = (value) => {
-    console.log("You're bookmarking this match.", value);
-    return { type: "BOOKMARK", value }
+export const bookmark = (match) => {
+    console.log("You're bookmarking this match.", match);
+    return dispatch =>
+    fetch(`http://localhost:3000/api/v1/matches/${match}`, {
+        method: "PUT"
+    }).then(() => {
+        dispatch(bookmarkMatch(match));
+    });
+}
+
+export const bookmarkMatch = (match) => {
+    return { type: "BOOKMARK_MATCH", match }
 }

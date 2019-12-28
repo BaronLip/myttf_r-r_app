@@ -51,7 +51,7 @@ class Dashboard extends Component {
                 <Grid divided='vertically'>
                     <Grid.Row columns={3}>
                         
-                        {/* CALLING MATCHCARD */}
+                        {/* CALLING MATCHCARDS */}
                         {matches.map(m =>
                             <MatchCard 
                                 match={m}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Card, Button, Icon } from 'semantic-ui-react';
-// import Bookmark from "./Bookmark";
 
 // import { connect } from 'react-redux';
 // import { deleteMatch } from "../actions/MatchActions";
@@ -8,16 +7,23 @@ import { Grid, Card, Button, Icon } from 'semantic-ui-react';
 // You must pass in the received props when creating a functional component.
 // Imported functions must be passed in as well.
 class MatchCard extends Component {
+    
     handleDelete = () => {
         console.log("Hitting Delete Button", this.props)
         this.props.deleteMatch(this.props.match.id)
     }
 
-    toggle = (event) => {
-        console.log(event);
-        // debugger
-        event.target.querySelector('.bookmark').attributes.class.value = "bookmark outline small icon"
+    handleBookmark = () => {
+        console.log("Bookmarking this match.", this.props)
+        this.props.bookmark(this.props.match)
     }
+
+
+    // toggle = (event) => {
+    //     console.log(event);
+    //     // debugger
+    //     event.target.querySelector('.bookmark').attributes.class.value = "bookmark outline small icon"
+    // }
     
     render() {
     console.log("MatchCard.js", this.props);
@@ -36,7 +42,7 @@ class MatchCard extends Component {
                     </Card.Content>
                     <Card.Content>
                         {/*CALLING BOOKMARK*/}
-                        <Button onClick={this.toggle}>
+                        <Button onClick={this.handleBookmark}>
                             <Icon
                                 className="bookmark"
                                 name='bookmark'
@@ -44,9 +50,7 @@ class MatchCard extends Component {
                             />     
                         </Button>
 
-                        <Button 
-                            onClick={this.handleDelete}
-                        > 
+                        <Button onClick={this.handleDelete}> 
                             Delete
                         </Button>
                     </Card.Content>

@@ -1,7 +1,5 @@
 import uuid from 'uuid';
 
-console.log("reducers/MatchesReducer.js")
-
 export default (state = [], action) => {
 
     switch (action.type) {
@@ -28,12 +26,17 @@ export default (state = [], action) => {
 
         case "REMOVE_MATCH":
             console.log("You're deleting a match", state, action);
-            // debugger;
             return state.filter((match) => match.id !== action.matchId)
-
-        case "BOOKMARK":
+            
+        case "BOOKMARK_MATCH":
             console.log("You're bookmarking a match", state, action)
-            return { ...state, value: action.value }
+            const bookmarkedMatch = action.match
+            if (bookmarkedMatch.bookmarked === null || false) {
+                bookmarkedMatch.bookmarked = true;
+            } else {
+                bookmarkedMatch.bookmarked = false;
+            }
+            return [ ...state ]
 
         default:
             return state;
