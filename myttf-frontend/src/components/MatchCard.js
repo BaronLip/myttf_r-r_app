@@ -3,14 +3,14 @@ import { Grid, Card, Button, Icon } from 'semantic-ui-react';
 // import Bookmark from "./Bookmark";
 
 // import { connect } from 'react-redux';
-// import { removeMatch } from "../actions/MatchActions";
+// import { deleteMatch } from "../actions/MatchActions";
 
 // You must pass in the received props when creating a functional component.
 // Imported functions must be passed in as well.
 class MatchCard extends Component {
     handleDelete = () => {
         console.log("Hitting Delete Button", this.props)
-        this.props.removeMatch(this.props.match.id)
+        this.props.deleteMatch(this.props.match.id)
     }
 
     toggle = (event) => {
@@ -55,7 +55,7 @@ class MatchCard extends Component {
         )   
     }
 }
-// const mapDispatchToProps = ({removeMatch}) => ({removeMatch})
+// const mapDispatchToProps = ({deleteMatch}) => ({deleteMatch})
 // Longhand version:
 // const mapDispatchToProps = (dispatch) => {
 //     return {

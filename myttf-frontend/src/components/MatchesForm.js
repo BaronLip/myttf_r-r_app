@@ -44,21 +44,6 @@ class MatchesForm extends Component {
             notes: "",
             bookmarked: false,
         });
-        // const newMatch = {
-        //     ...this.state,
-        // }
-        // debugger
-        // // Post the fetch to the server...
-        // fetch('http://localhost:3000/api/v1/matches', {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type':'application/json'
-        //     }, 
-        //     body: JSON.stringify(newMatch)
-        //     })
-        // .then(response => response.json())
-        // // ...reflect the added match to the window.
-        // .then(match => this.props.addMatch(match))
     }
 
     render() {

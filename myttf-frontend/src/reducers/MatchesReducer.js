@@ -27,7 +27,7 @@ export default (state = [], action) => {
             return [...state, newMatch ];
 
         case "REMOVE_MATCH":
-            console.log("You're removing a match", state, action);
+            console.log("You're deleting a match", state, action);
             // debugger;
             return state.filter((match) => match.id !== action.matchId)
 

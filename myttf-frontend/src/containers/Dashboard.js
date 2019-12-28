@@ -8,7 +8,7 @@ import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 // Functions:
 import { fetchPlayer } from "../actions/PlayerActions";
-import { fetchMatches, removeMatch, bookmark } from "../actions/MatchActions";
+import { fetchMatches, deleteMatch, bookmark } from "../actions/MatchActions";
 
 
 class Dashboard extends Component {
@@ -56,7 +56,7 @@ class Dashboard extends Component {
                             <MatchCard 
                                 match={m}
                                 key={m.id}
-                                removeMatch={this.props.removeMatch}
+                                deleteMatch={this.props.deleteMatch}
                                 bookmark={this.props.bookmark}    
                             />
                             )
@@ -80,8 +80,8 @@ const mapStateToProps = ({players, matches}) => ({
 //      matches: state.matches
 // })
 
-// ES6 syntax.
-export default connect(mapStateToProps, { removeMatch, bookmark, fetchPlayer, fetchMatches })(Dashboard);
+// ES6 syntax for connect.
+export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer, fetchMatches })(Dashboard);
 
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {

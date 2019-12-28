@@ -41,9 +41,20 @@ export const createMatch = (match) => {
         .catch(error => console.log(error));
 }
 
+export const deleteMatch = (matchId) => {
+    console.log("actions/MatchActions.js deleteMatch", matchId);
+    
+    return dispatch =>
+    fetch(`http://localhost:3000/api/v1/matches/${matchId}`, {
+        method: "DELETE"
+    }).then(() => {
+        dispatch(removeMatch(matchId));
+    });
+}
+
 export const removeMatch = (matchId) => {
     console.log("actions/MatchActions.js removeMatch", matchId);
-    return { type: "REMOVE_MATCH", matchId }
+    return { type: "REMOVE_MATCH", matchId } 
 }
 
 export const bookmark = (value) => {
