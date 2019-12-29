@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Card, Button, Icon } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 
 const buttonStyle = {
     margin: '0.25em',
@@ -36,7 +37,7 @@ class MatchCard extends Component {
                 size='small'
             />
         return (
-            <Grid.Column>
+            <Grid.Column> 
                 <Card>
                     <Card.Content>
                         <Card.Header>Date: {this.props.match.date}</Card.Header>
@@ -52,10 +53,13 @@ class MatchCard extends Component {
                         <Button onClick={this.handleBookmark} style= {buttonStyle}>
                             {bookmarkedIcon}    
                         </Button>
-
-                        <Button style= {buttonStyle}> 
-                            Edit
-                        </Button>
+                        
+                        <Link to={`./api/v1/match/${this.props.match.id}`}>
+                            <Button style={buttonStyle}>
+                                Edit
+                            </Button>
+                        </Link>
+                        
                         <Button onClick={this.handleDelete} style= {buttonStyle}> 
                             Delete
                         </Button>

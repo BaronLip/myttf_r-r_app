@@ -12,14 +12,14 @@ import {
 } from 'semantic-ui-react'
 
 class MatchesForm extends Component {
-    constructor () {
+    constructor() {
         super();
         this.state = {
             opponent_name: "",
             match_type: "",
             notes: "",
             bookmarked: false,
-        }   
+        }
     }
 
     handleOnChange = event => {
@@ -29,13 +29,13 @@ class MatchesForm extends Component {
         });
         console.log(this.state)
     }
-    
+
     handleChecked = (e, { value }) => this.setState({ match_type: value })
 
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.")
         event.preventDefault();
-        this.props.createMatch({...this.state, bookmarked: false });
+        this.props.createMatch({ ...this.state, bookmarked: false });
         // // Reset the form below.
         this.setState({
             date: "",
@@ -48,23 +48,23 @@ class MatchesForm extends Component {
 
     render() {
         console.log("MatchesForm.js", this.state, this.props)
-        
+
         // From Semantic UI but not needed.
         // const { value } = this.state
         return (
-            <Form onSubmit={ event => this.handleSubmit(event) }>
+            <Form onSubmit={event => this.handleSubmit(event)}>
                 <Header as='h3' block textAlign='center' color='blue'>
-                    Create a Match
+                    Edit Match
                 </Header>
                 <Form.Group widths='equal'>
-                    <Form.Input 
-                        fluid label='Date' 
-                        placeholder='Date:' 
-                        type="date" 
+                    <Form.Input
+                        fluid label='Date'
+                        placeholder='Date:'
+                        type="date"
                         name="date"
                         // Date input does not need to be controlled form for value to pass into state. 
                         // value={this.state.date}
-                        onChange={this.handleOnChange}/>
+                        onChange={this.handleOnChange} />
 
                     <Form.Field
                         name="opponent_name"
@@ -104,7 +104,7 @@ class MatchesForm extends Component {
                     value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
-                <Form.Field 
+                <Form.Field
                     control={Button}>
                     Submit
                 </Form.Field>
