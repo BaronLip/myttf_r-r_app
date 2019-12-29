@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Grid, Card, Button, Icon } from 'semantic-ui-react';
 
-// import { connect } from 'react-redux';
-// import { deleteMatch } from "../actions/MatchActions";
+const buttonStyle = {
+    margin: '0.25em',
+    padding: '0.75em .75em .75em',
+}
 
 // You must pass in the received props when creating a functional component.
 // Imported functions must be passed in as well.
@@ -26,6 +28,7 @@ class MatchCard extends Component {
                 className="bookmark"
                 name='bookmark'
                 size='small'
+                color='blue'
             /> :
             <Icon
                 className="bookmark outline"
@@ -46,14 +49,17 @@ class MatchCard extends Component {
                     </Card.Content>
                     <Card.Content>
                         
-                        <Button onClick={this.handleBookmark} id="bookmarkButton">
+                        <Button onClick={this.handleBookmark} style= {buttonStyle}>
                             {bookmarkedIcon}    
                         </Button>
 
-                        <Button onClick={this.handleDelete}> 
+                        <Button style= {buttonStyle}> 
+                            Edit
+                        </Button>
+                        <Button onClick={this.handleDelete} style= {buttonStyle}> 
                             Delete
                         </Button>
-                        
+
                     </Card.Content>
                 </Card>
             </Grid.Column>
