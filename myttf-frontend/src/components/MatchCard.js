@@ -45,7 +45,7 @@ class MatchCard extends Component {
                         <Card.Description> Notes: {this.props.match.notes} </Card.Description>
                     </Card.Content>
                     <Card.Content>
-                        {/*CALLING BOOKMARK*/}
+                        
                         <Button onClick={this.handleBookmark} id="bookmarkButton">
                             {bookmarkedIcon}    
                         </Button>
@@ -53,21 +53,12 @@ class MatchCard extends Component {
                         <Button onClick={this.handleDelete}> 
                             Delete
                         </Button>
+                        
                     </Card.Content>
                 </Card>
             </Grid.Column>
         )   
     }
 }
-// const mapDispatchToProps = ({deleteMatch}) => ({deleteMatch})
-// Longhand version:
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         removeMatch: () => { dispatch(removeMatch()) },
-//     }
-// }
 
-// export default connect(null, mapDispatchToProps)(MatchCard)
 export default MatchCard
-
-// onClick = {()=> removeMatch(match.id)}> Delete
