@@ -21,7 +21,6 @@ export default (state = [], action) => {
                 id: uuid(),
                 ...action.match
             };
-            // debugger;
             return [...state, newMatch ];
 
         case "REMOVE_MATCH":
@@ -30,8 +29,9 @@ export default (state = [], action) => {
             
         case "BOOKMARK_MATCH":
             console.log("You're bookmarking a match", state, action)
+            // debugger
             const bookmarkedMatch = action.match
-            if (bookmarkedMatch.bookmarked === null || false) {
+            if (bookmarkedMatch.bookmarked === null || bookmarkedMatch.bookmarked === false) {
                 bookmarkedMatch.bookmarked = true;
             } else {
                 bookmarkedMatch.bookmarked = false;
@@ -42,3 +42,10 @@ export default (state = [], action) => {
             return state;
     }
 }
+
+
+// toggle = (event) => {
+//     console.log(event);
+//     // debugger
+//     event.target.querySelector('.bookmark').attributes.class.value = "bookmark outline small icon"
+// }

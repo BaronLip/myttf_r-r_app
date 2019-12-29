@@ -13,21 +13,25 @@ class MatchCard extends Component {
         this.props.deleteMatch(this.props.match.id)
     }
 
-    handleBookmark = () => {
+    handleBookmark = (event) => {
         console.log("Bookmarking this match.", this.props)
-        this.props.bookmark(this.props.match)
+        this.props.bookmark(this.props.match, event)
     }
 
-
-    // toggle = (event) => {
-    //     console.log(event);
-    //     // debugger
-    //     event.target.querySelector('.bookmark').attributes.class.value = "bookmark outline small icon"
-    // }
-    
     render() {
     console.log("MatchCard.js", this.props);
-    // debugger;
+        const bookmarkedValue = this.props.match.bookmarked
+        const bookmarkedIcon = bookmarkedValue === true ? 
+            <Icon 
+                className="bookmark"
+                name='bookmark'
+                size='small'
+            /> :
+            <Icon
+                className="bookmark outline"
+                name='bookmark outline'
+                size='small'
+            />
         return (
             <Grid.Column>
                 <Card>
@@ -42,12 +46,8 @@ class MatchCard extends Component {
                     </Card.Content>
                     <Card.Content>
                         {/*CALLING BOOKMARK*/}
-                        <Button onClick={this.handleBookmark}>
-                            <Icon
-                                className="bookmark"
-                                name='bookmark'
-                                size='small'
-                            />     
+                        <Button onClick={this.handleBookmark} id="bookmarkButton">
+                            {bookmarkedIcon}    
                         </Button>
 
                         <Button onClick={this.handleDelete}> 
