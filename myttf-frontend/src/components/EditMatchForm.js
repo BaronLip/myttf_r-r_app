@@ -16,15 +16,17 @@ export default class EditMatchForm extends Component {
         opponent_name: "",
         match_type: "",
         notes: "",
+        bookmarked: null
     }
 
     // Then componentDidMount will overwrite the state upon second render.
     componentDidMount() {
         fetch(`http://localhost:3000/api/v1/matches/${this.props.match.params.id}`)
         .then(response => response.json())
-        .then(matchData => this.setState(
-            {...matchData}
-        ))
+        .then(data => console.log(data))
+        // .then(matchData => this.setState(
+        //     {...matchData}
+        // ))
         .catch(error => console.log(error))
     }
 

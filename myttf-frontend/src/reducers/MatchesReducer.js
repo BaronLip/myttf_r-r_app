@@ -16,7 +16,7 @@ export default (state = [], action) => {
             return [...state, match ];
 
         case "ADD_MATCH":
-            console.log("You're showing the match", state, action);
+            console.log("You're adding a match", state, action);
             const newMatch = {
                 id: uuid(),
                 ...action.match

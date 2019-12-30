@@ -10,16 +10,15 @@ import MatchCard from '../components/MatchCard'
 import { fetchPlayer } from "../actions/PlayerActions";
 import { fetchMatches, deleteMatch, bookmark } from "../actions/MatchActions";
 
-
 class Dashboard extends Component {
-    
+
     componentDidMount() {
         this.props.fetchPlayer();
         this.props.fetchMatches();
     }
 
     render() {
-        console.log("containers/dashboard.js", this.props.players, this.props.matches);
+        console.log("Dashboard.js", this.props.players, this.props.matches);
         const player = this.props.players[0];
         const matches = this.props.matches;
         // debugger;
@@ -31,10 +30,10 @@ class Dashboard extends Component {
                             <Header as='h3' block textAlign='center' color='blue'>
                             Profile
                             </Header>
-                            <Image bordered rounded size='large' style={{width: '200px', height: "auto"}}centered />
-                            <h5>{/*player.username*/}</h5>
+                            <Image bordered rounded src={player.profileImage} size='large' style={{width: '200px', height: "auto"}}centered />
+                            <h5>{player.username}</h5>
                             <p>Win : Loss</p>
-                            <span>{/*player.wins*/} : {/*player.losses*/} </span>          
+                            <span>{player.wins} : {player.losses} </span>          
                         </Segment>
                     </Grid.Column>
                     
