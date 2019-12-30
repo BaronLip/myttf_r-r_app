@@ -5,7 +5,7 @@ export default (state = [], action) => {
     switch (action.type) {
         case "FETCH_MATCHES":
             console.log("you're fetching all matches", state, action);
-            return [...state];
+            return [...action.matches];
         
         case "SHOW_MATCH":
             console.log("You're showing the match", state, action);
@@ -28,14 +28,14 @@ export default (state = [], action) => {
             return state.filter((match) => match.id !== action.matchId)
             
         case "BOOKMARK_MATCH":
-            console.log("You're bookmarking a match", state, action)
-            const bookmarkedMatch = action.match
-            if (bookmarkedMatch.bookmarked === null || bookmarkedMatch.bookmarked === false) {
-                bookmarkedMatch.bookmarked = true;
-            } else {
-                bookmarkedMatch.bookmarked = false;
-            }
-            return [ ...state ]
+            console.log("You're bookmarking a match", state, action);
+            let bookmarkedMatch = state.find(match => match.id === action.match.id)
+            let index = state.indexOf(bookmarkedMatch)
+            debugger
+
+            return [ 
+                ...state.slice(0,index), action.match, ...state.slice(index + 1)
+            ]
 
         default:
             return state;

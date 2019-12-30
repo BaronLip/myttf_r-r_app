@@ -2,15 +2,18 @@ export const fetchMatches = () => {
     console.log("actions/MatchActions.js fetchMatches");
 
     return (dispatch) => {
-        dispatch({ type: "FETCH_MATCHES" });
-
         fetch("http://localhost:3000/api/v1/matches")
             .then(response => response.json())
             // .then(matches => console.log(matches))
-            .then(matches => matches.forEach(match => dispatch(showMatch(match))))
+            .then(matches => dispatch(setMatches(matches)))
             .catch(error => console.log(error))
     };
 }
+
+export const setMatches = (matches) => {
+    return {type: "FETCH_MATCHES", matches}
+}
+
 
 export const showMatch = (match) => {
     console.log("actions/MatchActions.js showMatch", match);
@@ -58,27 +61,40 @@ export const removeMatch = (matchId) => {
 
 export const bookmark = (match) => {
     console.log("You're bookmarking this match.", match);
+    let newMatch = {...match}
+    if (match.bookmarked === null || match.bookmarked === false) {
+       
+        newMatch.bookmarked = true;
+    } else {
+        newMatch.bookmarked = false;
+    }
+
     return dispatch =>
-    fetch(`http://localhost:3000/api/v1/matches/${match}`, {
-        method: "PUT"
-    }).then(() => {
-        dispatch(bookmarkMatch(match));
+    fetch(`http://localhost:3000/api/v1/matches/${match.id}`, { 
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({match: newMatch}) 
+    })
+    .then(() => {
+        dispatch(bookmarkMatch(newMatch));
     });
 }
 
 export const bookmarkMatch = (match) => {
+    // debugger
     return { type: "BOOKMARK_MATCH", match }
 }
 
 export const fetchMatch = (matchId) => {
     console.log("actions/MatchActions.js fetchMatch", matchId);
 
-        fetch(`http://localhost:3000/api/v1/match/${matchId}`)
-            .then(response => response.json())
-            .then(match => console.log(match))
-            // .then(match => match)
-            .catch(error => console.log(error))
-
+    fetch(`http://localhost:3000/api/v1/match/${matchId}`)
+    .then(response => response.json())
+    .then(match => console.log(match))
+    // .then(match => match)
+    .catch(error => console.log(error))
 }
 
 export const patchMatch = (match) => {

@@ -21,7 +21,6 @@ class Api::V1::MatchesController < ApplicationController
     def update
         @match = Match.find(params[:id])
         @match.update(match_params)
-
         render json: @match, status: 200
     end
 
@@ -35,7 +34,7 @@ class Api::V1::MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:date, :opponent_name, :match_type, :notes)
+        params.require(:match).permit(:date, :opponent_name, :match_type, :notes, :bookmarked)
     end
 
 end

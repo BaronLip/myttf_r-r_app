@@ -17,7 +17,7 @@ const header = () => {
                     </Grid.Column>
                     
                     <Grid.Column>
-                        <Link to='./dashboard'>
+                        <Link to='/dashboard'>
                             <Button floated='right'>Dashboard</Button>
                         </Link>
                     </Grid.Column>
