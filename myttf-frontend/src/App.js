@@ -8,7 +8,7 @@ import Dashboard from './containers/Dashboard';
 import { Container, Grid } from 'semantic-ui-react';
 // Functions:
 import header from './components/Header'
-import editMatchContainer from './containers/EditMatchContainer';
+import EditMatchContainer from './containers/EditMatchContainer';
 // import MatchesHeader from "./components/MatchesHeader";
 
 
@@ -28,7 +28,7 @@ function App() {
                         {header()}
                         
                         <Route path="/dashboard" exact component={Dashboard} />
-                        <Route path="/api/v1/match/:id" exact component={editMatchContainer} />
+                        <Route path="/api/v1/match/:id" exact component={EditMatchContainer} />
                         
                      </Grid.Column>
                   </Grid>

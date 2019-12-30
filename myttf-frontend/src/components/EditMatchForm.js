@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { createMatch } from "../actions/MatchActions";
 
 import {
     Button,
@@ -11,15 +9,23 @@ import {
     TextArea,
 } from 'semantic-ui-react'
 
-class MatchesForm extends Component {
-    constructor() {
-        super();
-        this.state = {
-            opponent_name: "",
-            match_type: "",
-            notes: "",
-            bookmarked: false,
-        }
+export default class EditMatchForm extends Component {
+    // Setting an initial state allows the first render to complete.
+    state = {
+        date: "",
+        opponent_name: "",
+        match_type: "",
+        notes: "",
+    }
+
+    // Then componentDidMount will overwrite the state upon second render.
+    componentDidMount() {
+        fetch(`http://localhost:3000/api/v1/matches/${this.props.match.params.id}`)
+        .then(response => response.json())
+        .then(matchData => this.setState(
+            {...matchData}
+        ))
+        .catch(error => console.log(error))
     }
 
     handleOnChange = event => {
@@ -33,10 +39,10 @@ class MatchesForm extends Component {
     handleChecked = (e, { value }) => this.setState({ match_type: value })
 
     handleSubmit = event => {
-        console.log("Submitting from MatchesForm.")
+        console.log("Patching from MatchesForm.")
         event.preventDefault();
-        this.props.createMatch({ ...this.state, bookmarked: false });
-        // // Reset the form below.
+        this.props.patchMatch({ ...this.state, bookmarked: false });
+        // Reset the form below.
         this.setState({
             date: "",
             opponent_name: "",
@@ -47,10 +53,8 @@ class MatchesForm extends Component {
     }
 
     render() {
-        console.log("MatchesForm.js", this.state, this.props)
+        console.log("EditMatchForm.js", this.state, this.props)
 
-        // From Semantic UI but not needed.
-        // const { value } = this.state
         return (
             <Form onSubmit={event => this.handleSubmit(event)}>
                 <Header as='h3' block textAlign='center' color='blue'>
@@ -70,7 +74,7 @@ class MatchesForm extends Component {
                         name="opponent_name"
                         control={Input}
                         label='Opponent Name:'
-                        placeholder='Opponent Name'
+                        placeholder={this.state.opponent_name}
                         value={this.state.opponent_name}
                         onChange={this.handleOnChange}
                     />
@@ -83,7 +87,7 @@ class MatchesForm extends Component {
                         control={Radio}
                         label='Best of 7'
                         value='7'
-                        checked={this.state.match_type === "7"}
+                        // checked={this.state.match_type === "7"}
                         onChange={this.handleChecked}
                     />
                     <Form.Field
@@ -91,7 +95,7 @@ class MatchesForm extends Component {
                         control={Radio}
                         label='Best of 5'
                         value='5'
-                        checked={this.state.match_type === "5"}
+                        // checked={this.state.match_type === "5"}
                         onChange={this.handleChecked}
                     />
                 </Form.Group>
@@ -100,8 +104,8 @@ class MatchesForm extends Component {
                     name="notes"
                     control={TextArea}
                     label='Notes:'
-                    placeholder='Notes'
-                    value={this.state.notes}
+                    placeholder={this.state.notes}
+                    // value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
                 <Form.Field
@@ -113,10 +117,3 @@ class MatchesForm extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        createMatch: (formData) => dispatch(createMatch(formData))
-    };
-};
-
-export default connect(null, mapDispatchToProps)(MatchesForm);

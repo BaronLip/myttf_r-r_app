@@ -69,3 +69,24 @@ export const bookmark = (match) => {
 export const bookmarkMatch = (match) => {
     return { type: "BOOKMARK_MATCH", match }
 }
+
+export const fetchMatch = (matchId) => {
+    console.log("actions/MatchActions.js fetchMatch", matchId);
+
+        fetch(`http://localhost:3000/api/v1/match/${matchId}`)
+            .then(response => response.json())
+            .then(match => console.log(match))
+            // .then(match => match)
+            .catch(error => console.log(error))
+
+}
+
+export const patchMatch = (match) => {
+    console.log("You're patching this match.", match);
+    // return dispatch => 
+    // fetch(``)
+}
+
+export const editMatch = (match) => {
+    console.log("You're editing this match.", match);
+}

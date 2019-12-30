@@ -73,7 +73,6 @@ const mapStateToProps = ({players, matches}) => ({
     players,
     matches
 })
-
 // //Longhand of mSTP:
 // const mapStateToProps = (state) => ({
 //      players: state.players,
@@ -82,7 +81,6 @@ const mapStateToProps = ({players, matches}) => ({
 
 // ES6 syntax for connect.
 export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer, fetchMatches })(Dashboard);
-
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {
 //     return {
