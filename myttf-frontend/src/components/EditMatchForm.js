@@ -23,7 +23,6 @@ export default class EditMatchForm extends Component {
     componentDidMount() {
         fetch(`http://localhost:3000/api/v1/matches/${this.props.match.params.id}`)
         .then(response => response.json())
-        // .then(data => console.log(data))
         .then(matchData => this.setState(
             {...matchData}
         ))
@@ -43,7 +42,6 @@ export default class EditMatchForm extends Component {
     handleSubmit = (event) => {
         console.log("Patching from MatchesForm.")
         event.preventDefault();
-        // debugger
         this.props.patchMatch(this.state);
         // Reset the form below.
         this.setState({

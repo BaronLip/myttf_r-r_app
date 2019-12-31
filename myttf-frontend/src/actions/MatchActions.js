@@ -96,7 +96,6 @@ export const fetchMatch = (matchId) => {
 
 export const patchMatch = (match) => {
     console.log("You're patching this match.", match);
-    // debugger
     return dispatch =>
     fetch(`http://localhost:3000/api/v1/matches/${match.id}`, {
     method: "PATCH",
@@ -105,9 +104,8 @@ export const patchMatch = (match) => {
     },
     body: JSON.stringify(match)
     })
-    .then(() => {
-        dispatch(editMatch(match));
-    });
+    .then(() => { dispatch(editMatch(match));
+    })
 }
 
 export const editMatch = (match) => {

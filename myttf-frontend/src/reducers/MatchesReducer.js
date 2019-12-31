@@ -38,9 +38,7 @@ export default (state = [], action) => {
 
         case "EDIT_MATCH":
             console.log("You're editing this match.", state, action);
-            // debugger
-            let matchToEdit = state.find(match => match.id === action.match.id)
-            let indexOfMatchToEdit = state.indexOf(indexOfMatchToEdit)
+
             return [
                 [...state, action.match]
             ]
