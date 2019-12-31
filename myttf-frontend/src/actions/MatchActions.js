@@ -14,34 +14,33 @@ export const setMatches = (matches) => {
     return {type: "FETCH_MATCHES", matches}
 }
 
-
 export const showMatch = (match) => {
     console.log("actions/MatchActions.js showMatch", match);
     return { type: "SHOW_MATCH", match };
-}
-
-// match arg is equal to {...this.state} from MatchesFrom at submission.
-export const addMatch = (match) => {
-    console.log("actions/MatchActions.js addMatch", match);
-    return { type: "ADD_MATCH", match };
 }
 
 export const createMatch = (match) => {
     console.log("Creating a new match.", match);
     // Post  the fetch to the server...
     return (dispatch) => 
-        fetch('http://localhost:3000/api/v1/matches', {
-            method: "POST",
-            headers: {
-                'Content-Type':'application/json'
-            }, 
-            body: JSON.stringify(match)
-            })
-        .then(response => response.json())
-        // ...reflect the added match to the window...
-        .then(match => { dispatch( addMatch(match) )})
-        // ...or show an error.
-        .catch(error => console.log(error));
+    fetch('http://localhost:3000/api/v1/matches', {
+        method: "POST",
+        headers: {
+            'Content-Type':'application/json'
+        }, 
+        body: JSON.stringify(match)
+        })
+    .then(response => response.json())
+    // ...reflect the added match to the window...
+    .then(match => { dispatch( addMatch(match) )})
+    // ...or show an error.
+    .catch(error => alert(error));
+}
+
+// match arg is equal to {...this.state} from MatchesForm at submission.
+export const addMatch = (match) => {
+    console.log("actions/MatchActions.js addMatch", match);
+    return { type: "ADD_MATCH", match };
 }
 
 export const deleteMatch = (matchId) => {
