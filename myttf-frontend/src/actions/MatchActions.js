@@ -62,7 +62,6 @@ export const bookmark = (match) => {
     console.log("You're bookmarking this match.", match);
     let newMatch = {...match}
     if (match.bookmarked === null || match.bookmarked === false) {
-       
         newMatch.bookmarked = true;
     } else {
         newMatch.bookmarked = false;
@@ -82,7 +81,6 @@ export const bookmark = (match) => {
 }
 
 export const bookmarkMatch = (match) => {
-    // debugger
     return { type: "BOOKMARK_MATCH", match }
 }
 
@@ -98,10 +96,21 @@ export const fetchMatch = (matchId) => {
 
 export const patchMatch = (match) => {
     console.log("You're patching this match.", match);
-    // return dispatch => 
-    // fetch(``)
+    // debugger
+    return dispatch =>
+    fetch(`http://localhost:3000/api/v1/matches/${match.id}`, {
+    method: "PATCH",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(match)
+    })
+    .then(() => {
+        dispatch(editMatch(match));
+    });
 }
 
 export const editMatch = (match) => {
     console.log("You're editing this match.", match);
+    return { type: "EDIT_MATCH", match }
 }

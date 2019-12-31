@@ -31,10 +31,18 @@ export default (state = [], action) => {
             console.log("You're bookmarking a match", state, action);
             let bookmarkedMatch = state.find(match => match.id === action.match.id)
             let index = state.indexOf(bookmarkedMatch)
-            debugger
 
             return [ 
                 ...state.slice(0,index), action.match, ...state.slice(index + 1)
+            ]
+
+        case "EDIT_MATCH":
+            console.log("You're editing this match.", state, action);
+            // debugger
+            let matchToEdit = state.find(match => match.id === action.match.id)
+            let indexOfMatchToEdit = state.indexOf(indexOfMatchToEdit)
+            return [
+                [...state, action.match]
             ]
 
         default:

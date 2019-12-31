@@ -29,7 +29,7 @@ class EditMatchContainer extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        patchMatch: (matchId) => dispatch(patchMatch())
+        patchMatch: (match) => dispatch(patchMatch(match))
     }
 }
 

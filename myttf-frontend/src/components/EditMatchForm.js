@@ -23,10 +23,10 @@ export default class EditMatchForm extends Component {
     componentDidMount() {
         fetch(`http://localhost:3000/api/v1/matches/${this.props.match.params.id}`)
         .then(response => response.json())
-        .then(data => console.log(data))
-        // .then(matchData => this.setState(
-        //     {...matchData}
-        // ))
+        // .then(data => console.log(data))
+        .then(matchData => this.setState(
+            {...matchData}
+        ))
         .catch(error => console.log(error))
     }
 
@@ -40,10 +40,11 @@ export default class EditMatchForm extends Component {
 
     handleChecked = (e, { value }) => this.setState({ match_type: value })
 
-    handleSubmit = event => {
+    handleSubmit = (event) => {
         console.log("Patching from MatchesForm.")
         event.preventDefault();
-        this.props.patchMatch({ ...this.state, bookmarked: false });
+        // debugger
+        this.props.patchMatch(this.state);
         // Reset the form below.
         this.setState({
             date: "",

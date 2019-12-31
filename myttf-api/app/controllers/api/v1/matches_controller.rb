@@ -15,7 +15,14 @@ class Api::V1::MatchesController < ApplicationController
     def create
         @match = Match.create(match_params)
 
-        render json: @match, status: 200
+        if @match.save
+            render json: @match, status: 200
+        else
+            error = @match.errors.full_messages
+            render json: error, status: 500
+            # return error
+            byebug
+        end
     end
 
     def update

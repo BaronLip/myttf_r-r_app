@@ -16,7 +16,7 @@ class MatchCard extends Component {
         this.props.deleteMatch(this.props.match.id)
     }
 
-    handleBookmark = (event) => {
+    handleBookmark = () => {
         console.log("Bookmarking this match.", this.props);
 
         this.props.bookmark(this.props.match);
