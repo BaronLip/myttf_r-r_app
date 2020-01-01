@@ -30,7 +30,21 @@ export const createMatch = (match) => {
         }, 
         body: JSON.stringify(match)
         })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.json()}
+        else {
+            debugger
+            throw new Error(response.statusText)
+        }
+        // // Needs experimental syntax plugin in order to throw expression.
+        // if (!response.ok) {
+        //     response.text().then(text => throw Error(text))
+        // }
+        // else {
+        //     return response.json();
+        // }
+    })
     // ...reflect the added match to the window...
     .then(match => { dispatch( addMatch(match) )})
     // ...or show an error.

@@ -8,6 +8,8 @@ React-Router - $ npm install --save react-router
 React-Router-Dom - $ npm install react-router-dom
 React-Redux-Devtools - $ npm install --save-dev redux-devtools
 Redux-Thunk - $ npm install --save redux-thunk
+~$ npm install --save-dev @babel/plugin-proposal-throw-expressions~
+~$ npm install --save-dev @babel/plugin-syntax-throw-expressions~
 Rails 5.2.4
 Yarn - $ brew install yarn
 ~~Postgresql~~
@@ -22,3 +24,9 @@ cd to myttf-api directory.
     $ rails s
 cd to myttf-frontend directory.
     $ npm start
+
+
+### Follow-ups:
+Add login functionality.
+Create validations with alerts.
+Redirect back to dashboard after editing match.
