@@ -4,7 +4,6 @@ export const fetchMatches = () => {
     return (dispatch) => {
         fetch("http://localhost:3000/api/v1/matches")
             .then(response => response.json())
-            // .then(matches => console.log(matches))
             .then(matches => dispatch(setMatches(matches)))
             .catch(error => console.log(error))
     };
@@ -31,11 +30,11 @@ export const createMatch = (match) => {
         body: JSON.stringify(match)
         })
     .then(response => {
-        if (!response.ok) {
+        if (response.ok) {
             return response.json()}
         else {
-            debugger
-            throw new Error(response.statusText)
+    
+            throw new Error(`${response.statusText} make sure to fill in all the blanks.`)
         }
         // // Needs experimental syntax plugin in order to throw expression.
         // if (!response.ok) {
@@ -116,10 +115,21 @@ export const patchMatch = (match) => {
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify(match)
+    body: JSON.stringify(match)})
+    // Without throwing any errors.
+    // .then(() => { dispatch(editMatch(match));
+    // })
+    .then(response => {
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+    
+            throw new Error(`${response.statusText} make sure to fill in all the blanks.`)
+        }
     })
-    .then(() => { dispatch(editMatch(match));
-    })
+    .then(match => { dispatch(editMatch(match)) })
+    .catch(error => alert(error));
 }
 
 export const editMatch = (match) => {

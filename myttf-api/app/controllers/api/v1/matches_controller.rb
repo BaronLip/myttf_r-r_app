@@ -26,8 +26,13 @@ class Api::V1::MatchesController < ApplicationController
 
     def update
         @match = Match.find(params[:id])
-        @match.update(match_params)
-        render json: @match, status: 200
+        if @match.update(match_params)
+            render json: @match, status: 200
+        else
+            error = @match.errors.full_messages
+            render json: error, status: 500
+            return error
+        end
     end
 
     def destroy
