@@ -76,7 +76,7 @@ export default class EditMatchForm extends Component {
                         control={Input}
                         label='Opponent Name:'
                         placeholder={this.state.opponent_name}
-                        value={this.state.opponent_name}
+                        // value={this.state.opponent_name}
                         onChange={this.handleOnChange}
                     />
                 </Form.Group>
@@ -88,7 +88,6 @@ export default class EditMatchForm extends Component {
                         control={Radio}
                         label='Best of 7'
                         value='7'
-                        // checked={this.state.match_type === "7"}
                         onChange={this.handleChecked}
                     />
                     <Form.Field
@@ -96,7 +95,6 @@ export default class EditMatchForm extends Component {
                         control={Radio}
                         label='Best of 5'
                         value='5'
-                        // checked={this.state.match_type === "5"}
                         onChange={this.handleChecked}
                     />
                 </Form.Group>
