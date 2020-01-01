@@ -30,3 +30,26 @@ cd to myttf-frontend directory.
 Add login functionality.
 Create validations with alerts.
 Redirect back to dashboard after editing match.
+
+## Devise JWT installation process:
+1. Gemfile add:
+    a. gem 'devise-jwt', '~> 0.5.9'\
+    b. gem 'dotenv-rails', groups: [:development, :test]\
+    c. $ bundle install\
+
+2. $ rails generate devise:install
+    Follow the instructions in command line interface:\
+    a. config/environments/development.rb:\
+        - config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }\
+    b. config/routes.rb\
+        - root to: "home#index"\
+    c. Numbers 3 & 4 are not needed since this is an API.\
+
+3. Config/initializers/devise.rb:
+    This document is critical in informing how to configure Devise for authorization.
+    a. Under the header "==> Configuration for any authentication mechanism"
+        - Uncomment out the last line: "config.authentication_keys = [:email]"
+        This designates email as an authorization key.
+    b. Comment out line 21: "config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'"
+    c. Line 91: add ", :params_auth" inside the square brackets. (Not clear if this is required.)
+    
