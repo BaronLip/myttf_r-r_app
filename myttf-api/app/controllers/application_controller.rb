@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
 
     def render_resource(resource)
         if resource.errors.empty?
-        render json: resource
+        render json: resource, include: with
         else
         validation_error(resource)
         end
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::API
 
     def unauthorized_error
         render json: { message: "You are not authorized" }, status: 401
-    end
+    end 
 
     def not_found
         render json: { message: "Resource not found"}, status: 404

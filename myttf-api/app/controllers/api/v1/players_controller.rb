@@ -1,11 +1,12 @@
 class Api::V1::PlayersController < ApplicationController
+    before_action :authenticate_player!
 
     def index
         @players = Player.all
 
         render json: @players, status: 200
     end
-
+ 
     def show
         @player = Player.find(params[:id])
 
