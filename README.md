@@ -31,7 +31,18 @@ Add login functionality.
 Create validations with alerts.
 Redirect back to dashboard after editing match.
 
-## Devise JWT installation process:
+### Devise JWT installation process:
+Resources:\
+https://www.youtube.com/watch?v=qjtht03t7z4&feature=youtu.be\
+https://medium.com/@mazik.wyry/rails-5-api-jwt-setup-in-minutes-using-devise-71670fd4ed03\
+https://jwt.io/\
+https://github.com/plataformatec/devise\
+https://github.com/waiting-for-dev/devise-jwt\
+https://github.com/waiting-for-dev/devise-jwt/wiki/Configuring-devise-for-APIs\
+https://github.com/bkeepers/dotenv/blob/master/README.md\
+
+As the attempt to document the process of adding Devise became too intricate, please refer to the resources noted above.
+
 1. Gemfile add:
     a. gem 'devise-jwt', '~> 0.5.9'\
     b. gem 'dotenv-rails', groups: [:development, :test]\
