@@ -8,6 +8,7 @@
         "myttf",
         "playeractions",
         "stackable",
-        "subheader"
+        "subheader",
+        "validatable"
     ]
 }

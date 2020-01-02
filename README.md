@@ -52,4 +52,27 @@ Redirect back to dashboard after editing match.
         This designates email as an authorization key.
     b. Comment out line 21: "config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'"
     c. Line 91: add ", :params_auth" inside the square brackets. (Not clear if this is required.)
-    
+
+4. $ rails generate devise Model("Player" in this case.)\
+    a. This adds Devise code to an existing Model or creates a new model of that name.\
+    b. Also adds a migration file for the model, giving Devise to that model.\
+        - Additionally add ":registerable" within the Player model.\
+        - See below, comment out the second block of devise code and then run c.
+        ```ruby
+            class Player < ApplicationRecord
+            # Include default devise modules. Others available are:
+            # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+            devise :database_authenticatable, :registerable,
+                    :recoverable, :rememberable, :validatable
+                # devise :database_authenticatable,
+                #      :jwt_authenticatable,
+                #      jwt_revocation_strategy: JWTBlacklist
+            end
+        ```
+    c. $ rails g model jwt_blacklist jti:string\
+    d. After step c. completes comment out the top devise code block and uncomment out the bottom devise code block.\
+    e. In model migration file, update "blacklists" to "blacklist". Remove the "s" on the filename, classname, and tablename withing xxxxxxxxxx_create_jwt_blacklists.rb
+
+5. 
+   a. 
+ 
