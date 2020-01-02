@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  resources :games
-    # devise_for :players
-
+   
     namespace :api do
         namespace :v1 do
-        resources :players
-        resources :matches
+            resources :players
+            resources :matches
         end
     end
-
+    
+    # devise_for :players
     devise_for :players,
         path: '',
         path_names: {
@@ -20,5 +19,7 @@ Rails.application.routes.draw do
             sessions: 'sessions',
             registrations: 'registrations'
         }
+
+    resources :games
 end
   
