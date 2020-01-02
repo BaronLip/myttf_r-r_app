@@ -53,3 +53,21 @@ Match.create([
     },
     
 ])
+
+Game.create([
+    {
+    match_id: 1,
+    player_score: 11,
+    opponent_score: 6
+    },
+        {
+    match_id: 1,
+    player_score: 11,
+    opponent_score: 5
+    },
+    {
+    match_id: 1,
+    player_score: 11,
+    opponent_score: 4
+    }
+])
