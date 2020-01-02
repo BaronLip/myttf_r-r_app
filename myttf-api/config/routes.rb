@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :games
     # devise_for :players
 
     namespace :api do
