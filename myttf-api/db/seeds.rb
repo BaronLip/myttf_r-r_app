@@ -9,6 +9,7 @@
 Player.create([
     {   
     username: "Baron Lip",
+    email: "baron@baron.com",
     profileImage: "/images/Bitmoji_Baron_lr.png",
     wins: 0,
     losses: 0,
@@ -16,6 +17,7 @@ Player.create([
 
     {   
     username: "Chad",
+    email: "chad@chad.com",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -23,6 +25,7 @@ Player.create([
 
     {   
     username: "Scott",
+    email: "scott@scott.com",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -30,6 +33,7 @@ Player.create([
     
     {   
     username: "Ryan",
+    email: "ryan@ryan.com",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -38,6 +42,7 @@ Player.create([
 
 Match.create([
     {
+    player_id: 1,
     date: "2019-12-26",
     opponent_name: "Dani",
     match_type: "5",
@@ -45,6 +50,7 @@ Match.create([
     bookmarked: false
     },
     {
+    player_id: 1,
     date: "2019-12-20",
     opponent_name: "Scott",
     match_type: "5",
