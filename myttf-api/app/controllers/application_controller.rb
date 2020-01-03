@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
-    # Line 3 added for JWT functionality.
-    respond_to :json
+    # Line 4 added for JWT functionality.
+    # But then removed as it caused a bug...1:30:40 in the video.
+    # respond_to :json
 
     rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_error
     rescue_from AuthorizationError, with: :unauthorized_error
