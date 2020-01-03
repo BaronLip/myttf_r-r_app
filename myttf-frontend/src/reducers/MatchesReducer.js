@@ -38,7 +38,6 @@ export default (state = [], action) => {
 
         case "EDIT_MATCH":
             console.log("You're editing this match.", state, action);
-
             return [
                 [...state, action.match]
             ]

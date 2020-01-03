@@ -124,7 +124,6 @@ export const patchMatch = (match) => {
             return response.json()
         }
         else {
-    
             throw new Error(`${response.statusText} make sure to fill in all the blanks.`)
         }
     })

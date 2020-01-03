@@ -7,7 +7,7 @@ import {
 class SignupForm extends Component {
     // state = {
     // }
-    
+
     // componentDidMount() {
     //     fetch(`http://localhost:3000/api/v1/matches/${this.props.match.params.id}`)
     //         .then(response => response.json())
@@ -31,7 +31,7 @@ class SignupForm extends Component {
         console.log("Submitting Signup.", this.state)
         event.preventDefault();
         this.props.addPlayer(this.state);
-        // Reset the form below.
+        // Resets the form below.
         this.setState({
             username: "",
             email: "",

@@ -30,9 +30,10 @@ export const addPlayer = (player) => {
         fetch('http://localhost:3000/api/v1/players', {
             method: "POST",
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(player)
+            body: JSON.stringify({player})
         })
         .then(response => {
             if (response.ok) {

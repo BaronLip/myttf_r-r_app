@@ -1,4 +1,5 @@
-class SessionsController < Devise::SessionsController
+class Api::V1::SessionsController < Devise::SessionsController
+    
     respond_to :json
 
     private
@@ -10,5 +11,5 @@ class SessionsController < Devise::SessionsController
     def respond_to_on_destroy
         head :no_content
     end
-    
+
 end

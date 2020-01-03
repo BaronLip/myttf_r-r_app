@@ -4,9 +4,7 @@ Rails.application.routes.draw do
 
     namespace :api do
         namespace :v1 do
-            resources :players
-            resources :matches
-            resources :games
+            resources :players, :matches, :games
         end
     end
     
@@ -19,8 +17,8 @@ Rails.application.routes.draw do
             registration: 'signup'
         },
         controllers: {
-            sessions: 'sessions',
-            registrations: 'registrations'
+            sessions: 'api/v1/sessions',
+            registrations: 'api/v1/registrations'
         }
 
 end
