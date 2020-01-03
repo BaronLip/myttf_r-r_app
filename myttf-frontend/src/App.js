@@ -4,13 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // CSS: 
 import './App.css';
 // Components:
+import Signup from './containers/SignupContainer';
 import Dashboard from './containers/Dashboard';
 import { Container, Grid } from 'semantic-ui-react';
 // Functions:
 import header from './components/Header'
 import EditMatchContainer from './containers/EditMatchContainer';
-// import MatchesHeader from "./components/MatchesHeader";
-
 
 function App() {
    console.log("App.js")
@@ -26,7 +25,7 @@ function App() {
                   >
                      <Grid.Column style={{ maxWidth: 1000 }}>
                         {header()}
-                        
+                        <Route path="/signup" exact component={Signup} />
                         <Route path="/dashboard" exact component={Dashboard} />
                         <Route path="/api/v1/match/:id" exact component={EditMatchContainer} />
                         

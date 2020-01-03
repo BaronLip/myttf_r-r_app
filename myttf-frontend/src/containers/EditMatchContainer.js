@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import EditMatchForm from '../components/EditMatchForm';
 import { connect } from "react-redux";
 import { Grid, Segment} from 'semantic-ui-react';
 import { patchMatch } from '../actions/MatchActions';
+import EditMatchForm from '../components/EditMatchForm';
 
 class EditMatchContainer extends Component {
     

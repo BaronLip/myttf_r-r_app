@@ -5,11 +5,12 @@ export default (state =
     [
         {   
             username: "",
+            email: "",
+            password: "",
             profileImage: "",
             wins: 0,
             losses: 0,
-            // matches: [
-            // ]
+            matches: []
         }
     ]
     , action) => {
@@ -28,7 +29,7 @@ export default (state =
 
         case "ADD_PLAYER":
             console.log("You're adding a player", state, action);
-            // debugger
+            debugger
             return [...state, action.player];
 
         default:

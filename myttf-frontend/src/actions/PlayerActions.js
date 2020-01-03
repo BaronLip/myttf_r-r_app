@@ -24,6 +24,30 @@ export const showPlayer = (player) => {
 
 export const addPlayer = (player) => {
     console.log("actions/PlayerActions.js addPlayer", player);
-    return { type: "ADD_PLAYER", player };
+
+    return (dispatch) => {
+        // debugger
+        fetch('http://localhost:3000/api/v1/players', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(player)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log(response)
+                return response.json()
+            }
+            else {
+                throw new Error(`${response.statusText} make sure to fill in all the blanks.`)
+            }
+        })
+        // ...reflect the added player to the window...
+        .then(player => { dispatch({ type: "ADD_PLAYER", player }) })
+        // ...or show an error.
+        .catch(error => alert(error));
+    }
 }
+
 
