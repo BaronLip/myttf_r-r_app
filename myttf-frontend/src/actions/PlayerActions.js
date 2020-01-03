@@ -27,7 +27,7 @@ export const addPlayer = (player) => {
 
     return (dispatch) => {
         // debugger
-        fetch('http://localhost:3000/api/v1/players', {
+        fetch('http://localhost:3000/api/v1/players/signup', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -37,7 +37,7 @@ export const addPlayer = (player) => {
         })
         .then(response => {
             if (response.ok) {
-                console.log(response)
+                localStorage.setItem("token", player.jwt)
                 return response.json()
             }
             else {
