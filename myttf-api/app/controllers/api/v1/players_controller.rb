@@ -1,5 +1,5 @@
 class Api::V1::PlayersController < ApplicationController
-    before_action :authenticate_player!
+    before_action :authenticate_api_v1_player!, except: [:create]
 
     def index
         players = Player.all
@@ -14,8 +14,8 @@ class Api::V1::PlayersController < ApplicationController
     end
 
     def create
-        player = Player.create(player_params)
         byebug
+        player = Player.create(player_params)
         render json: player, status: 200
     end
 
@@ -38,6 +38,8 @@ class Api::V1::PlayersController < ApplicationController
     def player_params
         params.require(:player).permit(:username, :profileImage, :wins, :losses)
     end
+
+
 
 end
  
