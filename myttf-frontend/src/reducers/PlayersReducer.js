@@ -8,8 +8,8 @@ export default (state =
             profileImage: "",
             wins: 0,
             losses: 0,
-            // matches: [
-            // ]
+            matches: [
+            ]
         }
     ]
     , action) => {
@@ -18,8 +18,8 @@ export default (state =
 
         case "FETCH_PLAYER":
             console.log("You're fetching a player", state, action);
-            // debugger
-            return [...state];
+            debugger
+            return [...state, action.player];
 
         case "SHOW_PLAYER":
             console.log("You're showing a player", state, action);

@@ -14,14 +14,13 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchPlayer();
-        this.props.fetchMatches(this.props.players);
     }
 
     render() {
-        console.log("Dashboard.js", this.props.players, this.props.matches);
+        console.log("Dashboard.js", this.props.players);
+        // debugger
         const player = this.props.players[0];
-        // const matches = this.props.matches;
-        // debugger;
+        const matches = player.matches;
         return(
             <div>   
                 <Grid stackable columns={2} divided='vertically'>
