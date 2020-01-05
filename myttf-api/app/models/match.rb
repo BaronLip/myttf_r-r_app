@@ -4,4 +4,5 @@ class Match < ApplicationRecord
     validates :notes, length: { minimum: 5 }
 
     belongs_to :player
+    has_many :games
 end
