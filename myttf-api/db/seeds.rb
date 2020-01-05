@@ -40,7 +40,7 @@ Match.create([
     {
     player_id: 1
     date: "2019-12-26",
-    opponent_name: "Dani",
+    opponent_name: "Chad",
     match_type: "5",
     notes: "His serves are illusive, watch the spin carefully.",
     bookmarked: false
@@ -53,4 +53,47 @@ Match.create([
     notes: "Close the angle more against his slow loops.",
     bookmarked: false
     },
+])
+
+Game.create([
+    {
+        match_id: 1,
+        player_score: 11,
+        opponent_score: 8
+    },
+    {
+        match_id: 1,
+        player_score: 6,
+        opponent_score: 11
+    },
+    {
+        match_id: 1,
+        player_score: 11,
+        opponent_score: 9
+    },
+    {
+        match_id: 1,
+        player_score: 11,
+        opponent_score: 6
+    },
+    {
+        match_id: 2,
+        player_score: 7,
+        opponent_score: 11
+    },
+    {
+        match_id: 2,
+        player_score: 10,
+        opponent_score: 12
+    },
+    {
+        match_id: 2,
+        player_score: 7,
+        opponent_score: 11
+    },
+    {
+        match_id: 2,
+        player_score: 4,
+        opponent_score: 11
+    }
 ])
