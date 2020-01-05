@@ -9,12 +9,11 @@ class Api::V1::MatchesController < ApplicationController
         match = Match.find(params[:id])
         games = match.games
         
-        render :json => 
-        {
-            :match => match,
-            :games => games
+        render json: {
+            match: match,
+            games: games
         },
-         status: 200
+        status: 200
     end
 
     def create

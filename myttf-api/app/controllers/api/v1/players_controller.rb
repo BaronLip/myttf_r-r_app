@@ -10,10 +10,9 @@ class Api::V1::PlayersController < ApplicationController
         player = Player.find(params[:id])
         matches = player.matches
         
-        render :json => 
-        {
-            :player => player,
-            :matches => matches
+        render json: {
+            player: player,
+            matches: matches
         },
         status: 200
     end
