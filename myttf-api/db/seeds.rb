@@ -38,6 +38,7 @@ Player.create([
 
 Match.create([
     {
+    player_id: 1
     date: "2019-12-26",
     opponent_name: "Dani",
     match_type: "5",
@@ -45,11 +46,11 @@ Match.create([
     bookmarked: false
     },
     {
+    player_id: 1
     date: "2019-12-20",
     opponent_name: "Scott",
     match_type: "5",
     notes: "Close the angle more against his slow loops.",
     bookmarked: false
     },
-    
 ])
