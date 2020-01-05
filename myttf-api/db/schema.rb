@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_061515) do
+ActiveRecord::Schema.define(version: 2020_01_05_044334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.integer "player_score"
+    t.integer "opponent_score"
+    t.bigint "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_games_on_match_id"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string "date"
@@ -21,8 +30,10 @@ ActiveRecord::Schema.define(version: 2019_12_27_061515) do
     t.string "match_type"
     t.text "notes"
     t.boolean "bookmarked"
+    t.bigint "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_matches_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -34,4 +45,6 @@ ActiveRecord::Schema.define(version: 2019_12_27_061515) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "games", "matches"
+  add_foreign_key "matches", "players"
 end
