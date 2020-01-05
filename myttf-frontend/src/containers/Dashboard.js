@@ -14,13 +14,13 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchPlayer();
-        this.props.fetchMatches();
+        this.props.fetchMatches(this.props.players);
     }
 
     render() {
         console.log("Dashboard.js", this.props.players, this.props.matches);
         const player = this.props.players[0];
-        const matches = this.props.matches;
+        // const matches = this.props.matches;
         // debugger;
         return(
             <div>   

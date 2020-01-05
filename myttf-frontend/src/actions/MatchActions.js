@@ -1,8 +1,10 @@
-export const fetchMatches = () => {
+export const fetchMatches = (player) => {
     console.log("actions/MatchActions.js fetchMatches");
 
     return (dispatch) => {
-        fetch("http://localhost:3000/api/v1/matches")
+        // fetch("http://localhost:3000/api/v1/matches")
+        debugger
+        fetch(`http://localhost:3000/api/v1/player/${player.id}/matches`)
             .then(response => response.json())
             .then(matches => dispatch(setMatches(matches)))
             .catch(error => console.log(error))

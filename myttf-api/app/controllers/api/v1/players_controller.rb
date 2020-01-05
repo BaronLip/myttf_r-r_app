@@ -1,15 +1,20 @@
 class Api::V1::PlayersController < ApplicationController
 
     def index
-        @players = Player.all
+        players = Player.all
 
         render json: @players, status: 200
     end
 
     def show
-        @player = Player.find(params[:id])
-
-        render json: @player, status: 200
+        player = Player.find(params[:id])
+        matches = player.matches
+        
+        render :json => {
+            :player => player,
+            :matches => matches
+            },
+            status: 200
     end
 
     def create
