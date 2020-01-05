@@ -10,31 +10,32 @@ class Api::V1::PlayersController < ApplicationController
         player = Player.find(params[:id])
         matches = player.matches
         
-        render :json => {
+        render :json => 
+        {
             :player => player,
             :matches => matches
-            },
-            status: 200
+        },
+        status: 200
     end
 
     def create
-        @player = Player.create(player_params)
+        player = Player.create(player_params)
 
         render json: @player, status: 200
     end
 
     def update
-        @player = Player.find(params[:id])
-        @player.update(player_params)
+        player = Player.find(params[:id])
+        player.update(player_params)
 
-        render json: @player, status: 200
+        render json: player, status: 200
     end
 
     def destroy
-        @player = Player.find(params[:id])
-        @player.delete
+        player = Player.find(params[:id])
+        player.delete
 
-        render json: {playerId: @player.id}
+        render json: {playerId: player.id}
     end
 
     private

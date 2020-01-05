@@ -6,25 +6,32 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def show
-        @match = Match.find(params[:id])
-        render json: @match, status: 200
+        match = Match.find(params[:id])
+        games = match.games
+        
+        render :json => 
+        {
+            :match => match,
+            :games => games
+        },
+         status: 200
     end
 
     def create
-        @match = Match.create(match_params)
+        match = Match.create(match_params)
 
-        if @match.save
-            render json: @match, status: 200
+        if match.save
+            render json: match, status: 200
         else
-            error = @match.errors.full_messages
+            error = match.errors.full_messages
             render json: error, status: 500
             return error
         end
     end
 
     def update
-        @match = Match.find(params[:id])
-        if @match.update(match_params)
+        match = Match.find(params[:id])
+        if match.update(match_params)
             render json: @match, status: 200
         else
             error = @match.errors.full_messages
@@ -34,10 +41,10 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def destroy
-        @match = Match.find(params[:id])
-        @match.delete
+        match = Match.find(params[:id])
+        match.delete
 
-        render json: {matchId: @match.id}
+        render json: {matchId: match.id}
     end
 
     private
