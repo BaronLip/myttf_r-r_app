@@ -1,14 +1,12 @@
 class Api::V1::MatchesController < ApplicationController
 
     def index
-        @matches = Match.all
-
+        matches = Match.where(player_id: params[:player_id])
         render json: @matches, status: 200
     end
 
     def show
         @match = Match.find(params[:id])
-
         render json: @match, status: 200
     end
 

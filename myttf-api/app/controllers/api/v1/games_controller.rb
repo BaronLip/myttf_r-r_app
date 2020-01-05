@@ -1,5 +1,10 @@
 class Api::V1::GamesController < ApplicationController
 
+    def index
+        games = Game.where(match_id: params[:match_id])
+        render json: games, status: 200
+    end
+
     def create 
         game = Game.new(game_params)
         if game.save
