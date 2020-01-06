@@ -17,10 +17,10 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log("Dashboard.js", this.props.players);
+        console.log("Dashboard.js", this.props);
         // debugger
-        const player = this.props.players[0];
-        const matches = player.matches;
+        const player = this.props.player.player;
+        const matches = this.props.player.matches;
         return(
             <div>   
                 <Grid stackable columns={2} divided='vertically'>
@@ -67,8 +67,8 @@ class Dashboard extends Component {
 }
 
 // ES6 syntax.
-const mapStateToProps = ({players, matches}) => ({
-    players,
+const mapStateToProps = ({player, matches}) => ({
+    player,
     matches
 })
 // //Longhand of mSTP:

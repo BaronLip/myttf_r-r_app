@@ -7,8 +7,8 @@ export const fetchPlayer = () => {
     console.log("Playeractions.js fetchPlayer");
     
     return (dispatch) => {
-        // dispatch({type: "FETCH_PLAYER"});
         fetch("http://localhost:3000/api/v1/players/1")
+        // .then(response => console.log(response.json()))
         .then(response => response.json())
         .then(player => dispatch(showPlayer(player)))
         .catch(error => console.log(error));
