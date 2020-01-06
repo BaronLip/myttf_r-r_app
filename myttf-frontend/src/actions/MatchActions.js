@@ -23,7 +23,6 @@ export const showMatch = (match) => {
 export const createMatch = (match, player) => {
     console.log("Creating a new match.", match, player);
     // Post  the fetch to the server...
-    // debugger
     return (dispatch) => 
     fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`, {
         method: "POST",
@@ -36,7 +35,6 @@ export const createMatch = (match, player) => {
         if (response.ok) {
             return response.json()}
         else {
-    
             throw new Error(`${response.statusText}`)
         }
         // // Needs experimental syntax plugin in order to throw expression.
@@ -59,13 +57,13 @@ export const addMatch = (match) => {
     return { type: "ADD_MATCH", match };
 }
 
-export const deleteMatch = (matchId) => {
-    console.log("actions/MatchActions.js deleteMatch", matchId);
+export const deleteMatch = (match) => {
+    console.log("actions/MatchActions.js deleteMatch", match);
     return dispatch =>
-    fetch(`http://localhost:3000/api/v1/matches/${matchId}`, {
+    fetch(`http://localhost:3000/api/v1/players/${match.player_id}/matches/${match.id}`, {
         method: "DELETE"
     }).then(() => {
-        dispatch(removeMatch(matchId));
+        dispatch(removeMatch(match.id));
     });
 }
 

@@ -13,7 +13,7 @@ class MatchCard extends Component {
     
     handleDelete = () => {
         console.log("Hitting Delete Button", this.props)
-        this.props.deleteMatch(this.props.match.id)
+        this.props.deleteMatch(this.props.match)
     }
 
     handleBookmark = () => {
