@@ -33,21 +33,13 @@ export default class EditMatchForm extends Component {
     }
 
     handleOnChange = event => {
-        
+        // Since setState doesn't work on nested values, below creates a new object, then updates state with it's values.
         const newMatch = this.state.match;
-        let key = event.target.name;
-        let value = event.target.value;
-        newMatch[key] = value;
+        const { name, value } = event.target;
+        // let name = event.target.name;
+        // let value = event.target.value;
+        newMatch[name] = value;
         this.setState({ ...this.state, ...newMatch })
-
-        // const { name, value } = event.target;
-        // this.setState({ ...this.state.match, [name]: value });
-
-        // this.setState({ 
-        //     match: {
-        //         [name]: value
-        //     }
-        // });
     }
 
     handleChecked = (e, { value }) => this.setState({ match_type: value })
