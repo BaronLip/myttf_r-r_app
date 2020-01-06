@@ -41,12 +41,10 @@ export default (state = [], action) => {
             // return { ...state, ...action.match }
 
         case "EDIT_MATCH":
-            console.log("You're editing this match.", state, action);
-
-            return [
-                [...state, action.match]
-            ]
-
+            console.log("MatchesReducer, EDIT_MATCH", state, action);
+            debugger
+            return [...state, action.match]
+            
         default:
             return state;
     }

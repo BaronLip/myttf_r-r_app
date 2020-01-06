@@ -10,18 +10,21 @@ import {
 } from 'semantic-ui-react'
 
 export default class EditMatchForm extends Component {
-    // Setting an initial state allows the first render to complete.
+    // State has the additional key of match because componentDidMount's response is in the same format.
     state = {
-        date: "",
-        opponent_name: "",
-        match_type: "",
-        notes: "",
-        bookmarked: null
+        match: {
+            date: "",
+            opponent_name: "",
+            match_type: "",
+            notes: "",
+            bookmarked: null
+        }
     }
 
     // Then componentDidMount will overwrite the state upon second render.
     componentDidMount() {
-        fetch(`http://localhost:3000/api/v1/matches/${this.props.match.params.id}`)
+        fetch(`http://localhost:3000${this.props.match.url}`)
+        // fetch(`http://localhost:3000/api/v1/players/${this.props.match.player_id}/matches/${this.props.match.params.id}`)
         .then(response => response.json())
         .then(matchData => this.setState(
             {...matchData}
@@ -30,11 +33,21 @@ export default class EditMatchForm extends Component {
     }
 
     handleOnChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-        console.log(this.state)
+        
+        const newMatch = this.state.match;
+        let key = event.target.name;
+        let value = event.target.value;
+        newMatch[key] = value;
+        this.setState({ ...this.state, ...newMatch })
+
+        // const { name, value } = event.target;
+        // this.setState({ ...this.state.match, [name]: value });
+
+        // this.setState({ 
+        //     match: {
+        //         [name]: value
+        //     }
+        // });
     }
 
     handleChecked = (e, { value }) => this.setState({ match_type: value })
@@ -55,7 +68,7 @@ export default class EditMatchForm extends Component {
 
     render() {
         console.log("EditMatchForm.js", this.state, this.props)
-
+        // debugger
         return (
             <Form onSubmit={event => this.handleSubmit(event)}>
                 <Header as='h3' block textAlign='center' color='blue'>
@@ -75,7 +88,7 @@ export default class EditMatchForm extends Component {
                         name="opponent_name"
                         control={Input}
                         label='Opponent Name:'
-                        placeholder={this.state.opponent_name}
+                        placeholder={this.state.match.opponent_name}
                         // value={this.state.opponent_name}
                         onChange={this.handleOnChange}
                     />
@@ -103,7 +116,7 @@ export default class EditMatchForm extends Component {
                     name="notes"
                     control={TextArea}
                     label='Notes:'
-                    placeholder={this.state.notes}
+                    placeholder={this.state.match.notes}
                     // value={this.state.notes}
                     onChange={this.handleOnChange}
                 />

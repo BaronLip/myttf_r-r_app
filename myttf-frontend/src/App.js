@@ -24,7 +24,7 @@ function App() {
                         {header()}
                         
                         <Route path="/dashboard" exact component={Dashboard} />
-                        <Route path="/api/v1/players/:id/match/:id" exact component={EditMatchContainer} />
+                        <Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
                         
                      </Grid.Column>
                   </Grid>

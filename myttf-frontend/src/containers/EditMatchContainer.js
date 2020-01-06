@@ -7,7 +7,7 @@ import { patchMatch } from '../actions/MatchActions';
 class EditMatchContainer extends Component {
     
     render() {
-        console.log("You've reached EditMatchContainer.", this.props)
+        console.log("EditMatchContainer.", this.state, this.props)
         return(
             <Grid
                 textAlign='center'
@@ -32,7 +32,6 @@ const mapDispatchToProps = (dispatch) => {
         patchMatch: (match) => dispatch(patchMatch(match))
     }
 }
-
 export default connect(null, mapDispatchToProps)(EditMatchContainer);
 
 

@@ -110,14 +110,15 @@ export const fetchMatch = (matchId) => {
 }
 
 export const patchMatch = (match) => {
-    console.log("You're patching this match.", match);
+    console.log("MatchAction patchMatch.", match);
+    debugger
     return dispatch =>
-    fetch(`http://localhost:3000/api/v1/matches/${match.id}`, {
+        fetch(`http://localhost:3000/api/v1/players/${match.match.player_id}/matches/${match.match.id}`, {
     method: "PATCH",
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify(match)})
+    body: JSON.stringify(match.match)})
     // Without throwing any errors.
     // .then(() => { dispatch(editMatch(match));
     // })
@@ -126,8 +127,7 @@ export const patchMatch = (match) => {
             return response.json()
         }
         else {
-    
-            throw new Error(`${response.statusText} make sure to fill in all the blanks.`)
+            throw new Error(`${response.statusText}`)
         }
     })
     .then(match => { dispatch(editMatch(match)) })

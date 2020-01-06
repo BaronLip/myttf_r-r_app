@@ -55,7 +55,7 @@ class MatchCard extends Component {
                             {bookmarkedIcon}    
                         </Button>
                         
-                        <Link to={`./api/v1/players/${this.props.match.player_id}/match/${this.props.match.id}`}>
+                        <Link to={`./api/v1/players/${this.props.match.player_id}/matches/${this.props.match.id}`}>
                             <Button style={buttonStyle}>
                                 Edit
                             </Button>
