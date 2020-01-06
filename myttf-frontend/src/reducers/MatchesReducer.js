@@ -29,12 +29,15 @@ export default (state = [], action) => {
             
         case "BOOKMARK_MATCH":
             console.log("You're bookmarking a match", state, action);
+            // debugger
             let bookmarkedMatch = state.find(match => match.id === action.match.id)
             let index = state.indexOf(bookmarkedMatch)
-
+            
             return [ 
                 ...state.slice(0,index), action.match, ...state.slice(index + 1)
             ]
+            // // This line also works but does not re-render. 
+            // return { ...state, ...action.match }
 
         case "EDIT_MATCH":
             console.log("You're editing this match.", state, action);

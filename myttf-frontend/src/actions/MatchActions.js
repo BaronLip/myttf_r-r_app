@@ -2,10 +2,10 @@ export const fetchMatches = (player) => {
     console.log("actions/MatchActions.js fetchMatches");
 
     return (dispatch) => {
-        // fetch("http://localhost:3000/api/v1/matches")
         debugger
-        fetch(`http://localhost:3000/api/v1/player/${player.id}/matches`)
+        fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`)
             .then(response => response.json())
+            // .then(matches => console.log(matches))
             .then(matches => dispatch(setMatches(matches)))
             .catch(error => console.log(error))
     };
@@ -75,6 +75,7 @@ export const removeMatch = (matchId) => {
 
 export const bookmark = (match) => {
     console.log("You're bookmarking this match.", match);
+    // debugger
     let newMatch = {...match}
     if (match.bookmarked === null || match.bookmarked === false) {
         newMatch.bookmarked = true;
@@ -83,7 +84,7 @@ export const bookmark = (match) => {
     }
 
     return dispatch =>
-    fetch(`http://localhost:3000/api/v1/matches/${match.id}`, { 
+    fetch(`http://localhost:3000/api/v1/players/${match.player_id}/matches/${match.id}`, { 
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"

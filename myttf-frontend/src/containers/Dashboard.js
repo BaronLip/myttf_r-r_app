@@ -1,12 +1,12 @@
-// Libraries:
+
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// Components:
+
 import { Header, Grid, Image, Segment, Divider } from 'semantic-ui-react';
 import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
-// Functions:
+
 import { fetchPlayer } from "../actions/PlayerActions";
 import { fetchMatches, deleteMatch, bookmark } from "../actions/MatchActions";
 
@@ -14,13 +14,16 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchPlayer();
+        // // fetching matches doesn't work because it is not able to pass the player data...not sure why. 
+        // this.props.fetchMatches(this.props.player.player);
     }
 
     render() {
         console.log("Dashboard.js", this.props);
-        // debugger
+        debugger
         const player = this.props.player.player;
         const matches = this.props.player.matches;
+        // const matches = this.props.matches;
         return(
             <div>   
                 <Grid stackable columns={2} divided='vertically'>
@@ -54,6 +57,7 @@ class Dashboard extends Component {
                             <MatchCard 
                                 match={m}
                                 key={m.id}
+                                player={player.id}
                                 deleteMatch={this.props.deleteMatch}
                                 bookmark={this.props.bookmark}    
                             />

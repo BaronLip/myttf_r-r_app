@@ -2,7 +2,17 @@ class Api::V1::GamesController < ApplicationController
 
     def index
         games = Game.where(match_id: params[:match_id])
+        
         render json: games, status: 200
+    end
+
+    def show 
+        game = Game.find(params[:id])
+        
+        render json: {
+            game: game
+        },
+        status: 200 
     end
 
     def create 
