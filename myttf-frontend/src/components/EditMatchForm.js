@@ -39,7 +39,18 @@ export default class EditMatchForm extends Component {
         // let name = event.target.name;
         // let value = event.target.value;
         newMatch[name] = value;
-        this.setState({ ...this.state, ...newMatch })
+        
+        this.setState( state => ({
+            ...state, match: {
+                ...state.match,
+                match: {[name] : value }
+            }
+        }))
+        
+        
+        // this.setState({ ...newMatch })
+        // // This works but creates duplicate values.
+        // this.setState({ ...this.state.match, ...newMatch })
     }
 
     handleChecked = (e, { value }) => this.setState({ match_type: value })
@@ -50,16 +61,18 @@ export default class EditMatchForm extends Component {
         this.props.patchMatch(this.state);
         // Reset the form below.
         this.setState({
-            date: "",
-            opponent_name: "",
-            match_type: "",
-            notes: "",
-            bookmarked: false,
+            match: {
+                date: "",
+                opponent_name: "",
+                match_type: "",
+                notes: "",
+                bookmarked: null
+            }
         });
     }
 
     render() {
-        console.log("EditMatchForm.js", this.state, this.props)
+        console.log("EditMatchForm.js", this.state /*, this.props*/)
         // debugger
         return (
             <Form onSubmit={event => this.handleSubmit(event)}>
