@@ -20,11 +20,12 @@ export const showMatch = (match) => {
     return { type: "SHOW_MATCH", match };
 }
 
-export const createMatch = (match) => {
-    console.log("Creating a new match.", match);
+export const createMatch = (match, player) => {
+    console.log("Creating a new match.", match, player);
     // Post  the fetch to the server...
+    // debugger
     return (dispatch) => 
-    fetch('http://localhost:3000/api/v1/matches', {
+    fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`, {
         method: "POST",
         headers: {
             'Content-Type':'application/json'
@@ -36,7 +37,7 @@ export const createMatch = (match) => {
             return response.json()}
         else {
     
-            throw new Error(`${response.statusText} make sure to fill in all the blanks.`)
+            throw new Error(`${response.statusText}`)
         }
         // // Needs experimental syntax plugin in order to throw expression.
         // if (!response.ok) {

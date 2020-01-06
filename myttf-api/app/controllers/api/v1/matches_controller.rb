@@ -17,23 +17,25 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def create
-        match = Match.create(match_params)
-
+        match = Match.new(match_params)
+        match.player_id = params[:player_id] # separately addind player_id due to associations.
+        match.save
+        
         if match.save
             render json: match, status: 200
         else
             error = match.errors.full_messages
             render json: error, status: 500
-            return error
+            byebug
         end
     end
 
     def update
         match = Match.find(params[:id])
         if match.update(match_params)
-            render json: @match, status: 200
+            render json: match, status: 200
         else
-            error = @match.errors.full_messages
+            error = match.errors.full_messages
             render json: error, status: 500
             return error
         end

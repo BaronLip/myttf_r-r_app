@@ -21,6 +21,7 @@ export default (state = [], action) => {
                 id: uuid(),
                 ...action.match
             };
+            
             return [...state, newMatch ];
 
         case "REMOVE_MATCH":

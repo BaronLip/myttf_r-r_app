@@ -33,9 +33,10 @@ class MatchesForm extends Component {
     handleChecked = (e, { value }) => this.setState({ match_type: value })
 
     handleSubmit = event => {
-        console.log("Submitting from MatchesForm.")
+        console.log("Submitting from MatchesForm.", this.props.player);
         event.preventDefault();
-        this.props.createMatch({...this.state, bookmarked: false });
+        // debugger
+        this.props.createMatch({...this.state, bookmarked: false }, this.props.player);
         // // Reset the form below.
         this.setState({
             date: "",
@@ -62,7 +63,7 @@ class MatchesForm extends Component {
                         placeholder='Date:' 
                         type="date" 
                         name="date"
-                        // Date input does not need to be controlled form for value to pass into state. 
+                        // Date input does not need to be controlled for value to pass into state. Uncommenting below causes an error.
                         // value={this.state.date}
                         onChange={this.handleOnChange}/>
 
@@ -113,9 +114,10 @@ class MatchesForm extends Component {
     }
 }
 
+//Is ES6 syntax able to take multiple arguments?
 const mapDispatchToProps = (dispatch) => {
     return {
-        createMatch: (formData) => dispatch(createMatch(formData))
+        createMatch: (formData, player) => dispatch(createMatch(formData, player))
     };
 };
 

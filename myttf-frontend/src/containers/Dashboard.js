@@ -20,7 +20,7 @@ class Dashboard extends Component {
 
     render() {
         console.log("Dashboard.js", this.props);
-        debugger
+        // debugger
         const player = this.props.player.player;
         const matches = this.props.player.matches;
         // const matches = this.props.matches;
@@ -42,7 +42,9 @@ class Dashboard extends Component {
                     <Grid.Column textAlign='left'>
                         <Segment style={{ height: "33vh" }} >
                             {/* CALLING MATCHESFORM */}
-                            <MatchesForm />
+                            <MatchesForm
+                                player={player}
+                            />
                         </Segment>
                     </Grid.Column>
                 </Grid>
@@ -77,15 +79,16 @@ const mapStateToProps = ({player, matches}) => ({
 })
 // //Longhand of mSTP:
 // const mapStateToProps = (state) => ({
-//      players: state.players,
+//      player: state.player,
 //      matches: state.matches
 // })
 
 // ES6 syntax for connect.
 export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer, fetchMatches })(Dashboard);
+
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {
 //     return {
-//         removeMatch: (matchId) => dispatch(removeMatch())
+//         deleteMatch: (matchId) => dispatch(deleteMatch(matchId))  
 //     }
 // }
