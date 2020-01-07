@@ -33,27 +33,30 @@ export default class EditMatchForm extends Component {
     }
 
     handleOnChange = event => {
-        // Since setState doesn't work on nested values, below creates a new object, then updates state with it's values.
-        const newMatch = this.state.match;
+
         const { name, value } = event.target;
-        // let name = event.target.name;
-        // let value = event.target.value;
-        newMatch[name] = value;
+        // const name = event.target.name;
+        // const value = event.target.value;
         
-        this.setState( state => ({
-            ...state, match: {
-                ...state.match,
-                match: {[name] : value }
-            }
-        }))
-        
-        
-        // this.setState({ ...newMatch })
-        // // This works but creates duplicate values.
-        // this.setState({ ...this.state.match, ...newMatch })
+        // This sets State for match since it is nested within State.
+        this.setState( state => (
+                {...state, match: { ...state.match, match: {[name] : value } } }
+            )
+        )
     }
 
-    handleChecked = (e, { value }) => this.setState({ match_type: value })
+    handleChecked = (e, { value }) => this.setState({ value })
+
+    // handleChecked = ({ value }) => {
+    //     this.setState({ match_type: value })
+    // }
+    
+    // handleChecked = ({ value }) => (
+    //     this.setState( state => (
+    //         { ...state, match: { ...state.match, match: { match_type: value } } }
+    //         )
+    //     )
+    // )
 
     handleSubmit = (event) => {
         console.log("Patching from MatchesForm.")
@@ -101,20 +104,24 @@ export default class EditMatchForm extends Component {
 
                 <Form.Group inline>
                     <label>Match Type:</label>
-                    <Form.Field
-                        name="match_type"
-                        control={Radio}
-                        label='Best of 7'
-                        value='7'
-                        onChange={this.handleChecked}
-                    />
-                    <Form.Field
-                        name="match_type"
-                        control={Radio}
-                        label='Best of 5'
-                        value='5'
-                        onChange={this.handleChecked}
-                    />
+                    <Form.Field>
+                        <Radio
+                            label='Best of 7'
+                            name="match_type"
+                            value='7'
+                            checked={this.state.value === "7"}
+                            onChange={this.handleChecked}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <Radio
+                            label='Best of 5'
+                            name="match_type"
+                            value='5'
+                            checked={this.state.value === "5"}
+                            onChange={this.handleChecked}
+                        />
+                    </Form.Field>
                 </Form.Group>
 
                 <Form.Field style={{ minHeight: 90 }}
