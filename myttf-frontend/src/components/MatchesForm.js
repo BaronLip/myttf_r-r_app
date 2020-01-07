@@ -46,7 +46,10 @@ class MatchesForm extends Component {
             opponent_name: "",
             match_type: "",
             notes: "",
-            bookmarked: false,
+            bookmarked: null,
+            games: [
+                // added games here
+            ]
         });
     }
 

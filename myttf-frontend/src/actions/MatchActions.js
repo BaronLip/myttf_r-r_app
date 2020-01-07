@@ -109,9 +109,8 @@ export const fetchMatch = (matchId) => {
     .catch(error => console.log(error))
 }
 
-export const patchMatch = (match) => {
+export const patchMatch = (match, history) => {
     console.log("MatchAction patchMatch.", match);
-    debugger
     return dispatch =>
         fetch(`http://localhost:3000/api/v1/players/${match.match.player_id}/matches/${match.match.id}`, {
     method: "PATCH",
@@ -130,7 +129,8 @@ export const patchMatch = (match) => {
             throw new Error(`${response.statusText}`)
         }
     })
-    .then(match => { dispatch(editMatch(match)) })
+   // .then(match => { dispatch(editMatch(match)) })
+   .then(history.push('/dashboard'))
     .catch(error => alert(error));
 }
 

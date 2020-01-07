@@ -28,15 +28,7 @@ export default (state = [], action) => {
             console.log("You're deleting a match", state, action);
             return state.filter((match) => match.id !== action.matchId)
             
-        case "BOOKMARK_MATCH":
-            console.log("You're bookmarking a match", state, action);
-            // debugger
-            let bookmarkedMatch = state.find(match => match.id === action.match.id)
-            let index = state.indexOf(bookmarkedMatch)
-            
-            return [ 
-                ...state.slice(0,index), action.match, ...state.slice(index + 1)
-            ]
+        
             // // This line also works but also does not re-render. 
             // return { ...state, ...action.match }
 

@@ -22,6 +22,24 @@ export default (state =
         //     // debugger
         //     return [...state, action.player];
 
+        case "BOOKMARK_MATCH":
+            console.log("You're bookmarking a match", state, action);
+            // debugger
+            //let player = state.find(player => player.id === action.match.player_id)
+            //let playerIndex = state.indexOf(player)
+
+            let bookmarkedMatch = state.matches.find(match => match.id === action.match.id)
+            let index = state.matches.indexOf(bookmarkedMatch)
+            
+            let newMatch = {...bookmarkedMatch, bookmarked: !bookmarkedMatch.bookmarked }
+
+            //let newPlayer = {...player, matches: [...player.matches.slice(0, index), newMatch, ...player.matches.slice(index + 1)]}
+            return { ...state, matches: [...state.matches.slice(0, index), newMatch, ...state.matches.slice(index + 1)]}
+            
+            //[
+            //    ...state.slice(0, playerIndex), newPlayer, ...state.slice(playerIndex + 1)
+            //]
+
         case "SHOW_PLAYER":
             console.log("You're showing a player", state, action);
             // debugger
@@ -31,7 +49,7 @@ export default (state =
         case "ADD_PLAYER":
             console.log("You're adding a player", state, action);
             // debugger
-            return [...state, action.player];
+            return {player: action.player, matches: []};
 
         default:
             return state;

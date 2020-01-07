@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 
 import {
     Button,
@@ -9,7 +10,7 @@ import {
     TextArea,
 } from 'semantic-ui-react'
 
-export default class EditMatchForm extends Component {
+class EditMatchForm extends Component {
     // State has the additional key of match because componentDidMount's response is in the same format.
     state = {
         match: {
@@ -58,8 +59,8 @@ export default class EditMatchForm extends Component {
     // }
     
     // This should work but I'm unable to extract the value from the UI. 
-    handleChecked = (e, { value }) => {
-        debugger
+    handleChecked = (e) => {
+        let value = e.target.parentElement.firstChild.value
         this.setState( state => (
             { ...state, match: { ...state.match, match_type: value } }
             )
@@ -69,7 +70,7 @@ export default class EditMatchForm extends Component {
     handleSubmit = (event) => {
         console.log("Patching from MatchesForm.")
         event.preventDefault();
-        this.props.patchMatch(this.state);
+        this.props.patchMatch(this.state, this.props.history);
         // Reset the form below.
         this.setState({
             match: {
@@ -151,3 +152,5 @@ export default class EditMatchForm extends Component {
     }
 }
 
+
+export default withRouter(EditMatchForm)
