@@ -64,7 +64,7 @@ class MatchesForm extends Component {
                         type="date" 
                         name="date"
                         // Date input does not need to be controlled for value to pass into state. Uncommenting below causes an error.
-                        // value={this.state.date}
+                        // value={new Date().toISOString().slice(0, 10)}
                         onChange={this.handleOnChange}/>
 
                     <Form.Field

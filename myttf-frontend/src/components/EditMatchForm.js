@@ -32,38 +32,37 @@ export default class EditMatchForm extends Component {
         .catch(error => console.log(error))
     }
 
-    handleOnChange = event => {
-        const { name, value } = event.target;
-        // const name = event.target.name;
-        // const value = event.target.value;
+    // handleOnChange = event => {
+    //     const { name, value } = event.target;
+    //     // const name = event.target.name;
+    //     // const value = event.target.value;
         
-        // This sets State for match since it is nested within State.
-        this.setState( state => (
-                {...state, match: { ...state.match, [name] : value  } }
-            )
-        )
-    }
+    //     // This sets State for match since it is nested within State.
+    //     this.setState( state => (
+    //             {...state, match: { ...state.match, [name] : value  } }
+    //         )
+    //     )
+    // }
 
-    handleChecked = ( event ) => {
-        // debugger
-        const { value } = event.target;
-        this.setState(state => {
-            const match = { ...state.match };
-            match.match_type = value;
-            return { match }
-        })
-    }
+    // handleChecked = ( event ) => {
+    //     const { value } = event.target;
+    //     this.setState(state => {
+    //         const match = { ...state.match };
+    //         match.match_type = value;
+    //         return { match }
+    //     })
+    // }
 
     // handleChecked = ({ value }) => {
     //     this.setState({ match_type: value })
     // }
     
-    // handleChecked = ({ value }) => (
-    //     this.setState( state => (
-    //         { ...state, match: { ...state.match, match: { match_type: value } } }
-    //         )
-    //     )
-    // )
+    handleChecked = (e) => {
+        this.setState( state => (
+            { ...state, match: { ...state.match, match_type: e.target.value } }
+            )
+        )
+    }
 
     handleSubmit = (event) => {
         console.log("Patching from MatchesForm.")
@@ -92,11 +91,11 @@ export default class EditMatchForm extends Component {
                 <Form.Group widths='equal'>
                     <Form.Input
                         fluid label='Date'
-                        placeholder='Date:'
+                        id='date'
                         type="date"
                         name="date"
-                        // Date input does not need to be controlled form for value to pass into state. 
-                        // value={this.state.date}
+                        // Value will create a preview of the match date but it does not update with handleOnChange. Needs more research.
+                        // value={this.state.match.date}
                         onChange={this.handleOnChange} />
 
                     <Form.Field
