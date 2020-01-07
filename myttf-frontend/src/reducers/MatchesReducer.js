@@ -37,7 +37,7 @@ export default (state = [], action) => {
             return [ 
                 ...state.slice(0,index), action.match, ...state.slice(index + 1)
             ]
-            // // This line also works but does not re-render. 
+            // // This line also works but also does not re-render. 
             // return { ...state, ...action.match }
 
         case "EDIT_MATCH":

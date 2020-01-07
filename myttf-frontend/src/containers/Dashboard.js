@@ -28,7 +28,7 @@ class Dashboard extends Component {
             <div>   
                 <Grid stackable columns={2} divided='vertically'>
                     <Grid.Column textAlign='center'>
-                        <Segment style={{height: "33vh"}}>
+                        <Segment style={{height: "57vh"}}>
                             <Header as='h3' block textAlign='center' color='blue'>
                             Profile
                             </Header>
@@ -40,7 +40,7 @@ class Dashboard extends Component {
                     </Grid.Column>
                     
                     <Grid.Column textAlign='left'>
-                        <Segment style={{ height: "33vh" }} >
+                        <Segment style={{ height: "57vh" }} >
                             {/* CALLING MATCHESFORM */}
                             <MatchesForm
                                 player={player}

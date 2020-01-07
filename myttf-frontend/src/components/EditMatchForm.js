@@ -57,11 +57,11 @@ export default class EditMatchForm extends Component {
     //     this.setState({ match_type: value })
     // }
     
-    // This should work but event.target is label, instead of . 
-    handleChecked = (e) => {
+    // This should work but I'm unable to extract the value from the UI. 
+    handleChecked = (e, { value }) => {
         debugger
         this.setState( state => (
-            { ...state, match: { ...state.match, match_type: e.target.value } }
+            { ...state, match: { ...state.match, match_type: value } }
             )
         )
     }
