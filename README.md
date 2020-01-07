@@ -20,6 +20,7 @@ $ rails new myttf-api --api --database=postgresql
 
 
 ### Boot-up:
+*** Be sure to start backend first. Localhost is configured to be 3000.
 cd to myttf-api directory.
     $ rails s
 cd to myttf-frontend directory.

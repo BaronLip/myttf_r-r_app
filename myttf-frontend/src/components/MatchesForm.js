@@ -30,7 +30,10 @@ class MatchesForm extends Component {
         console.log(this.state)
     }
     
-    handleChecked = (e, { value }) => this.setState({ match_type: value })
+    handleChecked = (e, { value }) => {
+        debugger
+        this.setState({ match_type: value })
+    }
 
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.", this.props.player);
@@ -95,6 +98,12 @@ class MatchesForm extends Component {
                         checked={this.state.match_type === "5"}
                         onChange={this.handleChecked}
                     />
+                </Form.Group>
+                <Form.Group inline>
+                    <label>Game Scores:</label>       
+                </Form.Group>
+                <Form.Group inline>
+                    <label>Game Scores:</label>       
                 </Form.Group>
 
                 <Form.Field style={{ minHeight: 90 }}

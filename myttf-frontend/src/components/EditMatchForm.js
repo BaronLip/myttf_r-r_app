@@ -32,17 +32,17 @@ export default class EditMatchForm extends Component {
         .catch(error => console.log(error))
     }
 
-    // handleOnChange = event => {
-    //     const { name, value } = event.target;
-    //     // const name = event.target.name;
-    //     // const value = event.target.value;
+    handleOnChange = event => {
+        const { name, value } = event.target;
+        // const name = event.target.name;
+        // const value = event.target.value;
         
-    //     // This sets State for match since it is nested within State.
-    //     this.setState( state => (
-    //             {...state, match: { ...state.match, [name] : value  } }
-    //         )
-    //     )
-    // }
+        // This sets State for match since it is nested within State.
+        this.setState( state => (
+                {...state, match: { ...state.match, [name] : value  } }
+            )
+        )
+    }
 
     // handleChecked = ( event ) => {
     //     const { value } = event.target;
@@ -57,7 +57,9 @@ export default class EditMatchForm extends Component {
     //     this.setState({ match_type: value })
     // }
     
+    // This should work but event.target is label, instead of . 
     handleChecked = (e) => {
+        debugger
         this.setState( state => (
             { ...state, match: { ...state.match, match_type: e.target.value } }
             )
