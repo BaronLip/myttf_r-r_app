@@ -21,7 +21,7 @@ export default class EditMatchForm extends Component {
         }
     }
 
-    // Then componentDidMount will overwrite the state upon second render.
+    // Then componentDidMount will overwrite the state upon second render. This shows placeholder content.
     componentDidMount() {
         fetch(`http://localhost:3000${this.props.match.url}`)
         // fetch(`http://localhost:3000/api/v1/players/${this.props.match.player_id}/matches/${this.props.match.params.id}`)
@@ -33,19 +33,26 @@ export default class EditMatchForm extends Component {
     }
 
     handleOnChange = event => {
-
         const { name, value } = event.target;
         // const name = event.target.name;
         // const value = event.target.value;
         
         // This sets State for match since it is nested within State.
         this.setState( state => (
-                {...state, match: { ...state.match, match: {[name] : value } } }
+                {...state, match: { ...state.match, [name] : value  } }
             )
         )
     }
 
-    handleChecked = (e, { value }) => this.setState({ value })
+    handleChecked = ( event ) => {
+        // debugger
+        const { value } = event.target;
+        this.setState(state => {
+            const match = { ...state.match };
+            match.match_type = value;
+            return { match }
+        })
+    }
 
     // handleChecked = ({ value }) => {
     //     this.setState({ match_type: value })
@@ -97,7 +104,7 @@ export default class EditMatchForm extends Component {
                         control={Input}
                         label='Opponent Name:'
                         placeholder={this.state.match.opponent_name}
-                        // value={this.state.opponent_name}
+                        value={this.state.opponent_name}
                         onChange={this.handleOnChange}
                     />
                 </Form.Group>
@@ -108,18 +115,20 @@ export default class EditMatchForm extends Component {
                         <Radio
                             label='Best of 7'
                             name="match_type"
+                            // control={Radio}
                             value='7'
-                            checked={this.state.value === "7"}
-                            onChange={this.handleChecked}
+                            checked={this.state.match.match_type === "7"}
+                            onChange={(e) => this.handleChecked(e)}
                         />
                     </Form.Field>
                     <Form.Field>
                         <Radio
                             label='Best of 5'
                             name="match_type"
+                            // control={Radio}
                             value='5'
-                            checked={this.state.value === "5"}
-                            onChange={this.handleChecked}
+                            checked={this.state.match.match_type === "5"}
+                            onChange={(e) => this.handleChecked(e)}
                         />
                     </Form.Field>
                 </Form.Group>
