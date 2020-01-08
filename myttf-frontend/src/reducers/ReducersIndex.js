@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import player from './PlayersReducer';
-import matches from './MatchesReducer';
+// import matches from './MatchesReducer';
 
 console.log("Combining reducers and creating state.")
 

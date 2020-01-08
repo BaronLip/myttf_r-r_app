@@ -11,6 +11,7 @@ import {
     TextArea,
 } from 'semantic-ui-react'
 
+
 class MatchesForm extends Component {
     constructor () {
         super();
@@ -18,7 +19,8 @@ class MatchesForm extends Component {
             opponent_name: "",
             match_type: "",
             notes: "",
-            bookmarked: false,
+            bookmarked: null,
+            games: []
         }   
     }
 
@@ -27,13 +29,19 @@ class MatchesForm extends Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state)
     }
     
     handleChecked = (e, { value }) => {
-        debugger
         this.setState({ match_type: value })
     }
+
+    handleOnChangeForGames = event => {
+        let { name, value } = event.target;
+        debugger
+        value = parseInt(value, 10);
+        this.setState( {...this.state, games: { ...this.state.games, [name]: value } } );
+    }
+    
 
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.", this.props.player);
@@ -47,17 +55,243 @@ class MatchesForm extends Component {
             match_type: "",
             notes: "",
             bookmarked: null,
-            games: [
-                // added games here
-            ]
+            games: [ ]
         });
     }
 
     render() {
         console.log("MatchesForm.js", this.state, this.props)
         
-        // From Semantic UI but not needed.
-        // const { value } = this.state
+        let matchType = this.state.match_type;
+        let gameForm;
+        
+        if (matchType === "5") {
+            gameForm = 
+            <>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 1:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 2:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 3:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 4:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 5:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+            </>
+        } else if (matchType === "7") {
+            gameForm = 
+            <>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 1:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 2:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 3:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 4:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 5:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 6:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field inline>
+                        <label>Game 7:</label>
+                        <Input
+                            placeholder='your score'
+                            name="player_score"
+                            // value={this.state.match}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                        <label> : </label>
+                        <Input
+                            name="opponent_score"
+                            placeholder='opponent score'
+                            // value={this.state.opponent_name}
+                            onChange={this.handleOnChangeForGames}
+                        />
+                    </Form.Field>
+                </Form.Group>
+            </>
+        }
+        
+    
         return (
             <Form onSubmit={ event => this.handleSubmit(event) }>
                 <Header as='h3' block textAlign='center' color='blue'>
@@ -86,6 +320,7 @@ class MatchesForm extends Component {
                 <Form.Group inline>
                     <label>Match Type:</label>
                     <Form.Field
+                        data-index="1"
                         name="match_type"
                         control={Radio}
                         label='Best of 7'
@@ -94,6 +329,7 @@ class MatchesForm extends Component {
                         onChange={this.handleChecked}
                     />
                     <Form.Field
+                        data-index="1"
                         name="match_type"
                         control={Radio}
                         label='Best of 5'
@@ -102,135 +338,9 @@ class MatchesForm extends Component {
                         onChange={this.handleChecked}
                     />
                 </Form.Group>
-
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 1:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 2:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 3:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 4:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 5:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 6:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 7:</label>
-                        <Input
-                            placeholder='your score'
-                            name="game_one_player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChange} 
-                        />
-                        <label> : </label>
-                        <Input
-                            name="game_one_opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChange}
-                        />
-                    </Form.Field>
-                </Form.Group>
                 
-
+                {gameForm}
+            
                 <Form.Field style={{ minHeight: 30 }}
                     name="notes"
                     control={TextArea}
