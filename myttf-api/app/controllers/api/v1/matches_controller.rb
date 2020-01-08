@@ -26,7 +26,6 @@ class Api::V1::MatchesController < ApplicationController
         else
             error = match.errors.full_messages
             render json: error, status: 500
-            byebug
         end
     end
 

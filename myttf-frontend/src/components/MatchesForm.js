@@ -9,6 +9,9 @@ import {
     Input,
     Radio,
     TextArea,
+    Grid,
+    Menu,
+    Segment
 } from 'semantic-ui-react'
 
 
@@ -68,28 +71,41 @@ class MatchesForm extends Component {
         if (matchType === "5") {
             gameForm = 
             <>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 1:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
+                <Segment style={{alignitems:"center"}}>
+                    <Grid columns='equal'>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 1</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                        
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Segment>
                 <Form.Group widths='equal'>
                     <Form.Field inline>
                         <label>Game 2:</label>
                         <Input
+                            style={{width:72}}
                             placeholder='your score'
                             name="player_score"
                             // value={this.state.match}
@@ -97,14 +113,16 @@ class MatchesForm extends Component {
                         />
                         <label> : </label>
                         <Input
+                            style={{width:72}}
                             name="opponent_score"
                             placeholder='opponent score'
                             // value={this.state.opponent_name}
                             onChange={this.handleOnChangeForGames}
                         />
+                        <Form.Button content='Save' style={{width:72}} />
                     </Form.Field>
                 </Form.Group>
-                <Form.Group widths='equal'>
+                <Form.Group widths='fluid'>
                     <Form.Field inline>
                         <label>Game 3:</label>
                         <Input
