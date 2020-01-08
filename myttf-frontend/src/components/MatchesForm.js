@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { createMatch } from "../actions/MatchActions";
-
 import {
     Button,
     Header,
@@ -10,10 +9,13 @@ import {
     Radio,
     TextArea,
     Grid,
-    Menu,
-    Segment
+    Menu
 } from 'semantic-ui-react'
 
+const gridRowStyle = {
+    paddingTop:".5rem",
+    paddingBottom:".5rem"
+}
 
 class MatchesForm extends Component {
     constructor () {
@@ -38,11 +40,15 @@ class MatchesForm extends Component {
         this.setState({ match_type: value })
     }
 
-    handleOnChangeForGames = event => {
+    onChangeForGames = event => {
         let { name, value } = event.target;
         debugger
         value = parseInt(value, 10);
         this.setState( {...this.state, games: { ...this.state.games, [name]: value } } );
+    }
+
+    onSubmitForGames = () => {
+        console.log("game submit")
     }
     
 
@@ -70,9 +76,9 @@ class MatchesForm extends Component {
         
         if (matchType === "5") {
             gameForm = 
-            <>
+                <Form id="game-form" onSubmit={this.onSubmitForGames}>
                 <Grid columns='equal'>
-                    <Grid.Row>
+                    <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
                             <Menu fluid vertical>
                                 <Menu.Item className='header'>Game 1</Menu.Item>
@@ -82,7 +88,7 @@ class MatchesForm extends Component {
                             <Input
                                 placeholder='you'
                                 name="player_score"
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
                     
@@ -91,17 +97,17 @@ class MatchesForm extends Component {
                                 name="opponent_score"
                                 placeholder='opponent'
                                 // value={this.state.opponent_name}
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
                         <Grid.Column>
-                            <Button>Save</Button>
+                            <Button form="game-form">Save</Button>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
                 
                 <Grid columns='equal'>
-                    <Grid.Row>
+                    <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
                             <Menu fluid vertical>
                                 <Menu.Item className='header'>Game 2</Menu.Item>
@@ -111,7 +117,7 @@ class MatchesForm extends Component {
                             <Input
                                 placeholder='you'
                                 name="player_score"
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
 
@@ -120,7 +126,7 @@ class MatchesForm extends Component {
                                 name="opponent_score"
                                 placeholder='opponent'
                                 // value={this.state.opponent_name}
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -130,7 +136,7 @@ class MatchesForm extends Component {
                 </Grid>
 
                 <Grid columns='equal'>
-                    <Grid.Row>
+                    <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
                             <Menu fluid vertical>
                                 <Menu.Item className='header'>Game 3</Menu.Item>
@@ -140,7 +146,7 @@ class MatchesForm extends Component {
                             <Input
                                 placeholder='you'
                                 name="player_score"
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
 
@@ -149,7 +155,7 @@ class MatchesForm extends Component {
                                 name="opponent_score"
                                 placeholder='opponent'
                                 // value={this.state.opponent_name}
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -159,7 +165,7 @@ class MatchesForm extends Component {
                 </Grid>
 
                 <Grid columns='equal'>
-                    <Grid.Row>
+                    <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
                             <Menu fluid vertical>
                                 <Menu.Item className='header'>Game 4</Menu.Item>
@@ -169,7 +175,7 @@ class MatchesForm extends Component {
                             <Input
                                 placeholder='you'
                                 name="player_score"
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
 
@@ -178,7 +184,7 @@ class MatchesForm extends Component {
                                 name="opponent_score"
                                 placeholder='opponent'
                                 // value={this.state.opponent_name}
-                                onChange={this.handleOnChangeForGames}
+                                onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -188,10 +194,187 @@ class MatchesForm extends Component {
                 </Grid>
 
                 <Grid columns='equal'>
-                    <Grid.Row>
+                    <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
                             <Menu fluid vertical>
                                 <Menu.Item className='header'>Game 5</Menu.Item>
+                            </Menu>
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Input
+                                placeholder='you'
+                                name="player_score"
+                                onChange={this.onChangeForGames}
+                            />
+                        </Grid.Column>
+
+                        <Grid.Column>
+                            <Input
+                                name="opponent_score"
+                                placeholder='opponent'
+                                // value={this.state.opponent_name}
+                                onChange={this.onChangeForGames}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Button>Save</Button>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </Form>
+        } else if (matchType === "7") {
+            gameForm = 
+                <Form onSubmit={this.onSubmitFor}>
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 1</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 2</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 3</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 4</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 5</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.handleOnChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+
+                <Grid columns='equal'>
+                    <Grid.Row style={gridRowStyle}>
+                        <Grid.Column>
+                            <Menu fluid vertical>
+                                <Menu.Item className='header'>Game 6</Menu.Item>
                             </Menu>
                         </Grid.Column>
                         <Grid.Column>
@@ -215,142 +398,40 @@ class MatchesForm extends Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </>
-        } else if (matchType === "7") {
-            gameForm = 
-            <>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 1:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 2:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 3:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 4:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 5:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 6:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Field inline>
-                        <label>Game 7:</label>
-                        <Input
-                            placeholder='your score'
-                            name="player_score"
-                            // value={this.state.match}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                        <label> : </label>
-                        <Input
-                            name="opponent_score"
-                            placeholder='opponent score'
-                            // value={this.state.opponent_name}
-                            onChange={this.handleOnChangeForGames}
-                        />
-                    </Form.Field>
-                </Form.Group>
-            </>
+
+                <Grid columns='equal'>
+                    <Grid.Row style={gridRowStyle}>
+                        <Grid.Column>
+                            <Menu fluid vertical>
+                                <Menu.Item className='header'>Game 7</Menu.Item>
+                            </Menu>
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Input
+                                placeholder='you'
+                                name="player_score"
+                                onChange={this.handleOnChangeForGames}
+                            />
+                        </Grid.Column>
+
+                        <Grid.Column>
+                            <Input
+                                name="opponent_score"
+                                placeholder='opponent'
+                                // value={this.state.opponent_name}
+                                onChange={this.handleOnChangeForGames}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Button>Save</Button>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+                </Form>
         }
-        
-    
+
         return (
-            <Form onSubmit={ event => this.handleSubmit(event) }>
+            <Form id="match-form" onSubmit={ event => this.handleSubmit(event) }>
                 <Header as='h3' block textAlign='center' color='blue'>
                     Create a Match
                 </Header>
@@ -398,7 +479,7 @@ class MatchesForm extends Component {
                 
                 {gameForm}
             
-                <Form.Field style={{ minHeight: 30 }}
+                <Form.Field style={{ height: 50 }}
                     name="notes"
                     control={TextArea}
                     label='Notes:'
@@ -406,7 +487,7 @@ class MatchesForm extends Component {
                     value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
-                <Form.Field 
+                <Form.Field form="match-form"
                     control={Button}>
                     Submit
                 </Form.Field>
