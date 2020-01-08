@@ -9,12 +9,13 @@ import {
     Radio,
     TextArea,
     Grid,
-    Menu
+    Menu,
+    Segment
 } from 'semantic-ui-react'
 
 const gridRowStyle = {
-    paddingTop:".5rem",
-    paddingBottom:".5rem"
+    paddingTop:".1rem",
+    paddingBottom:".1rem"
 }
 
 class MatchesForm extends Component {
@@ -76,154 +77,157 @@ class MatchesForm extends Component {
         
         if (matchType === "5") {
             gameForm = 
+            <Segment>
                 <Form id="game-form" onSubmit={this.onSubmitForGames}>
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 1</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 1</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+                        
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button form="game-form">Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                     
-                        <Grid.Column>
-                            <Input
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Button form="game-form">Save</Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-                
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 2</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 2</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
 
-                        <Grid.Column>
-                            <Input
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Button>Save</Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
 
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 3</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 3</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
 
-                        <Grid.Column>
-                            <Input
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Button>Save</Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
 
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 4</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 4</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
 
-                        <Grid.Column>
-                            <Input
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Button>Save</Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
 
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 5</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
+                    <Grid columns='equal'>
+                        <Grid.Row style={gridRowStyle}>
+                            <Grid.Column>
+                                <Menu fluid vertical>
+                                    <Menu.Item className='header'>Game 5</Menu.Item>
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Input
+                                    placeholder='you'
+                                    name="player_score"
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
 
-                        <Grid.Column>
-                            <Input
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.onChangeForGames}
-                            />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Button>Save</Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Form>
+                            <Grid.Column>
+                                <Input
+                                    name="opponent_score"
+                                    placeholder='opponent'
+                                    // value={this.state.opponent_name}
+                                    onChange={this.onChangeForGames}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button>Save</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Form>
+            </Segment>
         } else if (matchType === "7") {
             gameForm = 
+            <Segment>
                 <Form onSubmit={this.onSubmitFor}>
                     <Grid columns='equal'>
                         <Grid.Row style={gridRowStyle}>
@@ -427,10 +431,12 @@ class MatchesForm extends Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-                </Form>
+            </Form>
+        </Segment>
         }
 
         return (
+        <>
             <Form id="match-form" onSubmit={ event => this.handleSubmit(event) }>
                 <Header as='h3' block textAlign='center' color='blue'>
                     Create a Match
@@ -477,7 +483,7 @@ class MatchesForm extends Component {
                     />
                 </Form.Group>
                 
-                {gameForm}
+                
             
                 <Form.Field style={{ height: 50 }}
                     name="notes"
@@ -487,11 +493,16 @@ class MatchesForm extends Component {
                     value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
-                <Form.Field form="match-form"
-                    control={Button}>
-                    Submit
-                </Form.Field>
+
             </Form>
+            
+            {gameForm}
+
+            <Form.Field form="match-form"
+                control={Button}>
+                Submit
+            </Form.Field>
+        </>
         )
     }
 }
