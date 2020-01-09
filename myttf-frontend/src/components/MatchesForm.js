@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { createMatch } from "../actions/MatchActions";
+import { createGame } from "../actions/GameActions"
 import {
     Button,
     Header,
@@ -26,7 +27,12 @@ class MatchesForm extends Component {
             match_type: "",
             notes: "",
             bookmarked: null,
-            games: []
+            games: [
+                {
+                    // player_score: "",
+                    // opponent_score: ""
+                }
+            ]
         }   
     }
 
@@ -41,22 +47,46 @@ class MatchesForm extends Component {
         this.setState({ match_type: value })
     }
 
-    onChangeForGames = event => {
+    onChangeForGames = (event) => {
+        // debugger
         let { name, value } = event.target;
-        debugger
         value = parseInt(value, 10);
-        this.setState( {...this.state, games: { ...this.state.games, [name]: value } } );
+        let index = parseInt(event.target.parentElement.dataset.id) - 1
+        
+        // // With state as an arg. Still overwrites game.
+        // this.setState( state => {
+        //     // debugger
+        //     let game = { ...this.state, games:{...state.games[i], [name]: value } };
+        //     return game
+        //     }
+        // )
+
+        // // Not yet. Overwrites each other's data.
+        const newGames = [...this.state.games]
+        newGames[index] = {...newGames[index], [name]: value}
+        this.setState( {...this.state, games: newGames } );
+
+        // Below will create a game object.
+    //     this.setState( {...this.state, games: [ ...this.state.games, { ...this.state.games[i],[name]: value} ] } );
     }
 
-    onSubmitForGames = () => {
+    // addOneGame = () => {
+    //     this.setState( state => {
+    //         game = 
+    //     })
+    // }
+
+    onSubmitForGames = (event) => {
         console.log("game submit")
+        event.preventDefault();
+        debugger
+        this.props.createGame( this.state.games, this.props.player );
     }
     
 
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.", this.props.player);
         event.preventDefault();
-        // debugger
         this.props.createMatch({...this.state, bookmarked: false }, this.props.player);
         // // Reset the form below.
         this.setState({
@@ -88,6 +118,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="1"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.onChangeForGames}
@@ -96,6 +127,7 @@ class MatchesForm extends Component {
                         
                             <Grid.Column>
                                 <Input
+                                data-id="1"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -117,6 +149,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="2"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.onChangeForGames}
@@ -125,6 +158,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="2"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -510,7 +544,8 @@ class MatchesForm extends Component {
 //Is ES6 syntax able to take multiple arguments?
 const mapDispatchToProps = (dispatch) => {
     return {
-        createMatch: (formData, player) => dispatch(createMatch(formData, player))
+        createMatch: (formData, player) => dispatch(createMatch(formData, player)),
+        createGame: (gameData) => dispatch(createGame(gameData))
     };
 };
 

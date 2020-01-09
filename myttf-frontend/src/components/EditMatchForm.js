@@ -58,7 +58,8 @@ class EditMatchForm extends Component {
     //     this.setState({ match_type: value })
     // }
     
-    // This should work but I'm unable to extract the value from the UI. 
+    // Due to semantic UI, value needed to be extracted from parentElement.firstChild.
+    // Will this work without a callback function?
     handleChecked = (e) => {
         let value = e.target.parentElement.firstChild.value
         this.setState( state => (
