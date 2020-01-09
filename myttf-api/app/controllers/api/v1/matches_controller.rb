@@ -18,11 +18,34 @@ class Api::V1::MatchesController < ApplicationController
 
     def create
         match = Match.new(match_params)
-        match.player_id = params[:player_id] # separately addind player_id due to associations.
+        match.player_id = params[:player_id] # separately add in player_id due to associations.
         match.save
         
+        games = []
+        i = 0
+        games_params = params[:games]
+        games_params.each do |game|
+            game = Game.new
+            game.match_id = match.id
+            # game.player_id = match.player_id # Not needed since can be reached through matches.
+            game.player_score = games_params[i][:player_score]
+            game.opponent_score = games_params[i][:opponent_score]
+            game.save
+            
+            if game.save
+                games.push(game)
+                i = i + 1
+            else
+                error = game.errors.full_messages
+                render json: error, status: 500
+            end
+        end
+
         if match.save
-            render json: match, status: 200
+            render json: { 
+                match: match,
+                games: games
+            }, status: 200
         else
             error = match.errors.full_messages
             render json: error, status: 500
@@ -32,7 +55,10 @@ class Api::V1::MatchesController < ApplicationController
     def update
         match = Match.find(params[:id])
         if match.update(match_params)
-            render json: match, status: 200
+            render json: {
+                match: match,
+                games: games
+            }, status: 200
         else
             error = match.errors.full_messages
             render json: error, status: 500
@@ -41,6 +67,10 @@ class Api::V1::MatchesController < ApplicationController
 
     def destroy
         match = Match.find(params[:id])
+        games = match.games
+        
+        games.destroy_all
+        
         match.delete
 
         render json: {matchId: match.id}
@@ -49,7 +79,14 @@ class Api::V1::MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:date, :opponent_name, :match_type, :notes, :bookmarked)
+        params.require(:match).permit(
+            :date, 
+            :opponent_name, 
+            :match_type, 
+            :notes, 
+            :bookmarked, 
+            games_attributes: [:player_score, :opponent_score]
+        )
     end
 
 end

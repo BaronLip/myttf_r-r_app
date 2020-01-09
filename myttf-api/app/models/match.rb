@@ -5,4 +5,6 @@ class Match < ApplicationRecord
 
     belongs_to :player
     has_many :games, dependent: :destroy
+
+    accepts_nested_attributes_for :games, allow_destroy: true 
 end

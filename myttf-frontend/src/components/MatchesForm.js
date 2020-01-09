@@ -91,7 +91,7 @@ class MatchesForm extends Component {
 
         if (this.state.match_type) {
             gameForm = [...Array(gameCount)].map((game, i) => ( 
-                <Grid columns='equal'>
+                <Grid columns='equal' key={i}>
                     <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
                             <Menu fluid vertical>
