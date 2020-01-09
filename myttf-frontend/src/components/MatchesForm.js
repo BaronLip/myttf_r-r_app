@@ -86,360 +86,405 @@ class MatchesForm extends Component {
 
     render() {
         console.log("MatchesForm.js", this.state, this.props)
-        
-        let matchType = this.state.match_type;
-        let gameForm;
-        
-        if (matchType === "5") {
-            gameForm = 
-            <Segment>
-                <Form id="game-form" onSubmit={this.onSubmitForGames}>
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 1</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="1"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-                        
-                            <Grid.Column>
-                                <Input
-                                data-id="1"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-                            {/* <Grid.Column>
-                                <Button form="game-form">Save</Button>
-                            </Grid.Column> */}
-                        </Grid.Row>
-                    </Grid>
-                    
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 2</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="2"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
+        let matchCount = parseInt(this.state.match_type);
+        let gameForm
+        // debugger
 
-                            <Grid.Column>
-                                <Input
-                                    data-id="2"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+        if (this.state.match_type) {
+            gameForm = [...Array(matchCount)].map((e, i) => <Grid columns='equal'>
+                <Grid.Row style={gridRowStyle}>
+                    <Grid.Column>
+                        <Menu fluid vertical>
+                            <Menu.Item className='header'>Game {i + 1}</Menu.Item>
+                        </Menu>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <Input
+                            data-id={i + 1}
+                            placeholder='you'
+                            name="player_score"
+                            onChange={this.onChangeForGames}
+                        />
+                    </Grid.Column>
 
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 3</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                data-id="3"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                data-id="3"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 4</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="4"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="4"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 5</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="5"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="5"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                </Form>
-            </Segment>
-        } else if (matchType === "7") {
-            gameForm = 
-            <Segment>
-                <Form onSubmit={this.onSubmitFor}>
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 1</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="1"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.onChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="1"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 2</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="2"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="2"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 3</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="3"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="3"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 4</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="4"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="4"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                    <Grid columns='equal'>
-                        <Grid.Row style={gridRowStyle}>
-                            <Grid.Column>
-                                <Menu fluid vertical>
-                                    <Menu.Item className='header'>Game 5</Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Input
-                                    data-id="5"
-                                    placeholder='you'
-                                    name="player_score"
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-
-                            <Grid.Column>
-                                <Input
-                                    data-id="5"
-                                    name="opponent_score"
-                                    placeholder='opponent'
-                                    // value={this.state.opponent_name}
-                                    onChange={this.handleOnChangeForGames}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 6</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                data-id="6"
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.handleOnChangeForGames}
-                            />
-                        </Grid.Column>
-
-                        <Grid.Column>
-                            <Input
-                                data-id="6"
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.handleOnChangeForGames}
-                            />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-
-                <Grid columns='equal'>
-                    <Grid.Row style={gridRowStyle}>
-                        <Grid.Column>
-                            <Menu fluid vertical>
-                                <Menu.Item className='header'>Game 7</Menu.Item>
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Input
-                                data-id="7"
-                                placeholder='you'
-                                name="player_score"
-                                onChange={this.handleOnChangeForGames}
-                            />
-                        </Grid.Column>
-
-                        <Grid.Column>
-                            <Input
-                                data-id="7"
-                                name="opponent_score"
-                                placeholder='opponent'
-                                // value={this.state.opponent_name}
-                                onChange={this.handleOnChangeForGames}
-                            />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Form>
-        </Segment>
+                    <Grid.Column>
+                        <Input
+                            data-id={i + 1}
+                            name="opponent_score"
+                            placeholder='opponent'
+                            // value={this.state.opponent_name}
+                            onChange={this.onChangeForGames}
+                        />
+                    </Grid.Column>
+                    {/* <Grid.Column>
+                                        <Button form="game-form">Save</Button>
+                                    </Grid.Column> */}
+                </Grid.Row>
+            </Grid>
+            )
         }
+
+        // 
+        //     let gameCount = [...Array(matchCount)];
+        //     debugger
+        //     gameForm = gameCount.forEach((game, i) => (
+                
+        //         )
+        //     )
+        // }
+
+
+        
+        // if (matchType === "5") {
+        //     gameForm = 
+        //     <Segment>
+        //         <Form id="game-form" onSubmit={this.onSubmitForGames}>
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 1</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="1"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+                        
+        //                     <Grid.Column>
+        //                         <Input
+        //                         data-id="1"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                     {/* <Grid.Column>
+        //                         <Button form="game-form">Save</Button>
+        //                     </Grid.Column> */}
+        //                 </Grid.Row>
+        //             </Grid>
+                    
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 2</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="2"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="2"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 3</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                         data-id="3"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                         data-id="3"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 4</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="4"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="4"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 5</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="5"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="5"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+        //         </Form>
+        //     </Segment>
+        // } else if (matchType === "7") {
+        //     gameForm = 
+        //     <Segment>
+        //         <Form onSubmit={this.onSubmitFor}>
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 1</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="1"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.onChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="1"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 2</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="2"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="2"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 3</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="3"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="3"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 4</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="4"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="4"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //             <Grid columns='equal'>
+        //                 <Grid.Row style={gridRowStyle}>
+        //                     <Grid.Column>
+        //                         <Menu fluid vertical>
+        //                             <Menu.Item className='header'>Game 5</Menu.Item>
+        //                         </Menu>
+        //                     </Grid.Column>
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="5"
+        //                             placeholder='you'
+        //                             name="player_score"
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+
+        //                     <Grid.Column>
+        //                         <Input
+        //                             data-id="5"
+        //                             name="opponent_score"
+        //                             placeholder='opponent'
+        //                             // value={this.state.opponent_name}
+        //                             onChange={this.handleOnChangeForGames}
+        //                         />
+        //                     </Grid.Column>
+        //                 </Grid.Row>
+        //             </Grid>
+
+        //         <Grid columns='equal'>
+        //             <Grid.Row style={gridRowStyle}>
+        //                 <Grid.Column>
+        //                     <Menu fluid vertical>
+        //                         <Menu.Item className='header'>Game 6</Menu.Item>
+        //                     </Menu>
+        //                 </Grid.Column>
+        //                 <Grid.Column>
+        //                     <Input
+        //                         data-id="6"
+        //                         placeholder='you'
+        //                         name="player_score"
+        //                         onChange={this.handleOnChangeForGames}
+        //                     />
+        //                 </Grid.Column>
+
+        //                 <Grid.Column>
+        //                     <Input
+        //                         data-id="6"
+        //                         name="opponent_score"
+        //                         placeholder='opponent'
+        //                         // value={this.state.opponent_name}
+        //                         onChange={this.handleOnChangeForGames}
+        //                     />
+        //                 </Grid.Column>
+        //             </Grid.Row>
+        //         </Grid>
+
+        //         <Grid columns='equal'>
+        //             <Grid.Row style={gridRowStyle}>
+        //                 <Grid.Column>
+        //                     <Menu fluid vertical>
+        //                         <Menu.Item className='header'>Game 7</Menu.Item>
+        //                     </Menu>
+        //                 </Grid.Column>
+        //                 <Grid.Column>
+        //                     <Input
+        //                         data-id="7"
+        //                         placeholder='you'
+        //                         name="player_score"
+        //                         onChange={this.handleOnChangeForGames}
+        //                     />
+        //                 </Grid.Column>
+
+        //                 <Grid.Column>
+        //                     <Input
+        //                         data-id="7"
+        //                         name="opponent_score"
+        //                         placeholder='opponent'
+        //                         // value={this.state.opponent_name}
+        //                         onChange={this.handleOnChangeForGames}
+        //                     />
+        //                 </Grid.Column>
+        //             </Grid.Row>
+        //         </Grid>
+        //     </Form>
+        // </Segment>
+        // }
 
         return (
         <>
