@@ -86,40 +86,42 @@ class MatchesForm extends Component {
 
     render() {
         console.log("MatchesForm.js", this.state, this.props)
-        let matchCount = parseInt(this.state.match_type);
+        let gameCount = parseInt(this.state.match_type);
         let gameForm
 
         if (this.state.match_type) {
-            gameForm = [...Array(matchCount)].map((e, i) => <Grid columns='equal'>
-                <Grid.Row style={gridRowStyle}>
-                    <Grid.Column>
-                        <Menu fluid vertical>
-                            <Menu.Item className='header'>Game {i + 1}</Menu.Item>
-                        </Menu>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Input
-                            data-id={i + 1}
-                            placeholder='you'
-                            name="player_score"
-                            onChange={this.onChangeForGames}
-                        />
-                    </Grid.Column>
+            gameForm = [...Array(gameCount)].map((game, i) => ( 
+                <Grid columns='equal'>
+                    <Grid.Row style={gridRowStyle}>
+                        <Grid.Column>
+                            <Menu fluid vertical>
+                                <Menu.Item className='header'>Game {i + 1}</Menu.Item>
+                            </Menu>
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Input
+                                data-id={i + 1}
+                                placeholder='you'
+                                name="player_score"
+                                onChange={this.onChangeForGames}
+                            />
+                        </Grid.Column>
 
-                    <Grid.Column>
-                        <Input
-                            data-id={i + 1}
-                            name="opponent_score"
-                            placeholder='opponent'
-                            // value={this.state.opponent_name}
-                            onChange={this.onChangeForGames}
-                        />
-                    </Grid.Column>
-                    {/* <Grid.Column>
-                                        <Button form="game-form">Save</Button>
-                                    </Grid.Column> */}
-                </Grid.Row>
-            </Grid>
+                        <Grid.Column>
+                            <Input
+                                data-id={i + 1}
+                                name="opponent_score"
+                                placeholder='opponent'
+                                // value={this.state.opponent_name}
+                                onChange={this.onChangeForGames}
+                            />
+                        </Grid.Column>
+                        {/* <Grid.Column>
+                            <Button form="game-form">Save</Button>
+                        </Grid.Column> */}
+                    </Grid.Row>
+                </Grid>
+                )
             )
         }
 
@@ -183,10 +185,11 @@ class MatchesForm extends Component {
                     value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
-            <Form.Field form="match-form"
-                control={Button}>
-                Submit
-            </Form.Field>
+                
+                <Form.Field form="match-form"
+                    control={Button}>
+                    Submit
+                </Form.Field>
             </Form>
 
         </>
