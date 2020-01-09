@@ -119,9 +119,9 @@ class MatchesForm extends Component {
                                     onChange={this.onChangeForGames}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
+                            {/* <Grid.Column>
                                 <Button form="game-form">Save</Button>
-                            </Grid.Column>
+                            </Grid.Column> */}
                         </Grid.Row>
                     </Grid>
                     
@@ -149,9 +149,6 @@ class MatchesForm extends Component {
                                     // value={this.state.opponent_name}
                                     onChange={this.onChangeForGames}
                                 />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -181,9 +178,6 @@ class MatchesForm extends Component {
                                     onChange={this.onChangeForGames}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
-                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
 
@@ -212,9 +206,6 @@ class MatchesForm extends Component {
                                     onChange={this.onChangeForGames}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
-                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
 
@@ -242,9 +233,6 @@ class MatchesForm extends Component {
                                     // value={this.state.opponent_name}
                                     onChange={this.onChangeForGames}
                                 />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -279,9 +267,6 @@ class MatchesForm extends Component {
                                     onChange={this.handleOnChangeForGames}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
-                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
 
@@ -309,9 +294,6 @@ class MatchesForm extends Component {
                                     // value={this.state.opponent_name}
                                     onChange={this.handleOnChangeForGames}
                                 />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -341,9 +323,6 @@ class MatchesForm extends Component {
                                     onChange={this.handleOnChangeForGames}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
-                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
 
@@ -371,9 +350,6 @@ class MatchesForm extends Component {
                                     // value={this.state.opponent_name}
                                     onChange={this.handleOnChangeForGames}
                                 />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -403,9 +379,6 @@ class MatchesForm extends Component {
                                     onChange={this.handleOnChangeForGames}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
-                                <Button>Save</Button>
-                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
 
@@ -434,9 +407,6 @@ class MatchesForm extends Component {
                                 onChange={this.handleOnChangeForGames}
                             />
                         </Grid.Column>
-                        <Grid.Column>
-                            <Button>Save</Button>
-                        </Grid.Column>
                     </Grid.Row>
                 </Grid>
 
@@ -464,9 +434,6 @@ class MatchesForm extends Component {
                                 // value={this.state.opponent_name}
                                 onChange={this.handleOnChangeForGames}
                             />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Button>Save</Button>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
