@@ -51,30 +51,15 @@ class MatchesForm extends Component {
         // debugger
         let { name, value } = event.target;
         value = parseInt(value, 10);
+        // Create index by taking the dataset-id of the input element.
         let index = parseInt(event.target.parentElement.dataset.id) - 1
-        
-        // // With state as an arg. Still overwrites game.
-        // this.setState( state => {
-        //     // debugger
-        //     let game = { ...this.state, games:{...state.games[i], [name]: value } };
-        //     return game
-        //     }
-        // )
-
-        // // Not yet. Overwrites each other's data.
+        // Create a duplicate of the current array of games.
         const newGames = [...this.state.games]
+        // Working backwards, add the object properties to a new game with the index of the dataset-id.
         newGames[index] = {...newGames[index], [name]: value}
+        // Assign the value of newGames, an array of games, to the key of games within this.state.
         this.setState( {...this.state, games: newGames } );
-
-        // Below will create a game object.
-    //     this.setState( {...this.state, games: [ ...this.state.games, { ...this.state.games[i],[name]: value} ] } );
     }
-
-    // addOneGame = () => {
-    //     this.setState( state => {
-    //         game = 
-    //     })
-    // }
 
     onSubmitForGames = (event) => {
         console.log("game submit")
@@ -180,6 +165,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                data-id="3"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.onChangeForGames}
@@ -188,6 +174,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                data-id="3"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -209,6 +196,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="4"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.onChangeForGames}
@@ -217,6 +205,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="4"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -238,6 +227,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="5"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.onChangeForGames}
@@ -246,6 +236,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="5"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -272,6 +263,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="1"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.onChangeForGames}
@@ -280,6 +272,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="1"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -301,6 +294,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="2"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.handleOnChangeForGames}
@@ -309,6 +303,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="2"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -330,6 +325,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="3"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.handleOnChangeForGames}
@@ -338,6 +334,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="3"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -359,6 +356,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="4"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.handleOnChangeForGames}
@@ -367,6 +365,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="4"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -388,6 +387,7 @@ class MatchesForm extends Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <Input
+                                    data-id="5"
                                     placeholder='you'
                                     name="player_score"
                                     onChange={this.handleOnChangeForGames}
@@ -396,6 +396,7 @@ class MatchesForm extends Component {
 
                             <Grid.Column>
                                 <Input
+                                    data-id="5"
                                     name="opponent_score"
                                     placeholder='opponent'
                                     // value={this.state.opponent_name}
@@ -417,6 +418,7 @@ class MatchesForm extends Component {
                         </Grid.Column>
                         <Grid.Column>
                             <Input
+                                data-id="6"
                                 placeholder='you'
                                 name="player_score"
                                 onChange={this.handleOnChangeForGames}
@@ -425,6 +427,7 @@ class MatchesForm extends Component {
 
                         <Grid.Column>
                             <Input
+                                data-id="6"
                                 name="opponent_score"
                                 placeholder='opponent'
                                 // value={this.state.opponent_name}
@@ -446,6 +449,7 @@ class MatchesForm extends Component {
                         </Grid.Column>
                         <Grid.Column>
                             <Input
+                                data-id="7"
                                 placeholder='you'
                                 name="player_score"
                                 onChange={this.handleOnChangeForGames}
@@ -454,6 +458,7 @@ class MatchesForm extends Component {
 
                         <Grid.Column>
                             <Input
+                                data-id="7"
                                 name="opponent_score"
                                 placeholder='opponent'
                                 // value={this.state.opponent_name}
