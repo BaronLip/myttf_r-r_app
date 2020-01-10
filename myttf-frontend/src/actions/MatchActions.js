@@ -107,20 +107,21 @@ export const fetchMatch = (matchId) => {
     .catch(error => console.log(error))
 }
 
+// "history" is provided by React react-router. It's imported in EditMatchForm as { withRouter }. "history" is used to redirect.
 export const patchMatch = (match, history) => {
     console.log("MatchAction patchMatch.", match);
+    // debugger
     return dispatch =>
         fetch(`http://localhost:3000/api/v1/players/${match.match.player_id}/matches/${match.match.id}`, {
     method: "PATCH",
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify(match.match)})
+    body: JSON.stringify(match)})
     // Without throwing any errors.
     // .then(() => { dispatch(editMatch(match));
     // })
     .then(response => {
-        debugger
         if (response.ok) {
             return response.json()
         }

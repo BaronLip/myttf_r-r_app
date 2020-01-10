@@ -1,6 +1,7 @@
 export default (state = {}, action) => {
 
     switch (action.type) {
+        // NO LONGER NEED TO FETCH MATCHES BECAUSE MATCHES ARE ASSOCIATED WITH PLAYER AND RETURNED WITH FETCHING PLAYER.
         // case "FETCH_MATCHES":
         //     console.log("you're fetching all matches", state, action);
         //     return [...action.matches];
@@ -20,8 +21,8 @@ export default (state = {}, action) => {
             
         case "EDIT_MATCH":
             console.log("MatchesReducer, EDIT_MATCH", state, action);
-            debugger
-            return [...state, action.match.match]
+            // debugger
+            return { ...action.match }
             
         default:
             return state;

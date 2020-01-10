@@ -53,9 +53,10 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def update
-        match = Match.find(params[:id])
-        games = match.games
         # byebug
+        match = Match.find(params[:id])
+        games = params[:games]
+        # games = match.games
         if match.update(match_params)
             render json: {
                 match: match,

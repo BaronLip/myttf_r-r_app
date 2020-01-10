@@ -26,14 +26,15 @@ class EditMatchForm extends Component {
     }
 
     // Then componentDidMount will overwrite the state upon second render. This shows placeholder content.
+    // Props.match is provided by React router.
     componentDidMount() {
         fetch(`http://localhost:3000${this.props.match.url}`)
         // fetch(`http://localhost:3000/api/v1/players/${this.props.match.player_id}/matches/${this.props.match.params.id}`)
         .then(response => response.json())
         .then(matchData => this.setState(
             {...matchData}
-        ))
-        .catch(error => console.log(error))
+            ))
+            .catch(error => console.log(error))
     }
 
     handleOnChange = event => {
