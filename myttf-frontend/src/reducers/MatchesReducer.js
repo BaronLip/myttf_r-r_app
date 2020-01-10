@@ -1,6 +1,4 @@
-// import uuid from 'uuid';
-
-export default (state = [], action) => {
+export default (state = {}, action) => {
 
     switch (action.type) {
         // case "FETCH_MATCHES":
@@ -16,16 +14,14 @@ export default (state = [], action) => {
         
         // MOVED TO PLAYER REDUCER
         // case "ADD_MATCH":
-
+        
+        // MOVED TO PLAYER REDUCER
         // case "REMOVE_MATCH":
-        //     console.log("You're deleting a match", state, action);
-        //     debugger
-        //     return state.filter((match) => match.id !== action.matchId)
             
         case "EDIT_MATCH":
             console.log("MatchesReducer, EDIT_MATCH", state, action);
             debugger
-            return [...state, action.match]
+            return [...state, action.match.match]
             
         default:
             return state;

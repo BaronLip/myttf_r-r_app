@@ -54,6 +54,8 @@ class Api::V1::MatchesController < ApplicationController
 
     def update
         match = Match.find(params[:id])
+        games = match.games
+        # byebug
         if match.update(match_params)
             render json: {
                 match: match,
@@ -85,7 +87,11 @@ class Api::V1::MatchesController < ApplicationController
             :match_type, 
             :notes, 
             :bookmarked, 
-            games_attributes: [:player_score, :opponent_score]
+            games_attributes: [:player_score, :opponent_score],
+            # :id,
+            # :player_id,
+            # :created_at,
+            # :updated_at
         )
     end
 

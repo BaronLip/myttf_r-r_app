@@ -18,7 +18,6 @@ class MatchCard extends Component {
 
     handleBookmark = () => {
         console.log("Bookmarking this match.", this.props);
-        // debugger
         this.props.bookmark(this.props.match);
     }
 

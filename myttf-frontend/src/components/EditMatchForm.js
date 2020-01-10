@@ -12,13 +12,16 @@ import {
 
 class EditMatchForm extends Component {
     // State has the additional key of match because componentDidMount's response is in the same format.
+    // The initial state structure is based on fetch from componentDidMount's fetch call.
     state = {
         match: {
+            id: "",
             date: "",
             opponent_name: "",
             match_type: "",
             notes: "",
-            bookmarked: null
+            bookmarked: null,
+            player_id: null
         }
     }
 
@@ -45,21 +48,6 @@ class EditMatchForm extends Component {
         )
     }
 
-    // handleChecked = ( event ) => {
-    //     const { value } = event.target;
-    //     this.setState(state => {
-    //         const match = { ...state.match };
-    //         match.match_type = value;
-    //         return { match }
-    //     })
-    // }
-
-    // handleChecked = ({ value }) => {
-    //     this.setState({ match_type: value })
-    // }
-    
-    // Due to semantic UI, value needed to be extracted from parentElement.firstChild.
-    // Will this work without a callback function?
     handleChecked = (e) => {
         let value = e.target.parentElement.firstChild.value
         this.setState( state => (
@@ -152,6 +140,5 @@ class EditMatchForm extends Component {
         )
     }
 }
-
 
 export default withRouter(EditMatchForm)

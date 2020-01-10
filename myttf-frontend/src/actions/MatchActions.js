@@ -120,6 +120,7 @@ export const patchMatch = (match, history) => {
     // .then(() => { dispatch(editMatch(match));
     // })
     .then(response => {
+        debugger
         if (response.ok) {
             return response.json()
         }
@@ -127,7 +128,7 @@ export const patchMatch = (match, history) => {
             throw new Error(`${response.statusText}`)
         }
     })
-   // .then(match => { dispatch(editMatch(match)) })
+   .then(match => { dispatch(editMatch(match)) })
    .then(history.push('/dashboard'))
     .catch(error => alert(error));
 }
