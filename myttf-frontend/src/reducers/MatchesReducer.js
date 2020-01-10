@@ -10,18 +10,18 @@ export default (state = [], action) => {
         case "SHOW_MATCH":
             console.log("You're showing the match", state, action);
             const match = {
-                id: uuid(),
+                // id: uuid(),
                 ...action.match
             };
             return [...state, match ];
 
         case "ADD_MATCH":
-            debugger
             console.log("You're adding a match", state, action);
             const newMatch = {
                 // id: uuid(),
                 ...action.match
             };
+            debugger
 
             return [...state, newMatch ];
 

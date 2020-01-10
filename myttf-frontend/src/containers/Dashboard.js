@@ -1,12 +1,9 @@
-
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
 import { Header, Grid, Image, Segment, Divider } from 'semantic-ui-react';
 import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
-
 import { fetchPlayer } from "../actions/PlayerActions";
 import { fetchMatches, deleteMatch, bookmark } from "../actions/MatchActions";
 
