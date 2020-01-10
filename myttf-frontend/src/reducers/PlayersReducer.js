@@ -30,7 +30,6 @@ export default (state =
     //***** MATCH REDUCERS: *****
         case "BOOKMARK_MATCH":
             console.log("You're bookmarking a match", state, action);
-            debugger
 
             let bookmarkedMatch = state.matches.find(match => match.id === action.match.id)
             let index = state.matches.indexOf(bookmarkedMatch)
@@ -41,8 +40,12 @@ export default (state =
         case "ADD_MATCH":
             console.log("You're adding a match", state, action);
             const addMatch = { ...action.match };
-
             return { ...state, matches: [...state.matches, addMatch.match]}
+        
+        case "REMOVE_MATCH":
+            console.log("You're deleting a match", state, action);
+            const matchesAfterDelete = state.matches.filter((match) => match.id !== action.matchId)
+            return {...state, matches: matchesAfterDelete }
 
         default:
             return state;

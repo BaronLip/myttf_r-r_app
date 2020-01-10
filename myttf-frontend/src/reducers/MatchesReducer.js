@@ -16,19 +16,11 @@ export default (state = [], action) => {
         
         // MOVED TO PLAYER REDUCER
         // case "ADD_MATCH":
-        //     console.log("You're adding a match", state, action);
-        //     const newMatch = {
-        //         // id: uuid(),
-        //         ...action.match
-        //     };
+
+        // case "REMOVE_MATCH":
+        //     console.log("You're deleting a match", state, action);
         //     debugger
-
-        //     return [...state, newMatch ];
-
-        case "REMOVE_MATCH":
-            console.log("You're deleting a match", state, action);
-            debugger
-            return state.filter((match) => match.id !== action.matchId)
+        //     return state.filter((match) => match.id !== action.matchId)
             
         case "EDIT_MATCH":
             console.log("MatchesReducer, EDIT_MATCH", state, action);
