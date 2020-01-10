@@ -26,12 +26,11 @@ export const createMatch = (match, player) => {
     return (dispatch) => 
     fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`, {
         method: "POST",
-        headers: {
-            'Content-Type':'application/json'
-        }, 
+        headers: { 'Content-Type':'application/json' }, 
         body: JSON.stringify(match)
         })
     .then(response => {
+        console.log(response)
         if (response.ok) {
             return response.json()}
         else {
@@ -51,7 +50,6 @@ export const createMatch = (match, player) => {
     .catch(error => alert(error));
 }
 
-// match arg is equal to {...this.state} from MatchesForm at submission.
 export const addMatch = (match) => {
     console.log("actions/MatchActions.js addMatch", match);
     return { type: "ADD_MATCH", match };
@@ -59,12 +57,12 @@ export const addMatch = (match) => {
 
 export const deleteMatch = (match) => {
     console.log("actions/MatchActions.js deleteMatch", match);
+    // debugger
     return dispatch =>
     fetch(`http://localhost:3000/api/v1/players/${match.player_id}/matches/${match.id}`, {
-        method: "DELETE"
-    }).then(() => {
-        dispatch(removeMatch(match.id));
-    });
+        method: "DELETE" })
+    .then(() => {dispatch(removeMatch(match.id))})
+    .catch(error => console.log(error))
 }
 
 export const removeMatch = (matchId) => {

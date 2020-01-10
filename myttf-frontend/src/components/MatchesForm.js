@@ -11,7 +11,6 @@ import {
     TextArea,
     Grid,
     Menu,
-    Segment
 } from 'semantic-ui-react'
 
 const gridRowStyle = {

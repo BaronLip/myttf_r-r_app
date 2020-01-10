@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+// import uuid from 'uuid';
 
 export default (state = [], action) => {
 
@@ -16,9 +16,10 @@ export default (state = [], action) => {
             return [...state, match ];
 
         case "ADD_MATCH":
+            debugger
             console.log("You're adding a match", state, action);
             const newMatch = {
-                id: uuid(),
+                // id: uuid(),
                 ...action.match
             };
 
@@ -26,6 +27,7 @@ export default (state = [], action) => {
 
         case "REMOVE_MATCH":
             console.log("You're deleting a match", state, action);
+            debugger
             return state.filter((match) => match.id !== action.matchId)
             
         
