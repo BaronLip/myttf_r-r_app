@@ -53,10 +53,27 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def update
-        # byebug
         match = Match.find(params[:id])
-        games = params[:games]
-        # games = match.games
+        match.update
+        games = match.games
+        i = 0
+        params_games = params[:games]
+        byebug
+        params_games.each do |game|
+            if game[:id] == true # not having "==true" should also work.
+                game = match.games.find_by(id: game[:id])
+                game.update(:player_score, :opponent_score)
+                i + 1
+            else
+                game = Game.new
+                game.match_id = match.id
+                game.player_score = params_games[i][:player_score]
+                game.opponent_score = params_games[i][:opponent_score]
+                game.save
+                i + 1
+            end
+        end
+
         if match.update(match_params)
             render json: {
                 match: match,
@@ -71,7 +88,7 @@ class Api::V1::MatchesController < ApplicationController
     def destroy
         match = Match.find(params[:id])
         games = match.games
-        
+
         games.destroy_all
         
         match.delete
@@ -95,5 +112,4 @@ class Api::V1::MatchesController < ApplicationController
             # :updated_at
         )
     end
-
 end

@@ -72,7 +72,6 @@ export const removeMatch = (matchId) => {
 
 export const bookmark = (match) => {
     console.log("You're bookmarking this match.", match);
-    debugger
     let newMatch = {...match}
     if (match.bookmarked === null || match.bookmarked === false) {
         newMatch.bookmarked = true;

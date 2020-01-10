@@ -15,7 +15,7 @@ class EditMatchContainer extends Component {
                 verticalAlign='top'
             >
                 <Grid.Column style={{ maxWidth: 600 }} textAlign='left'>
-                    <Segment style={{ height: "50vh" }} >
+                    <Segment style={{ height: "60vh" }} >
                         <EditMatchForm 
                             match={this.props.match}
                             patchMatch={this.props.patchMatch}

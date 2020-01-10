@@ -21,7 +21,8 @@ export default (state = {}, action) => {
             
         case "EDIT_MATCH":
             console.log("MatchesReducer, EDIT_MATCH", state, action);
-            // debugger
+            debugger
+            // In this case, state is being replaced with an entirely new "match".
             return { ...action.match }
             
         default:

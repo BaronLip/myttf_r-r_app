@@ -86,10 +86,10 @@ class MatchesForm extends Component {
     render() {
         console.log("MatchesForm.js", this.state, this.props)
         let gameCount = parseInt(this.state.match_type);
-        let gameForm
+        let gameInputs
 
         if (this.state.match_type) {
-            gameForm = [...Array(gameCount)].map((game, i) => ( 
+            gameInputs = [...Array(gameCount)].map((game, i) => ( 
                 <Grid columns='equal' key={i}>
                     <Grid.Row style={gridRowStyle}>
                         <Grid.Column>
@@ -173,7 +173,7 @@ class MatchesForm extends Component {
                 </Form.Group>
                 
                 <Form.Field>
-                    {gameForm}                
+                    {gameInputs}                
                 </Form.Field>
                 
                 <Form.Field style={{ height: 50 }}

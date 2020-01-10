@@ -8,6 +8,8 @@ import {
     Input,
     Radio,
     TextArea,
+    Grid,
+    Menu,
 } from 'semantic-ui-react'
 
 class EditMatchForm extends Component {
@@ -21,7 +23,10 @@ class EditMatchForm extends Component {
             match_type: "",
             notes: "",
             bookmarked: null,
-            player_id: null
+            player_id: null,
+            games: [
+
+            ]
         }
     }
 
@@ -57,6 +62,21 @@ class EditMatchForm extends Component {
         )
     }
 
+    onChangeForGames = (event) => {
+        // debugger
+        let { name, value } = event.target;
+        value = parseInt(value, 10);
+        // Create index by taking the dataset-id of the input element.
+        let index = parseInt(event.target.parentElement.dataset.id) - 1
+        // Create a duplicate of the current array of games.
+        const newGames = [...this.state.games]
+        // Working backwards, add the object properties to a new game with the index of the dataset-id.
+        newGames[index] = { ...newGames[index], [name]: value }
+        // Assign the value of newGames, an array of games, to the key of games within this.state.
+        this.setState({ ...this.state, games: newGames });
+        // debugger
+    }
+
     handleSubmit = (event) => {
         console.log("Patching from MatchesForm.")
         event.preventDefault();
@@ -68,14 +88,65 @@ class EditMatchForm extends Component {
                 opponent_name: "",
                 match_type: "",
                 notes: "",
-                bookmarked: null
+                bookmarked: null,
+                games: []
             }
         });
     }
 
     render() {
         console.log("EditMatchForm.js", this.state /*, this.props*/)
+        
+        let gameCount = parseInt(this.state.match.match_type);
+        let gameInputs
+        const gridRowStyle = {
+            paddingTop: ".1rem",
+            paddingBottom: ".1rem"
+        }
         // debugger
+        // let playerScorePlaceholder
+        // let opponentScorePlaceholder
+        if (this.state.match.match_type) {
+
+            gameInputs = [...Array(gameCount)].map((game, i) => {
+                // Attempt to create placeholder scores from each match. Not working. 
+                // if (this.state.games[i].player_score) {
+                //     return playerScorePlaceholder = this.state.games[i].player_score
+                // } else {
+                //     return playerScorePlaceholder = ""
+                // }
+                
+                return (
+                <Grid columns='equal' key={i}>
+                    <Grid.Row style={gridRowStyle}>
+                        <Grid.Column>
+                            <Menu fluid vertical>
+                                <Menu.Item className='header'>Game {i + 1}</Menu.Item>
+                            </Menu>
+                        </Grid.Column>
+                        <Grid.Column>
+                            
+                            <Input
+                                data-id={i + 1}
+                                placeholder="you"
+                                name="player_score"
+                                onChange={this.onChangeForGames}
+                            />
+                        </Grid.Column>
+
+                        <Grid.Column>
+                            <Input
+                                data-id={i + 1}
+                                name="opponent_score"
+                                placeholder="opponent"
+                                onChange={this.onChangeForGames}
+                            />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+                )
+            })
+        }
         return (
             <Form onSubmit={event => this.handleSubmit(event)}>
                 <Header as='h3' block textAlign='center' color='blue'>
@@ -133,6 +204,11 @@ class EditMatchForm extends Component {
                     // value={this.state.notes}
                     onChange={this.handleOnChange}
                 />
+
+                <Form.Field>
+                    {gameInputs}
+                </Form.Field>
+
                 <Form.Field
                     control={Button}>
                     Submit
