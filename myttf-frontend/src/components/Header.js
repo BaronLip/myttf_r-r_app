@@ -9,7 +9,9 @@ const header = () => {
             <Grid columns={3}>
                 <Grid.Row>
                     <Grid.Column>
-                        {/*Blank column as spacer*/}
+                        <Link to='/about'>
+                            <Button floated='left'>About</Button>
+                        </Link>
                     </Grid.Column>
 
                     <Grid.Column>

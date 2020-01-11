@@ -31,3 +31,5 @@ Create validations with alerts.\
 Improve CSS,... in so many ways.\
 Add additional attributes for player.\
 Use _destroy key within attributes hash to destroy nested games within Match hash.\
+Create separate controller method for bookmarking matches.\
+Additional win:loss logic in match controller.\
