@@ -66,7 +66,12 @@ class EditMatchForm extends Component {
         // debugger
         let { name, value } = event.target;
         value = parseInt(value, 10);
-        // Create index by taking the dataset-id of the input element.
+        if (isNaN(value)){
+            value = ''
+        }
+
+
+                    // Create index by taking the dataset-id of the input element.
         let index = parseInt(event.target.parentElement.dataset.id) - 1
         // Create a duplicate of the current array of games.
         const newGames = [...this.state.games]
@@ -104,17 +109,21 @@ class EditMatchForm extends Component {
             paddingBottom: ".1rem"
         }
         // debugger
-        // let playerScorePlaceholder
-        // let opponentScorePlaceholder
         if (this.state.match.match_type) {
 
             gameInputs = [...Array(gameCount)].map((game, i) => {
-                // Attempt to create placeholder scores from each match. Not working. 
-                // if (this.state.games[i].player_score) {
-                //     return playerScorePlaceholder = this.state.games[i].player_score
-                // } else {
-                //     return playerScorePlaceholder = ""
-                // }
+                let playerScorePlaceholder = ""
+                let opponentScorePlaceholder = ""
+                // Attempt to create placeholder scores from each match. Not working.
+        
+                if (this.state.games[i]) {
+                    if (this.state.games[i].player_score) {
+                        playerScorePlaceholder = this.state.games[i].player_score
+                    }
+                    if (this.state.games[i].opponent_score) {
+                        opponentScorePlaceholder = this.state.games[i].opponent_score
+                    }
+                }
                 
                 return (
                 <Grid columns='equal' key={i}>
@@ -128,7 +137,8 @@ class EditMatchForm extends Component {
                             
                             <Input
                                 data-id={i + 1}
-                                placeholder="you"
+                                // placeholder={playerScorePlaceholder}
+                                value={playerScorePlaceholder}
                                 name="player_score"
                                 onChange={this.onChangeForGames}
                             />
@@ -138,7 +148,8 @@ class EditMatchForm extends Component {
                             <Input
                                 data-id={i + 1}
                                 name="opponent_score"
-                                placeholder="opponent"
+                                // placeholder="opponent"
+                                    value={opponentScorePlaceholder}
                                 onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
@@ -159,8 +170,9 @@ class EditMatchForm extends Component {
                         type="date"
                         name="date"
                         // Value will create a preview of the match date but it does not update with handleOnChange. Needs more research.
-                        // value={this.state.match.date}
-                        onChange={this.handleOnChange} />
+                        value={this.state.match.date}
+                        onChange={this.handleOnChange} 
+                    />
 
                     <Form.Field
                         name="opponent_name"

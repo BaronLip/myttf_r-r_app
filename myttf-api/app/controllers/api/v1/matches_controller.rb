@@ -54,23 +54,25 @@ class Api::V1::MatchesController < ApplicationController
 
     def update
         match = Match.find(params[:id])
-        match.update
+        # match.update
         games = match.games
         i = 0
         params_games = params[:games]
-        byebug
+        
         params_games.each do |game|
-            if game[:id] == true # not having "==true" should also work.
-                game = match.games.find_by(id: game[:id])
-                game.update(:player_score, :opponent_score)
-                i + 1
+            if game[:id]
+                gameObj = match.games.find_by(id: game[:id])
+                gameObj.update(player_score: game[:player_score], opponent_score: game[:opponent_score])
+                i += 1
             else
                 game = Game.new
                 game.match_id = match.id
                 game.player_score = params_games[i][:player_score]
                 game.opponent_score = params_games[i][:opponent_score]
                 game.save
-                i + 1
+                match.games << game
+                match.save
+                i += 1
             end
         end
 
