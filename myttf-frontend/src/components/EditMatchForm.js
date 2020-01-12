@@ -71,7 +71,7 @@ class EditMatchForm extends Component {
         }
 
 
-                    // Create index by taking the dataset-id of the input element.
+        // Create index by taking the dataset-id of the input element.
         let index = parseInt(event.target.parentElement.dataset.id) - 1
         // Create a duplicate of the current array of games.
         const newGames = [...this.state.games]
