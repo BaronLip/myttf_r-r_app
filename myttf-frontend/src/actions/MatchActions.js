@@ -1,15 +1,16 @@
-export const fetchMatches = (player) => {
-    console.log("actions/MatchActions.js fetchMatches");
+// fetchMatches is no longer needed since fetchPlayer now contains all match info.
+// export const fetchMatches = (player) => {
+//     console.log("actions/MatchActions.js fetchMatches");
 
-    return (dispatch) => {
-        debugger
-        fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`)
-            .then(response => response.json())
-            // .then(matches => console.log(matches))
-            .then(matches => dispatch(setMatches(matches)))
-            .catch(error => console.log(error))
-    };
-}
+//     return (dispatch) => {
+//         debugger
+//         fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`)
+//             .then(response => response.json())
+//             // .then(matches => console.log(matches))
+//             .then(matches => dispatch(setMatches(matches)))
+//             .catch(error => console.log(error))
+//     };
+// }
 
 export const setMatches = (matches) => {
     return {type: "FETCH_MATCHES", matches}

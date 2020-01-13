@@ -15,9 +15,10 @@ class Dashboard extends Component {
 
     render() {
         console.log("Dashboard.js", this.props);
-        // debugger
+
         const player = this.props.player.player;
         const matches = this.props.player.matches;
+        const games = this.props.player.games;
 
         return(
             <div>   
@@ -55,7 +56,7 @@ class Dashboard extends Component {
                                 match={m}
                                 key={m.id}
                                 player={player.id}
-                                // games={}
+                                games={ games.filter(game => game.match_id === m.id) }
                                 deleteMatch={this.props.deleteMatch}
                                 bookmark={this.props.bookmark}    
                             />
