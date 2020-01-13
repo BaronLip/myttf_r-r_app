@@ -34,13 +34,23 @@ class MatchCard extends Component {
         <Icon
             className="bookmark outline"
             name='bookmark outline'
-            size='small'
+            size='small' 
         />
 
-        let cardHeaderStyle = {}
-        cardHeaderStyle = (this.props.match.player_score > this.props.match.opponent_score) ? 
-            cardHeaderStyle = { color: "green" } : 
-            cardHeaderStyle = { color: "red"}
+    let games = this.props.games
+    let win = 0
+    let loss = 0
+    let cardHeaderStyle = {}
+    
+    games.forEach(game => {
+        if ( game.player_score > game.opponent_score ) {
+            return win += 1
+        } else {
+            return loss += 1
+        }    
+    });
+    
+    cardHeaderStyle = win > loss ? { color: "green" } : { color: "red" }
 
 
     return (
