@@ -23,7 +23,7 @@ export const showMatch = (match) => {
 
 export const createMatch = (match, player) => {
     console.log("Creating a new match.", match, player);
-    // Post  the fetch to the server...
+    // Post the match via fetch to the server...
     return (dispatch) => 
     fetch(`http://localhost:3000/api/v1/players/${player.id}/matches`, {
         method: "POST",

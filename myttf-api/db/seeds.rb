@@ -10,8 +10,8 @@ Player.create([
     {   
     username: "Baron Lip",
     profileImage: "/images/Bitmoji_Baron_lr.png",
-    wins: 0,
-    losses: 0,
+    wins: 1,
+    losses: 1,
     },
 
     {   

@@ -21,29 +21,30 @@ class Dashboard extends Component {
         const matches = this.props.player.matches.reverse();
         const games = this.props.player.games;
 
-
+        // Logic for adding Player wins and losses moved to backend.
         // For each match,
         // Find the games associated,
         // Loop through those games and determine if player won or lost.
         // Add to Player's win and loss attribute.
-        let matchGames
-        matches.forEach( match => {
-            let gameWin = 0
-            let gameLoss = 0
-            matchGames = games.filter( game => {
-                return game.match_id === match.id
-            })
-            // debugger
-            matchGames.forEach(game => {
-                if (game.player_score > game.opponent_score) {
-                    return gameWin += 1
-                } else {
-                    return gameLoss += 1
-                }
-            });
-            // debugger
-            gameWin > gameLoss ? player.wins +=1 : player.losses +=1
-        });
+
+        // let matchGames
+        // matches.forEach( match => {
+        //     let gameWin = 0
+        //     let gameLoss = 0
+        //     matchGames = games.filter( game => {
+        //         return game.match_id === match.id
+        //     })
+        //     // debugger
+        //     matchGames.forEach(game => {
+        //         if (game.player_score > game.opponent_score) {
+        //             return gameWin += 1
+        //         } else {
+        //             return gameLoss += 1
+        //         }
+        //     });
+        //     // debugger
+        //     gameWin > gameLoss ? player.wins +=1 : player.losses +=1
+        // });
 
         return(
             <div>   
@@ -65,6 +66,8 @@ class Dashboard extends Component {
                             {/* CALLING MATCHESFORM */}
                             <MatchesForm
                                 player={player}
+                                matches={matches}
+                                games={games}
                             />
                         </Segment>
                     </Grid.Column>

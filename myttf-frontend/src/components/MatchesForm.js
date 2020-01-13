@@ -47,7 +47,6 @@ class MatchesForm extends Component {
     }
 
     onChangeForGames = (event) => {
-        // debugger
         let { name, value } = event.target;
         value = parseInt(value, 10);
         // Create index by taking the dataset-id of the input element.
@@ -59,20 +58,36 @@ class MatchesForm extends Component {
         // Assign the value of newGames, an array of games, to the key of games within this.state.
         this.setState( {...this.state, games: newGames } );
     }
-
-    onSubmitForGames = (event) => {
-        console.log("game submit")
-        event.preventDefault();
-        debugger
-        this.props.createGame( this.state.games, this.props.player );
-    }
-    
+       
 
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.", this.props.player);
         event.preventDefault();
+        // const player = this.props.player;
+        // const matches = this.props.matches;
+        // const games = this.props.games;
+        // const matchGames = []
+
+        // matches.forEach(match => {
+        //     matchGames = games.filter(game => {
+        //         return game.match_id === match.id
+        //     })
+        //     // debugger
+        //     let gameWin = 0
+        //     let gameLoss = 0
+        //     matchGames.forEach(game => {
+        //         if (game.player_score > game.opponent_score) {
+        //             return gameWin += 1
+        //         } else {
+        //             return gameLoss += 1
+        //         }
+        //     });
+        //     // debugger
+        //     gameWin > gameLoss ? player.wins += 1 : player.losses += 1
+        // });
+
         this.props.createMatch({...this.state, bookmarked: false }, this.props.player);
-        // // Reset the form below.
+        // Reset the form below.
         this.setState({
             date: "",
             opponent_name: "",

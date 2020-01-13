@@ -21,15 +21,22 @@ class Api::V1::MatchesController < ApplicationController
         match.player_id = params[:player_id] # separately add in player_id due to associations.
         match.save
         
+        player = Player.find_by(:id => match.player_id)
         games = []
-        i = 0
         games_params = params[:games]
+        i = 0
+        win = 0
+        loss = 0
+        
         games_params.each do |game|
             game = Game.new
             game.match_id = match.id
             # game.player_id = match.player_id # Not needed since can be reached through matches.
             game.player_score = games_params[i][:player_score]
             game.opponent_score = games_params[i][:opponent_score]
+            # byebug
+            game.player_score > game.opponent_score ? win += 1 : loss += 1
+
             game.save
             
             if game.save
@@ -40,6 +47,10 @@ class Api::V1::MatchesController < ApplicationController
                 render json: error, status: 500
             end
         end
+
+        win > loss ? player.wins += 1 : player.losses += 1
+        
+        player.save
 
         if match.save
             render json: { 
