@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Card, Button, Icon } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
-const buttonStyle = {
+let buttonStyle = {
     margin: '0.25em',
     padding: '0.75em .75em .75em',
 }
@@ -23,24 +23,31 @@ class MatchCard extends Component {
 
     render() {
     console.log("MatchCard.js", this.props);
-        const bookmarkedValue = this.props.match.bookmarked
-        const bookmarkedIcon = bookmarkedValue === true ? 
-            <Icon 
-                className="bookmark"
-                name='bookmark'
-                size='small'
-                color='blue'
-            /> :
-            <Icon
-                className="bookmark outline"
-                name='bookmark outline'
-                size='small'
-            />
-        return (
+    let bookmarkedValue = this.props.match.bookmarked
+    let bookmarkedIcon = bookmarkedValue === true?
+        <Icon 
+            className="bookmark"
+            name='bookmark'
+            size='small'
+            color='blue'
+        /> :
+        <Icon
+            className="bookmark outline"
+            name='bookmark outline'
+            size='small'
+        />
+
+        let cardHeaderStyle = {}
+        cardHeaderStyle = (this.props.match.player_score > this.props.match.opponent_score) ? 
+            cardHeaderStyle = { color: "green" } : 
+            cardHeaderStyle = { color: "red"}
+
+
+    return (
             <Grid.Column> 
                 <Card>
                     <Card.Content>
-                        <Card.Header>Date: {this.props.match.date}</Card.Header>
+                        <Card.Header style={cardHeaderStyle}>Date: {this.props.match.date}</Card.Header>
                         <Card.Meta>
                             <span className='date'>{/*win or loss?*/}</span>
                         </Card.Meta>

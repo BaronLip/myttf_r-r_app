@@ -9,10 +9,12 @@ class Api::V1::PlayersController < ApplicationController
     def show
         player = Player.find(params[:id])
         matches = player.matches
+        games = player.games
         
         render json: {
             player: player,
-            matches: matches
+            matches: matches,
+            games: games
         },
         status: 200
     end

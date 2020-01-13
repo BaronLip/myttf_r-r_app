@@ -5,14 +5,12 @@ import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 import { fetchPlayer } from "../actions/PlayerActions";
-import { fetchMatches, deleteMatch, bookmark } from "../actions/MatchActions";
+import { deleteMatch, bookmark } from "../actions/MatchActions";
 
 class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchPlayer();
-        // // fetching matches doesn't work because it is not able to pass the player data...not sure why. 
-        // this.props.fetchMatches(this.props.player.player);
     }
 
     render() {
@@ -20,7 +18,7 @@ class Dashboard extends Component {
         // debugger
         const player = this.props.player.player;
         const matches = this.props.player.matches;
-        // const matches = this.props.matches;
+
         return(
             <div>   
                 <Grid stackable columns={2} divided='vertically'>
@@ -57,6 +55,7 @@ class Dashboard extends Component {
                                 match={m}
                                 key={m.id}
                                 player={player.id}
+                                // games={}
                                 deleteMatch={this.props.deleteMatch}
                                 bookmark={this.props.bookmark}    
                             />
@@ -81,7 +80,7 @@ const mapStateToProps = ({player, matches}) => ({
 // })
 
 // ES6 syntax for connect.
-export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer, fetchMatches })(Dashboard);
+export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer })(Dashboard);
 
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {
