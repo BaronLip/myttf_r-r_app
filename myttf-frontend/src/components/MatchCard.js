@@ -22,35 +22,35 @@ class MatchCard extends Component {
     }
 
     render() {
-    console.log("MatchCard.js", this.props);
-    let bookmarkedValue = this.props.match.bookmarked
-    let bookmarkedIcon = bookmarkedValue === true?
-        <Icon 
-            className="bookmark"
-            name='bookmark'
-            size='small'
-            color='blue'
-        /> :
-        <Icon
-            className="bookmark outline"
-            name='bookmark outline'
-            size='small' 
-        />
+        console.log("MatchCard.js", this.props);
+        let bookmarkedValue = this.props.match.bookmarked
+        let bookmarkedIcon = bookmarkedValue === true?
+            <Icon 
+                className="bookmark"
+                name='bookmark'
+                size='small'
+                color='blue'
+            /> :
+            <Icon
+                className="bookmark outline"
+                name='bookmark outline'
+                size='small' 
+            />
 
-    let games = this.props.games
-    let win = 0
-    let loss = 0
-    let cardHeaderStyle = {}
-    
-    games.forEach(game => {
-        if ( game.player_score > game.opponent_score ) {
-            return win += 1
-        } else {
-            return loss += 1
-        }    
-    });
-    
-    cardHeaderStyle = win > loss ? { color: "green" } : { color: "red" }
+        let games = this.props.games
+        let win = 0
+        let loss = 0
+        let cardHeaderStyle = {}
+        
+        games.forEach(game => {
+            if ( game.player_score > game.opponent_score ) {
+                return win += 1
+            } else {
+                return loss += 1
+            }    
+        });
+        
+        cardHeaderStyle = win > loss ? { color: "green" } : { color: "red" }
 
 
     return (
