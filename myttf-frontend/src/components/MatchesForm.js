@@ -101,7 +101,7 @@ class MatchesForm extends Component {
     render() {
         console.log("MatchesForm.js", this.state, this.props)
         let gameCount = parseInt(this.state.match_type);
-        let gameInputs
+        let gameInputs;
 
         if (this.state.match_type) {
             gameInputs = [...Array(gameCount)].map((game, i) => ( 

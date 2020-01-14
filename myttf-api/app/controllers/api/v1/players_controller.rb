@@ -2,7 +2,6 @@ class Api::V1::PlayersController < ApplicationController
 
     def index
         players = Player.all
-
         render json: @players, status: 200
     end
 
@@ -13,31 +12,31 @@ class Api::V1::PlayersController < ApplicationController
         
         render json: {
             player: player,
-            matches: matches,
+            matches: matches.reverse,
             games: games
         },
         status: 200
     end
 
-    def create
-        player = Player.create(player_params)
+    # def create
+    #     player = Player.create(player_params)
 
-        render json: @player, status: 200
-    end
+    #     render json: @player, status: 200
+    # end
 
-    def update
-        player = Player.find(params[:id])
-        player.update(player_params)
+    # def update
+    #     player = Player.find(params[:id])
+    #     player.update(player_params)
 
-        render json: player, status: 200
-    end
+    #     render json: player, status: 200
+    # end
 
-    def destroy
-        player = Player.find(params[:id])
-        player.delete
+    # def destroy
+    #     player = Player.find(params[:id])
+    #     player.delete
 
-        render json: {playerId: player.id}
-    end
+    #     render json: {playerId: player.id}
+    # end
 
     private
 
