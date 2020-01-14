@@ -18,7 +18,8 @@ class Dashboard extends Component {
 
         const player = this.props.player.player;
         // Reversed order of matches so the newest is up top. This was done on the backend to match.
-        const matches = this.props.player.matches.reverse();
+        // const matches = this.props.player.matches.reverse();
+        const matches = this.props.player.matches;
         const games = this.props.player.games;
 
         // Logic for adding Player wins and losses moved to backend.

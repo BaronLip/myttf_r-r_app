@@ -7,7 +7,7 @@ class Api::V1::PlayersController < ApplicationController
 
     def show
         player = Player.find(params[:id])
-        matches = player.matches.reverse
+        matches = player.matches
         games = player.games
         
         render json: {
