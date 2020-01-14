@@ -7,12 +7,12 @@ class Api::V1::PlayersController < ApplicationController
 
     def show
         player = Player.find(params[:id])
-        matches = player.matches
+        matches = player.matches.reverse
         games = player.games
         
         render json: {
             player: player,
-            matches: matches.reverse,
+            matches: matches,
             games: games
         },
         status: 200
@@ -38,11 +38,11 @@ class Api::V1::PlayersController < ApplicationController
     #     render json: {playerId: player.id}
     # end
 
-    private
+    # private
 
-    def player_params
-        params.require(:player).permit(:username, :profileImage, :wins, :losses)
-    end
+    # def player_params
+    #     params.require(:player).permit(:username, :profileImage, :wins, :losses)
+    # end
 
 end
  
