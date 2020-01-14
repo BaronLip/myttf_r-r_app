@@ -98,9 +98,8 @@ class Dashboard extends Component {
 }
 
 // ES6 syntax.
-const mapStateToProps = ({player, matches}) => ({
-    player,
-    matches
+const mapStateToProps = ({player}) => ({
+    player
 })
 // //Longhand of mSTP:
 // const mapStateToProps = (state) => ({

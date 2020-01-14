@@ -140,78 +140,77 @@ class MatchesForm extends Component {
         }
 
         return (
-        <>
-            <Form id="match-form" onSubmit={ event => this.handleSubmit(event) }>
-                <Header as='h3' block textAlign='center' color='blue'>
-                    Create a Match
-                </Header>
-                <Form.Group widths='equal'>
-                    <Form.Input 
-                        fluid label='Date' 
-                        placeholder='Date:' 
-                        type="date" 
-                        name="date"
-                        // Date input does not need to be controlled for value to pass into state. Uncommenting below causes an error.
-                        // value={new Date().toISOString().slice(0, 10)}
-                        onChange={this.handleOnChange}/>
+            <>
+                <Form id="match-form" onSubmit={ event => this.handleSubmit(event) }>
+                    <Header as='h3' block textAlign='center' color='blue'>
+                        Create a Match
+                    </Header>
+                    <Form.Group widths='equal'>
+                        <Form.Input 
+                            fluid label='Date' 
+                            placeholder='Date:' 
+                            type="date" 
+                            name="date"
+                            // Date input does not need to be controlled for value to pass into state. Uncommenting below causes an error.
+                            // value={new Date().toISOString().slice(0, 10)}
+                            onChange={this.handleOnChange}/>
 
-                    <Form.Field
-                        name="opponent_name"
-                        control={Input}
-                        label='Opponent Name:'
-                        placeholder='Opponent Name'
-                        value={this.state.opponent_name}
+                        <Form.Field
+                            name="opponent_name"
+                            control={Input}
+                            label='Opponent Name:'
+                            placeholder='Opponent Name'
+                            value={this.state.opponent_name}
+                            onChange={this.handleOnChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group inline>
+                        <label>Match Type:</label>
+                        <Form.Field
+                            data-index="1"
+                            name="match_type"
+                            control={Radio}
+                            label='Best of 7'
+                            value='7'
+                            checked={this.state.match_type === "7"}
+                            onChange={this.handleChecked}
+                        />
+                        <Form.Field
+                            data-index="1"
+                            name="match_type"
+                            control={Radio}
+                            label='Best of 5'
+                            value='5'
+                            checked={this.state.match_type === "5"}
+                            onChange={this.handleChecked}
+                        />
+                    </Form.Group>
+                    
+                    <Form.Field>
+                        {gameInputs}                
+                    </Form.Field>
+                    
+                    <Form.Field style={{ height: 50 }}
+                        name="notes"
+                        control={TextArea}
+                        label='Notes:'
+                        placeholder='Notes'
+                        value={this.state.notes}
                         onChange={this.handleOnChange}
                     />
-                </Form.Group>
-
-                <Form.Group inline>
-                    <label>Match Type:</label>
-                    <Form.Field
-                        data-index="1"
-                        name="match_type"
-                        control={Radio}
-                        label='Best of 7'
-                        value='7'
-                        checked={this.state.match_type === "7"}
-                        onChange={this.handleChecked}
-                    />
-                    <Form.Field
-                        data-index="1"
-                        name="match_type"
-                        control={Radio}
-                        label='Best of 5'
-                        value='5'
-                        checked={this.state.match_type === "5"}
-                        onChange={this.handleChecked}
-                    />
-                </Form.Group>
-                
-                <Form.Field>
-                    {gameInputs}                
-                </Form.Field>
-                
-                <Form.Field style={{ height: 50 }}
-                    name="notes"
-                    control={TextArea}
-                    label='Notes:'
-                    placeholder='Notes'
-                    value={this.state.notes}
-                    onChange={this.handleOnChange}
-                />
-                
-                <Form.Field form="match-form"
-                    control={Button}>
-                    Submit
-                </Form.Field>
-            </Form>
-
-        </>
+                    
+                    <Form.Field form="match-form"
+                        control={Button}>
+                        Submit
+                    </Form.Field>
+                </Form>
+            </>
         )
     }
 }
 
-//Is ES6 syntax able to take multiple arguments?
+//Is ES6 syntax able to take multiple arguments? Not sure so wrote out longhand.
 const mapDispatchToProps = (dispatch) => {
     return {
         createMatch: (formData, player) => dispatch(createMatch(formData, player)),

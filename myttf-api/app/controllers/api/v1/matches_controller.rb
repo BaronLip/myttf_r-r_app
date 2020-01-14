@@ -17,10 +17,12 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def create
+        # Create a Match for the games to be saved.
         match = Match.new(match_params)
         match.player_id = params[:player_id] # separately add in player_id due to associations.
         match.save
         
+        # Creating all the variables to work with. 
         player = Player.find_by(:id => match.player_id)
         games = []
         games_params = params[:games]
@@ -28,17 +30,20 @@ class Api::V1::MatchesController < ApplicationController
         win = 0
         loss = 0
         
+        # For every game in params,
         games_params.each do |game|
-            game = Game.new
-            game.match_id = match.id
+            game = Game.new # Create a new game,
+            game.match_id = match.id # add the match_id to associate it to this match,
             # game.player_id = match.player_id # Not needed since can be reached through matches.
-            game.player_score = games_params[i][:player_score]
+            game.player_score = games_params[i][:player_score] # Add the individual scores.
             game.opponent_score = games_params[i][:opponent_score]
-            # byebug
+            
+            # Tally up wins & losses.
             game.player_score > game.opponent_score ? win += 1 : loss += 1
-
+            # Save the game.
             game.save
             
+            # After saving the game, go on to the next game.
             if game.save
                 games.push(game)
                 i = i + 1
@@ -48,8 +53,9 @@ class Api::V1::MatchesController < ApplicationController
             end
         end
 
+        # Add a win or loss to the player based on game scores. 
         win > loss ? player.wins += 1 : player.losses += 1
-        
+        # Save the player.
         player.save
 
         if match.save
