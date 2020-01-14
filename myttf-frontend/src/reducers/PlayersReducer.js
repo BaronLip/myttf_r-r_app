@@ -40,7 +40,8 @@ export default (state =
         case "ADD_MATCH":
             console.log("You're adding a match", state, action);
             const addMatch = { ...action.match };
-            return { ...state, matches: [...state.matches, addMatch.match]}
+            // debugger
+            return { ...state, matches: [...state.matches, addMatch.match], games: [...state.games, ...addMatch.games]}
         
         case "REMOVE_MATCH":
             console.log("You're deleting a match", state, action);

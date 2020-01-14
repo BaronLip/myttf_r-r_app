@@ -52,7 +52,6 @@ class MatchCard extends Component {
         
         cardHeaderStyle = win > loss ? { color: "green" } : { color: "red" }
 
-
     return (
             <Grid.Column> 
                 <Card>

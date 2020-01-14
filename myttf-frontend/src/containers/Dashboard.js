@@ -10,6 +10,7 @@ import { deleteMatch, bookmark } from "../actions/MatchActions";
 class Dashboard extends Component {
 
     componentDidMount() {
+        console.log("Component Did Mount")
         this.props.fetchPlayer();
     }
 
