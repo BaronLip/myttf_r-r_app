@@ -6,6 +6,8 @@ class CreateMatches < ActiveRecord::Migration[5.2]
          t.string :match_type
          t.text :notes
          t.boolean :bookmarked
+         t.boolean :win
+         t.boolean :loss
          t.references :player, foreign_key: true
 
          t.timestamps

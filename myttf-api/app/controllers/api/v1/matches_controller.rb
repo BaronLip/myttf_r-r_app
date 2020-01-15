@@ -107,7 +107,11 @@ class Api::V1::MatchesController < ApplicationController
     def destroy
         match = Match.find(params[:id])
         games = match.games
+        byebug
+        win = nil
+        loss = nil
 
+        
         games.destroy_all
         
         match.delete
@@ -123,7 +127,9 @@ class Api::V1::MatchesController < ApplicationController
             :opponent_name, 
             :match_type, 
             :notes, 
-            :bookmarked, 
+            :bookmarked,
+            :win,
+            :loss, 
             games_attributes: [:player_score, :opponent_score],
             # :id,
             # :player_id,

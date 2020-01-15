@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2020_01_05_044334) do
     t.string "match_type"
     t.text "notes"
     t.boolean "bookmarked"
+    t.boolean "win"
+    t.boolean "loss"
     t.bigint "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
