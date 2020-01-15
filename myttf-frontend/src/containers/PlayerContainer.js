@@ -18,35 +18,8 @@ class Dashboard extends Component {
         console.log("Dashboard.js", this.props);
 
         const player = this.props.player.player;
-        // Reversed order of matches so the newest is up top. This was done on the backend to match.
-        // const matches = this.props.player.matches.reverse();
         const matches = this.props.player.matches;
         const games = this.props.player.games;
-
-        // Logic for adding Player wins and losses moved to backend.
-        // For each match,
-        // Find the games associated,
-        // Loop through those games and determine if player won or lost.
-        // Add to Player's win and loss attribute.
-
-        // let matchGames
-        // matches.forEach( match => {
-        //     let gameWin = 0
-        //     let gameLoss = 0
-        //     matchGames = games.filter( game => {
-        //         return game.match_id === match.id
-        //     })
-        //     // debugger
-        //     matchGames.forEach(game => {
-        //         if (game.player_score > game.opponent_score) {
-        //             return gameWin += 1
-        //         } else {
-        //             return gameLoss += 1
-        //         }
-        //     });
-        //     // debugger
-        //     gameWin > gameLoss ? player.wins +=1 : player.losses +=1
-        // });
 
         return(
             <>   
