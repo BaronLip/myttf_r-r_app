@@ -4,7 +4,7 @@ import { Container, Grid } from 'semantic-ui-react';
 import './App.css';
 
 import header from './components/Header'
-import Dashboard from './containers/Dashboard';
+import Dashboard from './containers/PlayerContainer';
 import EditMatchContainer from './containers/EditMatchContainer';
 import AboutContainer from './containers/AboutContainer';
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AboutPage from '../components/AboutPage';
 import { Grid, Segment } from 'semantic-ui-react';
 
+// This is not currently a stateful container but there's future possibility/intent with subscription e-mail.
+
 export default class AboutContainer extends Component {
     render() {
         return(
