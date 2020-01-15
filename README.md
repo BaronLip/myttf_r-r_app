@@ -26,10 +26,11 @@ cd to myttf-frontend directory.
 
 ### Follow-ups:
 Add login functionality.\
-Create validations with alerts.\
-~~Redirect back to dashboard after editing match.~~\
-Improve CSS,... in so many ways.\
 Add additional attributes for player.\
-Use _destroy key within attributes hash to destroy nested games within Match hash.\
-Create separate controller method for bookmarking matches.\
-Additional win:loss logic in match controller.\
+Create validations with alerts.\
+Improve CSS,... in so many ways.\
+Additional win:loss logic in match controller:\
+1. Adjust win:loss count when deleting a match.\
+~~Redirect back to dashboard after editing match.~~\
+~~Use _destroy key within attributes hash to destroy nested games within Match hash.~~\
+~~Create separate controller method for bookmarking matches.~~\

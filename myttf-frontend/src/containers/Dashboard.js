@@ -49,7 +49,7 @@ class Dashboard extends Component {
         // });
 
         return(
-            <div>   
+            <>   
                 <Grid stackable columns={2} divided='vertically'>
                     <Grid.Column textAlign='center'>
                         <Segment style={{height: "57vh"}}>
@@ -94,7 +94,7 @@ class Dashboard extends Component {
                         }
                     </Grid.Row>
                 </Grid>
-            </div>
+            </>
         )
     }
 }

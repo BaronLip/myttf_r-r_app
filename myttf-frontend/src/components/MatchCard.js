@@ -53,6 +53,7 @@ class MatchCard extends Component {
         cardHeaderStyle = win > loss ? { color: "green" } : { color: "red" }
 
     return (
+            <>
             <Grid.Column> 
                 <Card>
                     <Card.Content>
@@ -83,6 +84,7 @@ class MatchCard extends Component {
                     </Card.Content>
                 </Card>
             </Grid.Column>
+        </>
         )   
     }
 }
