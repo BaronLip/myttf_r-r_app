@@ -55,7 +55,7 @@ export default (state =
             let updatedMatch = action.match.match
             let editMatch = state.matches.find(match => match.id === updatedMatch.id)
             let matchIndex = state.matches.indexOf(editMatch)
-            // debugger
+
             if (updatedMatch.win === true && editMatch.win === null) {
                 copyOfPlayer.wins += 1;
                 copyOfPlayer.losses -= 1;
@@ -75,21 +75,12 @@ export default (state =
                 matchingGame[0].player_score = game.player_score;
                 matchingGame[0].opponent_score = game.opponent_score;
             })
-            // currentGames.forEach((game) => {
-            //     let matchingGame;
-            //     matchingGame = updatedGames.filter(updatedGame => updatedGame.id === game.id);
-            //     debugger
-            //     game.player_score = matchingGame[0].player_score;
-            //     game.opponent_score = matchingGame[0].opponent_score;
-            // })
             
             return {...state, 
                 player: {...copyOfPlayer},
                 matches: [...state.matches.slice(0, matchIndex), editMatch, ...state.matches.slice(matchIndex + 1)],
                 games: [...currentGames]
             }
-
-        
         
         case "REMOVE_MATCH":
             console.log("You're deleting a match", state, action);
