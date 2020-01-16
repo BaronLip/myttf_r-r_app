@@ -49,42 +49,35 @@ export default (state =
 
             return { ...state, matches: [...state.matches, addMatch.match], games: [...state.games, ...addMatch.games]}
 
-        
         case "EDIT_MATCH":
             console.log("MatchesReducer, EDIT_MATCH", state, action);
-            // debugger
-            if (action.match.match.win === true) {
-                // state.player.wins += 1;
-                // state.player.losses -= 1;
-            } else if (action.match.match.win === null) {
-                state.player.wins -= 1;
-                state.player.losses += 1;
-            }
+            let copyOfPlayer = state.player
+            let updatedMatch = action.match.match
+            let editMatch = state.matches.find(match => match.id === action.match.match.id)
+            let matchIndex = state.matches.indexOf(editMatch)
             
-            let editedMatch = state.matches.find(match => match.id === action.match.match.id)
-            let matchIndex = state.matches.indexOf(editedMatch)
+            if (updatedMatch.win === true && editMatch.win === null) {
+                copyOfPlayer.wins += 1;
+                copyOfPlayer.losses -= 1;
+            } else if (updatedMatch.win === null && editMatch.win === true) {
+                copyOfPlayer.wins -= 1;
+                copyOfPlayer.losses += 1;
+            }
             
             let updatedGames = action.match.games
             let currentGames = state.games
-
+            
             currentGames.forEach((game) => {
-                let matchingGame = updatedGames.filter(updatedGame => updatedGame.id === game.id);
-                game.player_score = matchingGame.player_score;
-                game.opponent_score = matchingGame.opponent_score;
+                let matchingGame;
+                matchingGame = updatedGames.filter(updatedGame => updatedGame.id === game.id);
+                // debugger
+                game.player_score = matchingGame[0].player_score;
+                game.opponent_score = matchingGame[0].opponent_score;
             })
-            // updatedGames = updatedGames.map(game => {
-            //     let updatedStateGames = currentGames.find(currentGame => currentGame.id === game.id);
-            //     return updatedStateGames ? [...game, updatedStateGames] : game;
-            // })
 
-            // let gameIds = []
-            // action.match.games.forEach(game => gameIds.push(game.id))
-
-            // gameIds.forEach(id => state.games.find(game => game.id === id))
-            // debugger
             return {
-                ...state, player: {...state.player},
-                matches: [...state.matches.slice(0, matchIndex), editedMatch, ...state.matches.slice(matchIndex + 1)],
+                ...state, player: {...copyOfPlayer},
+                matches: [...state.matches.slice(0, matchIndex), editMatch, ...state.matches.slice(matchIndex + 1)],
                 games: [...currentGames]}
 
         

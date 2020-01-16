@@ -128,6 +128,7 @@ class Api::V1::MatchesController < ApplicationController
         
         if match.update(match_params)
             render json: {
+                player: player,
                 match: match,
                 games: games
             }, status: 200
