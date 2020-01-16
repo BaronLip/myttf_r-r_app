@@ -53,15 +53,17 @@ export default (state =
             console.log("MatchesReducer, EDIT_MATCH", state, action);
             let copyOfPlayer = state.player
             let updatedMatch = action.match.match
-            let editMatch = state.matches.find(match => match.id === action.match.match.id)
+            let editMatch = state.matches.find(match => match.id === updatedMatch.id)
             let matchIndex = state.matches.indexOf(editMatch)
-            
+            // debugger
             if (updatedMatch.win === true && editMatch.win === null) {
                 copyOfPlayer.wins += 1;
                 copyOfPlayer.losses -= 1;
+                Object.assign(editMatch, updatedMatch);
             } else if (updatedMatch.win === null && editMatch.win === true) {
                 copyOfPlayer.wins -= 1;
                 copyOfPlayer.losses += 1;
+                Object.assign(editMatch, updatedMatch);
             }
             
             let updatedGames = action.match.games
@@ -70,7 +72,6 @@ export default (state =
             updatedGames.forEach((game) => {
                 let matchingGame;
                 matchingGame = currentGames.filter(currentGame => currentGame.id === game.id);
-                // debugger
                 matchingGame[0].player_score = game.player_score;
                 matchingGame[0].opponent_score = game.opponent_score;
             })
@@ -82,7 +83,6 @@ export default (state =
             //     game.opponent_score = matchingGame[0].opponent_score;
             // })
             
-            // debugger
             return {...state, 
                 player: {...copyOfPlayer},
                 matches: [...state.matches.slice(0, matchIndex), editMatch, ...state.matches.slice(matchIndex + 1)],
