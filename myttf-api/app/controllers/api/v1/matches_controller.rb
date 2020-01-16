@@ -29,7 +29,7 @@ class Api::V1::MatchesController < ApplicationController
         i = 0
         win = 0
         loss = 0
-        
+        # byebug
         # For every game in params,
         games_params.each do |game|
             game = Game.new # Create a new game,
@@ -54,8 +54,14 @@ class Api::V1::MatchesController < ApplicationController
         end
 
         # Add a win or loss to the player based on game scores. 
-        win > loss ? player.wins += 1 : player.losses += 1
-        # Save the player.
+        if win > loss 
+            player.wins += 1 
+            match.win = true
+        else
+            player.losses += 1
+            match.loss = true
+        end
+            # Save the player.
         player.save
 
         if match.save
@@ -107,7 +113,7 @@ class Api::V1::MatchesController < ApplicationController
     def destroy
         match = Match.find(params[:id])
         games = match.games
-        byebug
+        # byebug
         win = nil
         loss = nil
 

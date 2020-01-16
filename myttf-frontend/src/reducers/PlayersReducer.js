@@ -41,6 +41,12 @@ export default (state =
             console.log("You're adding a match", state, action);
             const addMatch = { ...action.match };
             // debugger
+            if (action.match.match.win === true) { 
+                state.player.wins += 1 
+            } else if (action.match.match.loss === true) { 
+                state.player.losses += 1 
+            }
+
             return { ...state, matches: [...state.matches, addMatch.match], games: [...state.games, ...addMatch.games]}
         
         case "REMOVE_MATCH":
