@@ -135,17 +135,22 @@ class Api::V1::MatchesController < ApplicationController
 
     def destroy
         match = Match.find(params[:id])
+        player = Player.find_by(id: match.player_id)
         games = match.games
-        # byebug
-        win = nil
-        loss = nil
-
         
+        if match.win === true
+            player.wins -= 1
+        else
+            player.losses -= 1
+        end
+       
         games.destroy_all
-        
         match.delete
+        player.save
 
-        render json: {matchId: match.id}
+        render json: {
+            matchId: match.id
+        }
     end
 
     private

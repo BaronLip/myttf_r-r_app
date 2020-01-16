@@ -91,8 +91,18 @@ export default (state =
         
         case "REMOVE_MATCH":
             console.log("You're deleting a match", state, action);
+            // debugger
+            let playerCopy = state.player
+            let matchDeleted = state.matches.find((match) => match.id === action.matchId)
+            
+            if (matchDeleted.win === true) {
+                playerCopy.wins -= 1
+            } else {
+                playerCopy.losses -= 1
+            }
+
             const matchesAfterDelete = state.matches.filter((match) => match.id !== action.matchId)
-            return {...state, matches: matchesAfterDelete }
+            return {...state, player: playerCopy, matches: matchesAfterDelete }
 
         default:
             return state;
