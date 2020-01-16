@@ -67,18 +67,27 @@ export default (state =
             let updatedGames = action.match.games
             let currentGames = state.games
             
-            currentGames.forEach((game) => {
+            updatedGames.forEach((game) => {
                 let matchingGame;
-                matchingGame = updatedGames.filter(updatedGame => updatedGame.id === game.id);
+                matchingGame = currentGames.filter(currentGame => currentGame.id === game.id);
                 // debugger
-                game.player_score = matchingGame[0].player_score;
-                game.opponent_score = matchingGame[0].opponent_score;
+                matchingGame[0].player_score = game.player_score;
+                matchingGame[0].opponent_score = game.opponent_score;
             })
-
-            return {
-                ...state, player: {...copyOfPlayer},
+            // currentGames.forEach((game) => {
+            //     let matchingGame;
+            //     matchingGame = updatedGames.filter(updatedGame => updatedGame.id === game.id);
+            //     debugger
+            //     game.player_score = matchingGame[0].player_score;
+            //     game.opponent_score = matchingGame[0].opponent_score;
+            // })
+            
+            // debugger
+            return {...state, 
+                player: {...copyOfPlayer},
                 matches: [...state.matches.slice(0, matchIndex), editMatch, ...state.matches.slice(matchIndex + 1)],
-                games: [...currentGames]}
+                games: [...currentGames]
+            }
 
         
         
