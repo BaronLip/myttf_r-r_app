@@ -114,12 +114,14 @@ class Api::V1::MatchesController < ApplicationController
             match.update(win: true)
             player.wins = player.wins += 1
             player.losses = player.losses -= 1
+            player.save
         # elsif gameWin > gameLoss && match.win === true
         #     player.wins = player.wins
         elsif gameWin < gameLoss && match.win === true 
             match.update(win: nil)
             player.wins = player.wins -= 1
             player.losses = player.losses += 1
+            player.save
         # elsif gameWin < gameLoss && match.win === nil
         #     player.losses = player.losses
         end

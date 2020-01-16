@@ -91,7 +91,6 @@ export default (state =
         
         case "REMOVE_MATCH":
             console.log("You're deleting a match", state, action);
-            // debugger
             let playerCopy = state.player
             let matchDeleted = state.matches.find((match) => match.id === action.matchId)
             
