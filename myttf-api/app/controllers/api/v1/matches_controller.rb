@@ -84,6 +84,7 @@ class Api::V1::MatchesController < ApplicationController
         gameWin = 0
         gameLoss = 0
 
+        # This section is updating or creating a new Game instance.
         params_games.each do |game|
             if game[:id]
                 gameObj = match.games.find_by(id: game[:id])
@@ -104,6 +105,7 @@ class Api::V1::MatchesController < ApplicationController
             end
         end
 
+        # After all the games are updated/created, determine whether the match was a win by comparing how many game wins to game losses. 
         games.each do |game|
             game.player_score > game.opponent_score ? gameWin += 1 : gameLoss += 1
         end
@@ -112,14 +114,14 @@ class Api::V1::MatchesController < ApplicationController
             match.update(win: true)
             player.wins = player.wins += 1
             player.losses = player.losses -= 1
-        elsif gameWin > gameLoss && match.win === true
-            player.wins = player.wins
+        # elsif gameWin > gameLoss && match.win === true
+        #     player.wins = player.wins
         elsif gameWin < gameLoss && match.win === true 
             match.update(win: nil)
             player.wins = player.wins -= 1
             player.losses = player.losses += 1
-        elsif gameWin < gameLoss && match.win === nil
-            player.losses = player.losses
+        # elsif gameWin < gameLoss && match.win === nil
+        #     player.losses = player.losses
         end
         
         if match.update(match_params)
@@ -162,8 +164,8 @@ class Api::V1::MatchesController < ApplicationController
             :match_type, 
             :notes, 
             :bookmarked,
-            # :win,
             games_attributes: [:player_score, :opponent_score],
+            # :win,
             # :id,
             # :player_id,
             # :created_at,
