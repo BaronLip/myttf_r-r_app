@@ -43,7 +43,8 @@ Match.create([
     opponent_name: "Chad",
     match_type: "5",
     notes: "His serves are illusive, watch the spin carefully.",
-    bookmarked: false
+    bookmarked: false,
+    win: true
     },
     {
     player_id: 1,
@@ -51,7 +52,8 @@ Match.create([
     opponent_name: "Scott",
     match_type: "7",
     notes: "Close the angle more against his slow loops.",
-    bookmarked: false
+    bookmarked: false,
+    win: nil
     },
 ])
 

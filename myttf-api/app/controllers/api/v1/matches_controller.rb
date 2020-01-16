@@ -27,8 +27,8 @@ class Api::V1::MatchesController < ApplicationController
         games = []
         games_params = params[:games]
         i = 0
-        win = 0
-        loss = 0
+        gameWin = 0
+        gameLoss = 0
         # byebug
         # For every game in params,
         games_params.each do |game|
@@ -39,7 +39,7 @@ class Api::V1::MatchesController < ApplicationController
             game.opponent_score = games_params[i][:opponent_score]
             
             # Tally up wins & losses.
-            game.player_score > game.opponent_score ? win += 1 : loss += 1
+            game.player_score > game.opponent_score ? gameWin += 1 : gameLoss += 1
             # Save the game.
             game.save
             
@@ -54,7 +54,7 @@ class Api::V1::MatchesController < ApplicationController
         end
 
         # Add a win or loss to the player based on game scores. 
-        if win > loss 
+        if gameWin > gameLoss 
             player.wins += 1 
             match.win = true
         else
@@ -77,15 +77,20 @@ class Api::V1::MatchesController < ApplicationController
 
     def update
         match = Match.find(params[:id])
-        # match.update
+        player = Player.find_by(id: match.player_id)
         games = match.games
-        i = 0
         params_games = params[:games]
-        
+        i = 0
+        gameWin = 0
+        gameLoss = 0
+
         params_games.each do |game|
             if game[:id]
                 gameObj = match.games.find_by(id: game[:id])
-                gameObj.update(player_score: game[:player_score], opponent_score: game[:opponent_score])
+                gameObj.update(
+                    player_score: game[:player_score], 
+                    opponent_score: game[:opponent_score]
+                )
                 i += 1
             else
                 game = Game.new
@@ -99,6 +104,24 @@ class Api::V1::MatchesController < ApplicationController
             end
         end
 
+        games.each do |game|
+            game.player_score > game.opponent_score ? gameWin += 1 : gameLoss += 1
+        end
+        
+        if gameWin > gameLoss && match.win === nil
+            match.update(win: true)
+            player.wins = player.wins += 1
+            player.losses = player.losses -= 1
+        elsif gameWin > gameLoss && match.win === true
+            player.wins = player.wins
+        elsif gameWin < gameLoss && match.win === true 
+            match.update(win: nil)
+            player.wins = player.wins -= 1
+            player.losses = player.losses += 1
+        elsif gameWin < gameLoss && match.win === nil
+            player.losses = player.losses
+        end
+        
         if match.update(match_params)
             render json: {
                 match: match,
@@ -134,8 +157,7 @@ class Api::V1::MatchesController < ApplicationController
             :match_type, 
             :notes, 
             :bookmarked,
-            :win,
-            :loss, 
+            # :win,
             games_attributes: [:player_score, :opponent_score],
             # :id,
             # :player_id,

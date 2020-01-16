@@ -18,12 +18,12 @@ export default (state = {}, action) => {
         
         // MOVED TO PLAYER REDUCER
         // case "REMOVE_MATCH":
-            
-        case "EDIT_MATCH":
-            console.log("MatchesReducer, EDIT_MATCH", state, action);
-            // State is being replaced with an entirely new "match".
-            return { ...action.match }
-            
+        
+        // MOVED TO PLAYER REDUCER
+        // case "EDIT_MATCH":
+        // State is being replaced with an entirely new "match".
+        // return { ...action.match }
+        
         default:
             return state;
     }

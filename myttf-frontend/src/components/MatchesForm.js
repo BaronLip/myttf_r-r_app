@@ -26,6 +26,7 @@ class MatchesForm extends Component {
             match_type: "",
             notes: "",
             bookmarked: null,
+            win: null,
             games: [
                 {
                     // player_score: "",
