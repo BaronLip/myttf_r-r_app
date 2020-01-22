@@ -9,8 +9,11 @@ import { Provider } from 'react-redux';
 // 
 import { store } from "./store";
 
+
+
 // Using store.getState() will show the current state.
-console.log("Providing the store to App.js", store.getState())
+console.log(store)
+
 
 ReactDOM.render(
     <Provider store={store}>

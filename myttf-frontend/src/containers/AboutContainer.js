@@ -4,20 +4,23 @@ import { Grid, Segment } from 'semantic-ui-react';
 
 // This is not currently a stateful container but there's future possibility/intent with subscription e-mail.
 
-export default class AboutContainer extends Component {
-    render() {
-        return(
-            <Grid
-                textAlign='center'
-                style={{ height: '90vh' }}
-                verticalAlign='top'
-            >
-                <Grid.Column style={{ maxWidth: 600 }} textAlign='left'>
-                    <Segment style={{ height: "60vh" }} >
-                        <AboutPage/>
-                    </Segment>
-                </Grid.Column>
-            </Grid>
-        )
-    }
+// export default class AboutContainer extends Component {
+const AboutContainer = () => {
+
+    return(
+        <Grid
+            textAlign='center'
+            style={{ height: '90vh' }}
+            verticalAlign='top'
+        >
+            <Grid.Column style={{ maxWidth: 600 }} textAlign='left'>
+                <Segment style={{ height: "60vh" }} >
+                    <AboutPage/>
+                </Segment>
+            </Grid.Column>
+        </Grid>
+    )
 }
+
+export default AboutContainer
+

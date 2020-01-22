@@ -17,9 +17,14 @@ class Dashboard extends Component {
     render() {
         console.log("Dashboard.js", this.props);
 
-        const player = this.props.player.player;
-        const matches = this.props.player.matches;
-        const games = this.props.player.games;
+        // const player = this.props.player.player;
+        // const matches = this.props.player.matches;
+        // const games = this.props.player.games;
+
+        const {player, matches, games} = this.props.player
+        console.log(matches);
+        
+        const wins = matches.filter(match => match.win).length
 
         return(
             <>   
@@ -32,7 +37,7 @@ class Dashboard extends Component {
                             <Image bordered rounded src={player.profileImage} size='large' style={{width: '200px', height: "auto"}}centered />
                             <h5>{player.username}</h5>
                             <p>Win : Loss</p>
-                            <span>{player.wins} : {player.losses} </span>          
+                            <span>{wins} : {matches.length - wins} </span>          
                         </Segment>
                     </Grid.Column>
                     
@@ -82,6 +87,8 @@ const mapStateToProps = ({player}) => ({
 //      matches: state.matches
 // })
 
+
+
 // ES6 syntax for connect.
 export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer })(Dashboard);
 
@@ -91,3 +98,4 @@ export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer })(
 //         deleteMatch: (matchId) => dispatch(deleteMatch(matchId))  
 //     }
 // }
+

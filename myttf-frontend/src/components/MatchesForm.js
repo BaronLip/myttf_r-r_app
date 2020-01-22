@@ -64,31 +64,9 @@ class MatchesForm extends Component {
     handleSubmit = event => {
         console.log("Submitting from MatchesForm.", this.props.player);
         event.preventDefault();
-        // const player = this.props.player;
-        // const matches = this.props.matches;
-        // const games = this.props.games;
-        // const matchGames = []
-
-        // matches.forEach(match => {
-        //     matchGames = games.filter(game => {
-        //         return game.match_id === match.id
-        //     })
-        //     // debugger
-        //     let gameWin = 0
-        //     let gameLoss = 0
-        //     matchGames.forEach(game => {
-        //         if (game.player_score > game.opponent_score) {
-        //             return gameWin += 1
-        //         } else {
-        //             return gameLoss += 1
-        //         }
-        //     });
-        //     // debugger
-        //     gameWin > gameLoss ? player.wins += 1 : player.losses += 1
-        // });
 
         this.props.createMatch({...this.state, bookmarked: false }, this.props.player);
-        // Reset the form below.
+        // Resets the form below.
         this.setState({
             date: "",
             opponent_name: "",
@@ -101,9 +79,10 @@ class MatchesForm extends Component {
 
     render() {
         console.log("MatchesForm.js", this.state, this.props)
+        
+        // Dynamic form based on state's match_type value.
         let gameCount = parseInt(this.state.match_type);
         let gameInputs;
-
         if (this.state.match_type) {
             gameInputs = [...Array(gameCount)].map((game, i) => ( 
                 <Grid columns='equal' key={i}>
@@ -131,9 +110,6 @@ class MatchesForm extends Component {
                                 onChange={this.onChangeForGames}
                             />
                         </Grid.Column>
-                        {/* <Grid.Column>
-                            <Button form="game-form">Save</Button>
-                        </Grid.Column> */}
                     </Grid.Row>
                 </Grid>
                 )

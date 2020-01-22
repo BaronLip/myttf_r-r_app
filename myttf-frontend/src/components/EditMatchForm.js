@@ -42,7 +42,7 @@ class EditMatchForm extends Component {
             .catch(error => console.log(error))
     }
 
-    handleOnChange = event => {
+    handleOnChange = (event) => {
         const { name, value } = event.target;
         // const name = event.target.name;
         // const value = event.target.value;
