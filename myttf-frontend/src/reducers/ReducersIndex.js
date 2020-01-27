@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import player from './PlayersReducer';
 import matches from './MatchesReducer';
 import current_player from "./CurrentPlayerReducer";
-import login_form from "./LoginForm";
+import login_form from "./LoginFormReducer";
 
 console.log("Combining reducers and creating store/state.")
 
