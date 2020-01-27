@@ -15,18 +15,18 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log("Dashboard.js", this.props);
+        console.log("PlayerContainer.js", this.props);
 
-        const {player, games} = this.props.player
-        // const player = this.props.player.player;
-        // const games = this.props.player.games;
+        let {player, matches, games} = this.props.player
+        // let player = this.props.player.player;
+        // let matches = this.props.player.matches;
+        // let games = this.props.player.games;
 
-        // matches is created separately to be sorted.
-        const matches = this.props.player.matches.sort((a,b) => b.bookmarked - a.bookmarked );
+        matches.sort((a,b) => b.bookmarked - a.bookmarked);
         
         console.log(matches);
         
-        const wins = matches.filter(match => match.win).length
+        let wins = matches.filter(match => match.win).length
 
         return(
             <>   
