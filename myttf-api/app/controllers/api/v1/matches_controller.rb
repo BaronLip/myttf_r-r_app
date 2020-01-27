@@ -83,25 +83,28 @@ class Api::V1::MatchesController < ApplicationController
         i = 0
         gameWin = 0
         gameLoss = 0
-
+        
+        # byebug
         # This section is updating or creating a new Game instance.
-        params_games.each do |game|
-            if game[:id]
-                gameObj = match.games.find_by(id: game[:id])
-                gameObj.update(
-                    player_score: game[:player_score], 
-                    opponent_score: game[:opponent_score]
-                )
-                i += 1
-            else
-                game = Game.new
-                game.match_id = match.id
-                game.player_score = params_games[i][:player_score]
-                game.opponent_score = params_games[i][:opponent_score]
-                game.save
-                match.games << game
-                match.save
-                i += 1
+        if params_games
+            params_games.each do |game|
+                if game[:id]
+                    gameObj = match.games.find_by(id: game[:id])
+                    gameObj.update(
+                        player_score: game[:player_score], 
+                        opponent_score: game[:opponent_score]
+                    )
+                    i += 1
+                else
+                    game = Game.new
+                    game.match_id = match.id
+                    game.player_score = params_games[i][:player_score]
+                    game.opponent_score = params_games[i][:opponent_score]
+                    game.save
+                    match.games << game
+                    match.save
+                    i += 1
+                end
             end
         end
 

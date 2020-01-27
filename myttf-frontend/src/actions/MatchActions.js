@@ -80,7 +80,7 @@ export const bookmark = (match) => {
         newMatch.bookmarked = false;
     }
 
-    return dispatch =>
+    return (dispatch) =>
     fetch(`http://localhost:3000/api/v1/players/${match.player_id}/matches/${match.id}`, { 
         method: "PATCH",
         headers: {
