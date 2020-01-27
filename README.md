@@ -33,3 +33,4 @@ cd to myttf-frontend directory.\
 ~~Redirect back to dashboard after editing match.~~\
 ~~Use _destroy key within attributes hash to destroy nested games within Match hash.~~\
 ~~Create separate controller method for bookmarking matches.~~\
+~~Matches are sorted by whether they are bookmarked or not.~~\
