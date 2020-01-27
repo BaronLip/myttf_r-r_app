@@ -40,7 +40,7 @@ export default (state =
         case "ADD_MATCH":
             console.log("You're adding a match", state, action);
             const addMatch = { ...action.match };
-            // debugger
+
             if (action.match.match.win === true) { 
                 state.player.wins += 1 
             } else if (action.match.match.loss === true) { 

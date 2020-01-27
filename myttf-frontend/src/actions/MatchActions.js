@@ -12,14 +12,14 @@
 //     };
 // }
 
-export const setMatches = (matches) => {
-    return {type: "FETCH_MATCHES", matches}
-}
+// export const setMatches = (matches) => {
+//     return {type: "FETCH_MATCHES", matches}
+// }
 
-export const showMatch = (match) => {
-    console.log("actions/MatchActions.js showMatch", match);
-    return { type: "SHOW_MATCH", match };
-}
+// export const showMatch = (match) => {
+//     console.log("actions/MatchActions.js showMatch", match);
+//     return { type: "SHOW_MATCH", match };
+// }
 
 export const createMatch = (match, player) => {
     console.log("Creating a new match.", match, player);

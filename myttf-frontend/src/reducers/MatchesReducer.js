@@ -6,12 +6,12 @@ export default (state = {}, action) => {
         //     console.log("you're fetching all matches", state, action);
         //     return [...action.matches];
         
-        case "SHOW_MATCH":
-            console.log("You're showing the match", state, action);
-            const match = {
-                ...action.match
-            };
-            return [...state, match ];
+        // case "SHOW_MATCH":
+        //     console.log("You're showing the match", state, action);
+        //     const match = {
+        //         ...action.match
+        //     };
+        //     return [...state, match ];
         
         // MOVED TO PLAYER REDUCER
         // case "ADD_MATCH":
