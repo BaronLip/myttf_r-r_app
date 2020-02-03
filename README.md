@@ -1,30 +1,34 @@
 # MyTTF_React-Redux_app
 
-### Dependencies: 
-React\
-Redux - $ npm install redux\
-React-Redux - $ npm install react-redux\
-React-Router - $ npm install --save react-router\
-React-Router-Dom - $ npm install react-router-dom\
-React-Redux-Devtools - $ npm install --save-dev redux-devtools\
-Redux-Thunk - $ npm install --save redux-thunk\
+## Dependencies: 
+Using the command line or terminal, please install the following:\
+React - This app was created using "create-react-app". It requires node.js, which should include NPM and NPX. Visit nodejs.org for the latest version. 
+1. Redux - $ npm install redux
+2. React-Redux - $ npm install react-redux
+3. React-Router - $ npm install --save react-router
+4. React-Router-Dom - $ npm install react-router-dom
+5. React-Redux-Devtools - $ npm install --save-dev redux-devtools
+6. Redux-Thunk - $ npm install --save redux-thunk\
 ~$ npm install --save-dev @babel/plugin-proposal-throw-expressions~\
-~$ npm install --save-dev @babel/plugin-syntax-throw-expressions~\
-Rails 5.2.4 with Postgresql - $ rails new myttf-api --api --database=postgresql\
-Yarn - $ brew install yarn\
+~$ npm install --save-dev @babel/plugin-syntax-throw-expressions~
+7. Rails 5.2.4 with Postgresql - $ rails new myttf-api --api --database=postgresql
+8. Yarn - $ brew install yarn\
 Semantic UI - $ yarn add semantic-ui-react\
-Babel-ESlint = $ npm install --save-dev babel-eslint\
+Babel-ESlint = $ npm install --save-dev babel-eslint
 
 
-### Boot-up:
-*** Be sure to start backend first. Localhost is configured to be 3000.\
-cd to myttf-api directory.\
-    $ rails s\
-cd to myttf-frontend directory.\
-    $ npm start\
+## Boot-up:
+1. Download the zip file.
+2. Navigate to the directory within your command line or text editor.\
+*** Be sure to start backend first. Localhost is configured to be 3000.
+3. cd to myttf-api directory.\
+   start your rails server with terminal command - $ rails s
+4. cd to myttf-frontend directory.\
+   start your node server with terminal command - $ npm start
+5. Open your web browser and type in the address "http://localhost:3001/". This should bring you to a simple page with a headerbar across the top. Click on the dashboard button to enter the main page. 
 
 
-### Follow-ups:
+## Follow-ups:
 1. Add login functionality.\
 2. Add additional attributes for player.\
 3. Create validations with alerts.\

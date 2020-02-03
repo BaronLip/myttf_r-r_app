@@ -4,6 +4,7 @@ import { Container, Grid } from 'semantic-ui-react';
 import './App.css';
 
 import header from './components/Header'
+import Login from "./components/LoginForm";
 import Dashboard from './containers/PlayerContainer';
 import EditMatchContainer from './containers/EditMatchContainer';
 import AboutContainer from './containers/AboutContainer';
@@ -22,7 +23,9 @@ function App() {
                      <Grid.Column style={{ maxWidth: 1000 }}>
                         
                         {header()}
+                        <Login />
                         
+                        {/* <Route path="/api/v1/login" exact component= {Login} /> */}
                         <Route path="/dashboard" exact component={Dashboard} />
                         <Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
                         <Route path="/about" exact component={AboutContainer} />

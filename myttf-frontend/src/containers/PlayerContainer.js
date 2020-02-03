@@ -90,7 +90,6 @@ const mapStateToProps = ({player}) => ({
 // })
 
 
-
 // ES6 syntax for connect.
 export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer })(Dashboard);
 
