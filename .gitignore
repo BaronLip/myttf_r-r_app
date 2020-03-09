@@ -22,3 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 myttf-frontend/node_modules/.cache/babel-loader/022fe2c5d121b6885e64e58014bbb8d7.json
+
+# readme
+PLANNING.md

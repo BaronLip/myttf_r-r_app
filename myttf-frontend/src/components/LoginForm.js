@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateLoginForm } from "../actions/LoginFormActions";
+import { updateLoginForm, login } from "../actions/LoginFormActions";
 
 const handleChange = (event) => {
     const { name, value } = event.target
@@ -16,7 +16,7 @@ const handleChange = (event) => {
 // Or be destructured and just use the key to represent the value.
 const Login = ({username, password, updateLoginForm }) => {
     return (
-        <form onSubmit={undefined}>
+        <form onSubmit={login}>
             <label>Username:</label> <br/>
             <input name="username" type='text' value={username} onChange={handleChange}/><br/>
 

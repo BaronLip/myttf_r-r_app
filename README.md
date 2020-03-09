@@ -29,10 +29,10 @@ Babel-ESlint = $ npm install --save-dev babel-eslint
 
 
 ## Follow-ups:
-1. Add login functionality.\
-2. Add additional attributes for player.\
-3. Create validations with alerts.\
-4. Improve CSS,... in so many ways.\
+1. Add login functionality.
+2. Add additional attributes for player.
+3. Create validations with alerts.
+4. Improve CSS,... in so many ways.
 ~~Additional win:loss logic in match controller:~~\
 ~~Redirect back to dashboard after editing match.~~\
 ~~Use _destroy key within attributes hash to destroy nested games within Match hash.~~\

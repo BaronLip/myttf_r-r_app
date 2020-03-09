@@ -5,3 +5,11 @@ export const updateLoginForm = (name, value) => {
         name, value
     }
 }
+
+export const login = (e) => {
+    let username = e.target[0].value;
+    let password = e.target[1].value;
+    console.log(username, password)
+    
+    // connect to backend?
+}
