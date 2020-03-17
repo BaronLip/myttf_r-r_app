@@ -1,5 +1,7 @@
 # MyTTF_React-Redux_app
 
+***PLEASE SEE SESSIONS BRANCH FOR LATEST VERSION. IN DEVELOPMENT. ***
+
 ### Dependencies: 
 React\
 Redux - $ npm install redux\
