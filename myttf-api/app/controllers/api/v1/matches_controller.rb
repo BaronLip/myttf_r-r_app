@@ -142,7 +142,7 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     def destroy
-        byebug
+        # byebug
         match = Match.find(params[:id])
         player = Player.find_by(id: match.player_id)
         games = match.games
