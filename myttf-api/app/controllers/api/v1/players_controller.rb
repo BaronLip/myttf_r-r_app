@@ -2,7 +2,19 @@ class Api::V1::PlayersController < ApplicationController
 
     def index
         players = Player.all
-        render json: @players, status: 200
+        # prior code, in case "if " statement fails. 
+        # render json: players, status: 200
+        if players
+            render json: {
+                players: players,
+                status: 200
+            }
+        else
+            render json: {
+                status: 500,
+                errors: ["no players found"]
+            }
+        end
     end
 
     def show
