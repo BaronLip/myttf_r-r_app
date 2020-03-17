@@ -22,12 +22,19 @@ class Api::V1::PlayersController < ApplicationController
         matches = player.matches
         games = player.games
         
-        render json: {
-            player: player,
-            matches: matches,
-            games: games
-        },
-        status: 200
+        if player
+            render json: {
+                player: player,
+                matches: matches,
+                games: games,
+                status: 200
+            }
+        else
+            render json: {
+                status: 500,
+                errors: ['user not found']
+            }
+        end
     end
 
     # def create
