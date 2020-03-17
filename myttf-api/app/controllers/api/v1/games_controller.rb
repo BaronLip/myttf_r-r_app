@@ -30,7 +30,6 @@ class Api::V1::GamesController < ApplicationController
     end
 
     def destroy
-        byebug
         game = Game.find(params[:id])
         game.delete
 
