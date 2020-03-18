@@ -19,7 +19,7 @@ function App() {
 						<Grid.Column style={{ maxWidth: 1000 }}>
 							{header()}
 
-							<Route path="/login" exact component={LoginForm} />
+							<Route path="/api/v1/login" exact component={LoginForm} />
 							<Route path="/dashboard" exact component={Dashboard} />
 							<Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
 							<Route path="/about" exact component={AboutContainer} />
