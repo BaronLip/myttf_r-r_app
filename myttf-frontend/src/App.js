@@ -13,9 +13,23 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			inLoggedIn: false,
+			isLoggedIn: false,
 			player: {}
 		};
+	}
+
+	handleLogin = (data) => {
+		this.setState({
+			isLoggedIn: true,
+			player: data.player
+		})
+	}
+
+	handleLogout = () => {
+		this.setState({
+			isLoggedIn: false,
+			player: {}
+		})
 	}
 
 	render () {

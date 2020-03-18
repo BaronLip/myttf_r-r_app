@@ -8,7 +8,7 @@ const handleChange = (event) => {
         name,
         value
     }
-    updateLoginForm(updatedFormInfo)
+    updateLoginForm(updatedFormInfo) 
 }
 
 // Props are passed into a functional component as argument objects.
@@ -28,7 +28,7 @@ const Login = ({username, password, updateLoginForm }) => {
 }
  
 const mapStateToProps = ({ username, password }) => ({ username, password });
-// Longhand of mapStateToProps
+// //Longhand of mapStateToProps
 // const mapStateToProps = (state) => ({
 //     username: state.login_form.username,
 //     password: state.login_form.password
