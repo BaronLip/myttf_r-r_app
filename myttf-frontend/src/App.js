@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container, Grid } from 'semantic-ui-react';
 import './App.css';
@@ -9,26 +9,35 @@ import Dashboard from './containers/PlayerContainer';
 import EditMatchContainer from './containers/EditMatchContainer';
 import AboutContainer from './containers/AboutContainer';
 
-function App() {
-	// console.log('App.js');
-	return (
-		<Router>
-			<Switch>
-				<Container>
-					<Grid textAlign="center" style={{ height: '90vh' }} verticalAlign="top">
-						<Grid.Column style={{ maxWidth: 1000 }}>
-							{header()}
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			inLoggedIn: false,
+			player: {}
+		};
+	}
 
-							<Route path="/api/v1/login" exact component={LoginForm} />
-							<Route path="/dashboard" exact component={Dashboard} />
-							<Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
-							<Route path="/about" exact component={AboutContainer} />
-						</Grid.Column>
-					</Grid>
-				</Container>
-			</Switch>
-		</Router>
-	);
+	render () {
+		return (
+			<Router>
+				<Switch>
+					<Container>
+						<Grid textAlign="center" style={{ height: '90vh' }} verticalAlign="top">
+							<Grid.Column style={{ maxWidth: 1000 }}>
+								{header()}
+
+								<Route path="/api/v1/login" exact component={LoginForm} />
+								<Route path="/dashboard" exact component={Dashboard} />
+								<Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
+								<Route path="/about" exact component={AboutContainer} />
+							</Grid.Column>
+						</Grid>
+					</Container>
+				</Switch>
+			</Router>
+		);
+	};
 }
 
 export default App;
