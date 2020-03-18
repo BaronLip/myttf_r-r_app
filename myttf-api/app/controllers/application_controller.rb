@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     include ActionController::Helpers
     include ActionController::Cookies
 
-    helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
+    helper_method :login!, :logged_in?, :current_player, :authorized_player?, :logout!
 
     def login!
         session[:player_id] = player.id
@@ -14,16 +14,16 @@ class ApplicationController < ActionController::Base
         !!session[:player_id]
     end
 
-    def current_user
-        current_user ||= Player.find(session[:player_id]) if session[:player_id]
+    def current_player
+        current_player ||= Player.find(session[:player_id]) if session[:player_id]
     end
 
-    def authorized_user?
-        player == current_user
+    def authorized_player?
+        player == current_player
     end
 
     def logout!
         session.clear
     end
-    
+
 end
