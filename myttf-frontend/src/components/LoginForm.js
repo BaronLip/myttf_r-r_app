@@ -14,12 +14,15 @@ const handleChange = (event) => {
 // Props are passed into a functional component as argument objects.
 // They can be passed in as "props". And values are extracted through props, ie: props.username.
 // Or be destructured and just use the key to represent the value.
-const Login = ({username, password, updateLoginForm }) => {
+const Login = ({username, email, password}) => {
     return (
         <form onSubmit={login}>
             <label>Username:</label> <br/>
             <input name="username" type='text' value={username} onChange={handleChange}/><br/>
 
+            <label>Email:</label><br/>
+            <input name="email" label="email" type='text' value={email} onChange={handleChange}/><br/>
+            
             <label>Password:</label><br/>
             <input name="password" label="password" type='text' value={password} onChange={handleChange}/><br/>
             <input type="submit" value="log in" />

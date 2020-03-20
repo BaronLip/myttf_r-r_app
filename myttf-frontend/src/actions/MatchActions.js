@@ -1,4 +1,4 @@
-// fetchMatches is no longer needed since fetchPlayer now contains all match info.
+// // fetchMatches is no longer needed since fetchPlayer now contains all match info.
 // export const fetchMatches = (player) => {
 //     console.log("actions/MatchActions.js fetchMatches");
 

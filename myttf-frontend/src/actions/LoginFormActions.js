@@ -7,9 +7,11 @@ export const updateLoginForm = (name, value) => {
 }
 
 export const login = (e) => {
+    debugger
     let username = e.target[0].value;
-    let password = e.target[1].value;
-    console.log(username, password)
+    let email = e.target[1].value;
+    let password = e.target[2].value;
+    console.log(username, email, password)
     
     // connect to backend?
 }

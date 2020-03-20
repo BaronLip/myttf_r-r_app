@@ -3,8 +3,8 @@ import React from 'react'
 const Login = () => {
     return (
         <form onSubmit={}>
-            <input name="username" type='text' onchange={} />
-            <input name="password" type='text' onchange={} />
+            <input name="username" type='text' onChange={} />
+            <input name="password" type='text' onChange={} />
             <input type="submit" value="log in" />
         </form>
     )

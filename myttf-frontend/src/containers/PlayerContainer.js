@@ -83,7 +83,7 @@ class Dashboard extends Component {
 const mapStateToProps = ({player}) => ({
     player
 })
-// //Longhand of mSTP:
+// // Longhand of mSTP:
 // const mapStateToProps = (state) => ({
 //      player: state.player,
 //      matches: state.matches
