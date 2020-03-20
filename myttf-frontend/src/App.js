@@ -32,6 +32,20 @@ class App extends Component {
 		})
 	}
 
+	loginStatus = () => {
+		fetch('http://localhost:3000/logged_in', {
+			credentials: "include"
+		})
+		.then( response => {
+			if (response.data.logged_in) {
+				this.handleLogin(response)
+			} else {
+				this.handleLogout()
+			}
+		})
+		.catch(error => console.log("api errors", error))
+	}
+
 	render () {
 		return (
 			<Router>
