@@ -13,5 +13,6 @@ export const login = (e) => {
     let password = e.target[2].value;
     console.log(username, email, password)
     
+    e.preventDefault();
     // connect to backend?
 }

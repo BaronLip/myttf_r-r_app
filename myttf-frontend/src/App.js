@@ -18,6 +18,10 @@ class App extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this.loginStatus()
+	}
+
 	handleLogin = (data) => {
 		this.setState({
 			isLoggedIn: true,
@@ -56,9 +60,12 @@ class App extends Component {
 								{header()}
 
 								<Route path="/api/v1/login" exact component={LoginForm} />
-								<Route path="/dashboard" exact component={Dashboard} />
+								
+								<Route path="/api/v1/dashboard" exact component={Dashboard} />
+								
 								<Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
-								<Route path="/about" exact component={AboutContainer} />
+								
+								<Route path="/api/v1/about" exact component={AboutContainer} />
 							</Grid.Column>
 						</Grid>
 					</Container>

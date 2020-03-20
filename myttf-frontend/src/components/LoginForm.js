@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateLoginForm, login } from "../actions/LoginFormActions";
+import { Link } from 'react-router-dom'
 
 const handleChange = (event) => {
     const { name, value } = event.target
@@ -15,6 +16,17 @@ const handleChange = (event) => {
 // They can be passed in as "props". And values are extracted through props, ie: props.username.
 // Or be destructured and just use the key to represent the value.
 const Login = ({username, email, password}) => {
+    // class Login extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         username: "",
+    //         email: "",
+    //         password: "",
+    //         errors: ""
+    //     }
+    // };
+
     return (
         <form onSubmit={login}>
             <label>Username:</label> <br/>
@@ -30,7 +42,7 @@ const Login = ({username, email, password}) => {
     )
 }
  
-const mapStateToProps = ({ username, password }) => ({ username, password });
+const mapStateToProps = ({ username, email, password }) => ({ username, email, password });
 // //Longhand of mapStateToProps
 // const mapStateToProps = (state) => ({
 //     username: state.login_form.username,
