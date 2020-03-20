@@ -33,7 +33,7 @@ class App extends Component {
 	}
 
 	loginStatus = () => {
-		fetch('http://localhost:3000/logged_in', {
+		fetch('http://localhost:3000/api/v1/logged_in', {
 			credentials: "include"
 		})
 		.then( response => {
