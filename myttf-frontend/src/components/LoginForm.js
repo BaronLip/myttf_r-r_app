@@ -15,7 +15,7 @@ const handleChange = (event) => {
 // Props are passed into a functional component as argument objects.
 // They can be passed in as "props". And values are extracted through props, ie: props.username.
 // Or be destructured and just use the key to represent the value.
-const Login = ({username, email, password}) => {
+const LoginForm = ({username, email, password}) => {
     // class Login extends Component {
     // constructor(props) {
     //     super(props);
@@ -37,7 +37,12 @@ const Login = ({username, email, password}) => {
             
             <label>Password:</label><br/>
             <input name="password" label="password" type='text' value={password} onChange={handleChange}/><br/>
+            
             <input type="submit" value="log in" />
+
+            <div>
+                or <Link to='/signup'>sign up</Link>
+            </div>
         </form>
     )
 }
@@ -49,4 +54,4 @@ const mapStateToProps = ({ username, email, password }) => ({ username, email, p
 //     password: state.login_form.password
 // })
 
-export default connect(mapStateToProps, { updateLoginForm })(Login);
+export default connect(mapStateToProps, { updateLoginForm })(LoginForm);
