@@ -14,7 +14,8 @@ export default combineReducers({
 // export default combineReducer({
 //     player: player,
 //     matches: matches,
-//     current_player: current_player
+//     current_player: current_player,
+//     login_form: login_form 
 // })
 
 // store.js imports this file and creates the store.

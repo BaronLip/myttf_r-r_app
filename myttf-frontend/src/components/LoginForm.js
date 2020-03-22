@@ -1,15 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { updateLoginForm, login } from "../actions/LoginFormActions";
 import { Link } from 'react-router-dom'
 
 const handleChange = (event) => {
-    const { name, value } = event.target
+    const { name, value } = event.target;
     const updatedFormInfo = {
         name,
         value
-    }
+    };
     updateLoginForm(updatedFormInfo) 
+}
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let username = e.target[0].value;
+    let email = e.target[1].value;
+    let password = e.target[2].value;
+
+    let player = {
+        username: username,
+        email: email,
+        password: password
+    };
+
+    console.log(player);
+
+    fetch('http://localhost:3000/login', { player }, { credentials: "include" })
+    .then(response => {
+        if (response.formData.logged_in) {
+            this.props.handleLogin(response.data);
+            this.redirect();
+        } else {
+            this.setState({
+                errors:response.data.errors
+            });
+        };
+    })
+    .catch(error => console.log("api errors:", error))
+
+    const redirect = () => {
+        this.props.history.push("/");
+    }
 }
 
 // Props are passed into a functional component as argument objects.
@@ -26,9 +59,9 @@ const LoginForm = ({username, email, password}) => {
     //         errors: ""
     //     }
     // };
-
+    console.log({username, email, password});
     return (
-        <form onSubmit={login}>
+        <form onSubmit={handleSubmit}>
             <label>Username:</label> <br/>
             <input name="username" type='text' value={username} onChange={handleChange}/><br/>
 
@@ -51,6 +84,7 @@ const mapStateToProps = ({ username, email, password }) => ({ username, email, p
 // //Longhand of mapStateToProps
 // const mapStateToProps = (state) => ({
 //     username: state.login_form.username,
+//     email: state.login_form.email, 
 //     password: state.login_form.password
 // })
 

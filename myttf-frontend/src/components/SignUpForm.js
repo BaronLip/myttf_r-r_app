@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { updateSignUpForm, signUp } from "../actions/SignUpFormActions";
 import { Link } from 'react-router-dom'
@@ -12,7 +12,7 @@ const handleChange = (event) => {
     updateSignUpForm(updatedFormInfo) 
 }
 
-const SignUpForm = ({username, email, password}) => {
+const SignUpForm = ({username, email, password, passwordConfirmation}) => {
 
     return (
         <form onSubmit={signUp}>
@@ -24,6 +24,9 @@ const SignUpForm = ({username, email, password}) => {
             
             <label>Password:</label><br/>
             <input name="password" label="password" type='text' value={password} onChange={handleChange}/><br/>
+            
+            <label>Password Confirmation:</label><br/>
+            <input name="passwordConfirmation" label="password" type='text' value={passwordConfirmation} onChange={handleChange}/><br/>
             
             <input type="submit" value="Sign Up" />
 

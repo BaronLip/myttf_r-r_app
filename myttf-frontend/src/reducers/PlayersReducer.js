@@ -24,7 +24,7 @@ export default (state =
 
         case "SHOW_PLAYER":
             console.log("You're showing a player", state, action);
-            return { ...state, ...action.player }
+            return { ...state, ...action.player };
 
 
     //***** MATCH REDUCERS: *****
