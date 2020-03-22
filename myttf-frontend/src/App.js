@@ -5,7 +5,6 @@ import './App.css';
 
 import header from './components/Header';
 import LoginForm from './components/LoginForm';
-import SignUpForm from "./components/SignUpForm";
 import Dashboard from './containers/PlayerContainer';
 import EditMatchContainer from './containers/EditMatchContainer';
 import AboutContainer from './containers/AboutContainer';
@@ -42,7 +41,6 @@ class App extends Component {
 			credentials: "include"
 		})
 		.then( response => {
-			console.log(response);
 			if (response.data.logged_in) {
 				this.handleLogin(response)
 			} else {
@@ -61,20 +59,7 @@ class App extends Component {
 							<Grid.Column style={{ maxWidth: 1000 }}>
 								{header()}
 
-								{/* <Route path="/api/v1/login" exact component={LoginForm} /> */}
-								<Route
-									exact path='/login'
-									render={ props => (
-										<LoginForm {...props} loggedInStatus={this.state.isLoggedIn} />
-									)}
-								/>
-
-								<Route
-									exact path='/signup'
-									render={props => (
-										<SignUpForm {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
-									)}
-								/>
+								<Route path="/api/v1/login" exact component={LoginForm} />
 								
 								<Route path="/api/v1/dashboard" exact component={Dashboard} />
 								

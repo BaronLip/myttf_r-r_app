@@ -25,9 +25,9 @@ const header = () => {
                         <Link to='/signup'>
                             <Button floated='right'>SignUp</Button>
                         </Link>
-                        <Link to='/dashboard'>
+                        {/* <Link to='/dashboard'>
                             <Button floated='right'>Dashboard</Button>
-                        </Link>
+                        </Link> */}
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
