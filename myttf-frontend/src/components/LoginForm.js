@@ -25,9 +25,15 @@ const handleSubmit = (e) => {
 		password: password
 	};
 
-	console.log(player);
-
-	fetch('http://localhost:3000/api/v1/login', { player }, { credentials: 'include' })
+	// console.log(player);
+    debugger
+	// fetch('http://localhost:3000/api/v1/login', { player }, { credentials: 'include' })
+	fetch('http://localhost:3000/api/v1/login', { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(player),
+        credentials: 'include'
+        })
 		.then((response) => {
 			if (response.formData.logged_in) {
 				this.props.handleLogin(response.data);
@@ -38,27 +44,17 @@ const handleSubmit = (e) => {
 				});
 			}
 		})
-		.catch((error) => console.log('api errors:', error));
+		.catch((error) => console.log('api errors:', error))
 
 	const redirect = () => {
-		this.props.history.push('/');
-	};
-};
+		this.props.history.push('/')
+	}
+}
 
 // Props are passed into a functional component as argument objects.
 // They can be passed in as "props". And values are extracted through props, ie: props.username.
 // Or be destructured and just use the key to represent the value.
 const Login = ({ username, email, password }) => {
-	// class Login extends Component {
-	// constructor(props) {
-	//     super(props);
-	//     this.state = {
-	//         username: "",
-	//         email: "",
-	//         password: "",
-	//         errors: ""
-	//     }
-	// };
 	console.log({ username, email, password });
 	return (
 		<form onSubmit={handleSubmit}>

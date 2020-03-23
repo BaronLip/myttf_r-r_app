@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
 
-    byebug
     def create
+        byebug
         player = Player.find_by(email: session_params[:email])
 
         if player && player.authenticate(session_params[:password])
@@ -43,7 +43,7 @@ class Api::V1::SessionsController < ApplicationController
     private
 
     def session_params
-        params.require(:player).permit(:username, :password)
+        params.require(:player).permit(:username, :email, :password)
     end
 
 end
