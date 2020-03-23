@@ -1,5 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
 
+    byebug
     def create
         player = Player.find_by(email: session_params[:email])
 
