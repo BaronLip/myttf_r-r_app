@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Player.create([
+Player.create!([
     {   
     username: "Baron",
     email: "baron@baron.com",
-    # password_digest: "",
+    password: "baron",
     profileImage: "/images/Bitmoji_Baron_lr.png",
     wins: 1,
     losses: 1,
@@ -19,7 +19,7 @@ Player.create([
     {   
     username: "Chad",
     email: "chad@chad.com",
-    # password_digest: "",
+    password: "chad",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -28,7 +28,7 @@ Player.create([
     {   
     username: "Scott",
     email: "scott@scott.com",
-    # password_digest: "",
+    password: "scott",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -37,14 +37,14 @@ Player.create([
     {   
     username: "Ryan",
     email: "ryan@ryan.com",
-    # password_digest: "",
+    password: "ryan",
     profileImage: "",
     wins: 0,
     losses: 0,
     },
 ])
 
-Match.create([
+Match.create!([
     {
     player_id: 1,
     date: "2019-12-26",
@@ -65,7 +65,7 @@ Match.create([
     },
 ])
 
-Game.create([
+Game.create!([
     {
         match_id: 1,
         player_score: 11,
