@@ -8,7 +8,9 @@
 
 Player.create([
     {   
-    username: "Baron Lip",
+    username: "Baron",
+    email: "baron@baron.com",
+    # password_digest: "",
     profileImage: "/images/Bitmoji_Baron_lr.png",
     wins: 1,
     losses: 1,
@@ -16,6 +18,8 @@ Player.create([
 
     {   
     username: "Chad",
+    email: "chad@chad.com",
+    # password_digest: "",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -23,6 +27,8 @@ Player.create([
 
     {   
     username: "Scott",
+    email: "scott@scott.com",
+    # password_digest: "",
     profileImage: "",
     wins: 0,
     losses: 0,
@@ -30,6 +36,8 @@ Player.create([
     
     {   
     username: "Ryan",
+    email: "ryan@ryan.com",
+    # password_digest: "",
     profileImage: "",
     wins: 0,
     losses: 0,
