@@ -2,9 +2,10 @@ class Api::V1::SessionsController < ApplicationController
 
     def create
         byebug
-        player = Player.find_by(email: session_params[:email])
+        player = Player.find_by(email: params[:session][:email])
 
-        if player && player.authenticate(session_params[:password])
+        # session_params is referencing strong params.
+        if player && player.authenticate(params[:session][:password])
             login!
             render json: {
                 logged_in: true,
@@ -42,8 +43,8 @@ class Api::V1::SessionsController < ApplicationController
 
     private
 
-    def session_params
-        params.require(:player).permit(:username, :email, :password)
-    end
+    # def session_params
+    #     params.require(:player).permit(:username, :email, :password)
+    # end
 
 end

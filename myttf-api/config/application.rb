@@ -25,6 +25,8 @@ module MyttfApi
         # Adding back in Cookies and Sessions ability for Rails API.
         # config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::Cookies
         # config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::Session::CookieStore
+        config.middleware.use ActionDispatch::Cookies
+        config.middleware.use ActionDispatch::Session::CookieStore
 
         # Settings in config/environments/* take precedence over those specified here.
         # Application configuration can go into files in config/initializers
