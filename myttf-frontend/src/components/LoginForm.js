@@ -33,6 +33,7 @@ const handleSubmit = (e) => {
         credentials: 'include'
         })
 		.then((response) => {
+            console.log(response.json());
 			if (response.formData.logged_in) {
 				this.props.handleLogin(response.data);
 				this.redirect();
