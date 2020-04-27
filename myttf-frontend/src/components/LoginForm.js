@@ -32,19 +32,22 @@ const handleSubmit = (e) => {
         credentials: 'include'
 	})
 	.then((response) => {
+		return response.json();
+	})
+	.then((json) => {
+		console.log(json);
 		debugger
-			console.log(response);
-			console.log(response.formData);
-			if (response.formData.logged_in) {
-				this.props.handleLogin(response.data);
-				this.redirect();
-			} else {
-				this.setState({
-					errors: response.data.errors
-				});
-			}
-		})
-		.catch((error) => console.log('api errors:', error))
+		if (json.logged_in) {
+			this.props.handleLogin(json.player);
+			this.redirect();
+		} else {
+			this.setState({
+				errors: json.data.errors
+			});
+		}
+	})
+
+	.catch((error) => console.log('api errors:', error))
 
 	const redirect = () => {
 		this.props.history.push('/')
