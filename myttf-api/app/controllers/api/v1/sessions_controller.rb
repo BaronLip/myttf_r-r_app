@@ -1,3 +1,5 @@
+require "pry"
+
 class Api::V1::SessionsController < ApplicationController
 
     def create
@@ -42,8 +44,8 @@ class Api::V1::SessionsController < ApplicationController
 
     private
 
-    # def session_params
-    #     params.require(:player).permit(:username, :email, :password)
-    # end
+    def session_params
+        params.require(:player).permit(:username, :email, :password)
+    end
 
 end
