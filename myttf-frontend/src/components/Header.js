@@ -19,10 +19,10 @@ const header = () => {
                     </Grid.Column>
                     
                     <Grid.Column>
-                        <Link to='api/v1/login'>
+                        <Link to='login'>
                             <Button floated='right'>Login</Button>
                         </Link>
-                        <Link to='api/v1/signup'>
+                        <Link to='signup'>
                             <Button floated='right'>SignUp</Button>
                         </Link>
                         {/* <Link to='/dashboard'>

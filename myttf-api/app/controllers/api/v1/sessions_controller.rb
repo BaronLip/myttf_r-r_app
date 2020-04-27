@@ -1,15 +1,14 @@
 class Api::V1::SessionsController < ApplicationController
 
     def create
-        byebug
-        player = Player.find_by(email: params[:session][:email])
-
+        @player = Player.find_by(email: params[:session][:email])
         # session_params is referencing strong params.
-        if player && player.authenticate(params[:session][:password])
+        # authenticate() is a built-in method of ActiveRecord in conjunction with BCrypt gem.
+        if @player && @player.authenticate(params[:session][:password])
             login!
             render json: {
                 logged_in: true,
-                player: player
+                player: @player
             } 
         else
             render json: {

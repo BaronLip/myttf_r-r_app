@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     helper_method :login!, :logged_in?, :current_player, :authorized_player?, :logout!
 
     def login!
-        session[:player_id] = player.id
+        session[:player_id] = @player.id
     end
     
     def logged_in?
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized_player?
-        player == current_player
+        @player == current_player
     end
 
     def logout!

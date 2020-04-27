@@ -25,14 +25,16 @@ const handleSubmit = (e) => {
 		password: password
 	};
 
-    // debugger
     fetch('http://localhost:3000/api/v1/login', { 
-        method: 'POST',
+		method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(player),
         credentials: 'include'
-        })
-		.then((response) => {
+	})
+	.then((response) => {
+		debugger
+			console.log(response);
+			console.log(response.formData);
 			if (response.formData.logged_in) {
 				this.props.handleLogin(response.data);
 				this.redirect();
