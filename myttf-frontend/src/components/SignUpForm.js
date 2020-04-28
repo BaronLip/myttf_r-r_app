@@ -13,7 +13,7 @@ const handleChange = (event) => {
 }
 
 const SignUpForm = ({username, email, password, passwordConfirmation}) => {
-
+    
     return (
         <form onSubmit={signUp}>
             <label>Username:</label> <br/>

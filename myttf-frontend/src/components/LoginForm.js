@@ -1,56 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateLoginForm} from '../actions/LoginFormActions';
+import { login } from '../actions/LoginFormActions';
 // import { Link } from 'react-router-dom';
 
+let player = {};
 const handleChange = (event) => {
-	const { name, value } = event.target;
-	const updatedFormInfo = {
-		name,
-		value
-	};
-	updateLoginForm(updatedFormInfo);
+	let { name, value } = event.target;
+	player[name] = value;
 };
 
 const handleSubmit = (e) => {
 	e.preventDefault();
+	console.log(player);
+	
+	login(player);
+	
+	// // *** NO LONGER NEEDED SINCE handleChange() creates the player.
+	// let username = e.target[0].value;
+	// let email = e.target[1].value;
+	// let password = e.target[2].value;
 
-	let username = e.target[0].value;
-	let email = e.target[1].value;
-	let password = e.target[2].value;
-
-	let player = {
-		username: username,
-		email: email,
-		password: password
-	};
-
-    fetch('http://localhost:3000/api/v1/login', { 
-		method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(player),
-        credentials: 'include'
-	})
-	.then((response) => {
-		return response.json();
-	})
-	.then((json) => {
-		console.log(json);
-		console.log(this.props)
-		if (json.logged_in) {
-			this.props.handleLogin(json.player);
-			this.redirect();
-		} else {
-			this.setState({
-				errors: json.data.errors
-			});
-		}
-	})
-	.catch((error) => console.log('api errors:', error))
-
-	const redirect = () => {
-		this.props.history.push('/')
-	}
+	// let player = {
+	// 	username: username,
+	// 	email: email,
+	// 	password: password
+	// };
+	// // *** END
 }
 
 // Props are passed into a functional component as argument objects.
@@ -84,4 +59,10 @@ const mapStateToProps = ({ username, email, password }) => ({ username, email, p
 //     password: state.login_form.password
 // })
 
-export default connect(mapStateToProps, { updateLoginForm })(LoginForm);
+// Connect is "connecting" mapStateToProps and mapDispatchToProps to the Redux store.
+// `updateLoginForm` is using a destructured syntax.
+export default connect(mapStateToProps, { login })(LoginForm);
+// // Longhand of mapDispatchToProps:
+// const mapDispatchToProps = (dispatch)  => {
+// 	updateLoginForm();
+// }

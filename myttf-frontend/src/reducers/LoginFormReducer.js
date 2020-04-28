@@ -8,12 +8,8 @@ const initialState = {
 export default (state = initialState, action) => {
 
     switch (action.type) {
-        case "UPDATE_LOGIN_FORM":
-            debugger
-            console.log(action.formData);
-            return action.formData;
-
-        case "reducer":
+        
+        case "LOGIN_PLAYER":
             console.log("LoginFormReducer");
             return action.formData;
 

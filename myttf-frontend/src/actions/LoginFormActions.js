@@ -1,29 +1,36 @@
-export const updateLoginForm = (name, value) => {
-    console.log(name, value)
-    return {
-        type: "UPDATE_LOGIN_FORM",
-        name, value
-    }
-}
-
-export const login = (e) => {
-    e.preventDefault();
-    
-    let username = e.target[0].value;
-    let email = e.target[1].value;
-    let password = e.target[2].value;
-
-    let player = {
-        username: username,
-        email: email,
-        password: password
-    };
-
+export const login = (player) => {
     console.log(player);
+
+    fetch('http://localhost:3000/api/v1/login', { 
+		method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(player),
+        credentials: 'include'
+	})
+	.then((response) => {
+		return response.json();
+	})
+	.then((json) => {
+		console.log(json);
+		console.log(this.props)
+		if (json.logged_in) {
+			this.props.handleLogin(json.player);
+			this.redirect();
+		} else {
+			this.setState({
+				errors: json.data.errors
+			});
+		}
+	})
+	.catch((error) => console.log('api errors:', error))
+
+	const redirect = () => {
+		this.props.history.push('/')
+	}
     
-    // return an action to engage reducer.
+    // return an action.type to engage reducer, include payload.
     return {
-        type: "reducer",
+        type: "LOGIN_PLAYER",
         player
     }
 }
