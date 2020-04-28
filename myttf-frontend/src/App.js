@@ -23,6 +23,7 @@ class App extends Component {
 	}
 
 	handleLogin = (data) => {
+		console.log("Handling Login.")
 		this.setState({
 			isLoggedIn: true,
 			player: data.player
@@ -59,7 +60,16 @@ class App extends Component {
 							<Grid.Column style={{ maxWidth: 1000 }}>
 								{header()}
 
-								<Route path="/api/v1/login" exact component={LoginForm} />
+								{/* RenderProps method to pass handleLogin */}
+								<Route 
+									path="/api/v1/login" 
+									// exact component={LoginForm} 
+									render={(props) => 
+										<LoginForm
+											handleLogin={this.handleLogin}
+										/>
+									}	
+								/>
 								
 								<Route path="/api/v1/dashboard" exact component={Dashboard} />
 								

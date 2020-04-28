@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
 
         case "reducer":
             console.log("LoginFormReducer");
-            // return player;
+            return action.formData;
 
         default:
             return state;

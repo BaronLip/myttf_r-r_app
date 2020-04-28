@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateLoginForm, login } from '../actions/LoginFormActions';
+import { updateLoginForm} from '../actions/LoginFormActions';
 // import { Link } from 'react-router-dom';
 
 const handleChange = (event) => {
@@ -36,7 +36,7 @@ const handleSubmit = (e) => {
 	})
 	.then((json) => {
 		console.log(json);
-		debugger
+		console.log(this.props)
 		if (json.logged_in) {
 			this.props.handleLogin(json.player);
 			this.redirect();
@@ -46,7 +46,6 @@ const handleSubmit = (e) => {
 			});
 		}
 	})
-
 	.catch((error) => console.log('api errors:', error))
 
 	const redirect = () => {
@@ -57,7 +56,7 @@ const handleSubmit = (e) => {
 // Props are passed into a functional component as argument objects.
 // They can be passed in as "props". And values are extracted through props, ie: props.username.
 // Or be destructured and just use the key to represent the value.
-const Login = ({ username, email, password }) => {
+const LoginForm = ({ username, email, password }) => {
 	console.log({ username, email, password });
 	return (
 		<form onSubmit={handleSubmit}>
@@ -85,4 +84,4 @@ const mapStateToProps = ({ username, email, password }) => ({ username, email, p
 //     password: state.login_form.password
 // })
 
-export default connect(mapStateToProps, { updateLoginForm })(Login);
+export default connect(mapStateToProps, { updateLoginForm })(LoginForm);
