@@ -64,9 +64,9 @@ class App extends Component {
 								<Route 
 									path="/api/v1/login" 
 									// exact component={LoginForm} 
-									render={(props) => 
+									render={(handleLogin) => 
 										<LoginForm
-											handleLogin={this.handleLogin}
+											handleLogin={handleLogin}
 										/>
 									}	
 								/>

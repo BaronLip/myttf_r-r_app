@@ -11,8 +11,9 @@ export const login = (player) => {
 		return response.json();
 	})
 	.then((json) => {
-		console.log(json);
-		console.log(this.props)
+        console.log(json);
+        debugger;
+		console.log(this)
 		if (json.logged_in) {
 			this.props.handleLogin(json.player);
 			this.redirect();
@@ -24,11 +25,11 @@ export const login = (player) => {
 	})
 	.catch((error) => console.log('api errors:', error))
 
-	const redirect = () => {
-		this.props.history.push('/')
-	}
+	// const redirect = () => {
+	// 	this.props.history.push('/')
+	// }
     
-    // return an action.type to engage reducer, include payload.
+    // Returning action.type to engage reducer, include payload.
     return {
         type: "LOGIN_PLAYER",
         player
