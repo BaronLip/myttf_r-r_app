@@ -2,7 +2,8 @@ const initialState = {
     username: "",
     email: "",
     password: "",
-    errors: ""
+    errors: "",
+    isLoggedIn: false,
 }
 
 export default (state = initialState, action) => {
@@ -12,10 +13,11 @@ export default (state = initialState, action) => {
         case "LOGIN_PLAYER":
             console.log("LoginFormReducer");
             console.log(action)
-            return action.formData;
+            // return action.formData;
 
         default:
             return state;
     }
 
 }
+

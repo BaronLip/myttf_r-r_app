@@ -59,9 +59,13 @@ const mapStateToProps = ({ username, email, password }) => ({ username, email, p
 // })
 
 // Connect is "connecting" mapStateToProps and mapDispatchToProps to the Redux store.
-// `updateLoginForm` is using a destructured syntax.
-export default connect(mapStateToProps, { login })(LoginForm);
+// // Connect statement with destructured syntax for mapDispatchToProps:
+export default connect(null, { login })(LoginForm);
+
 // // Longhand of mapDispatchToProps:
 // const mapDispatchToProps = (dispatch)  => {
-// 	updateLoginForm();
+// 	return {
+// 		login: (player) => dispatch(login(player))
+// 	}
 // }
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

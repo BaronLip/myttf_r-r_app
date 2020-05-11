@@ -45,10 +45,10 @@ export const createMatch = (match, player) => {
         //     return response.json();
         // }
     })
-    // ...reflect the added match to the window...
-    .then(match => { dispatch( addMatch(match) )})
+    // ...reflect the added match to the window...match is response.json().
+    .then((match) => dispatch( addMatch(match) ))
     // ...or show an error.
-    .catch(error => alert(error));
+    .catch((error) => alert(error));
 }
 
 export const addMatch = (match) => {

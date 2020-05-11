@@ -53,7 +53,7 @@ class App extends Component {
 
 	render () {
 		return (
-			<Router>
+			<Router basename="/api/v1">
 				<Switch>
 					<Container>
 						<Grid textAlign="center" style={{ height: '90vh' }} verticalAlign="top">
@@ -71,6 +71,8 @@ class App extends Component {
 									}	
 								/>
 								
+								{/* <Route path="/api/v1/login" exact component={LoginForm} /> */}
+
 								<Route path="/api/v1/dashboard" exact component={Dashboard} />
 								
 								<Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
