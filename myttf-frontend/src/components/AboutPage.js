@@ -1,5 +1,4 @@
 // This is an example of a functional component.
-
 import React from 'react'
 import { Header, Container, Input } from 'semantic-ui-react'
 

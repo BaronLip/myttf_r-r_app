@@ -30,6 +30,7 @@ Babel-ESlint = $ npm install --save-dev babel-eslint
 
 ## Follow-ups:
 1. Add login functionality.
+   * https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2 
 2. Add additional attributes for player.
 3. Create validations with alerts.
 4. Improve CSS,... in so many ways.

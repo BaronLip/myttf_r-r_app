@@ -14,6 +14,7 @@ export default (state = initialState, action) => {
             console.log("LoginFormReducer");
             console.log(action)
             // return action.formData;
+            break
 
         default:
             return state;

@@ -1,13 +1,15 @@
+// External imports:
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container, Grid } from 'semantic-ui-react';
+// Local imports:
 import './App.css';
-
 import header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Dashboard from './containers/PlayerContainer';
 import EditMatchContainer from './containers/EditMatchContainer';
 import AboutContainer from './containers/AboutContainer';
+import SignUpForm from './components/SignUpForm';
 
 class App extends Component {
 	constructor(props) {
@@ -53,12 +55,14 @@ class App extends Component {
 
 	render () {
 		return (
-			<Router basename="/api/v1">
-				<Switch>
-					<Container>
+			<Container>
+				<Router>
+					<Switch>
 						<Grid textAlign="center" style={{ height: '90vh' }} verticalAlign="top">
 							<Grid.Column style={{ maxWidth: 1000 }}>
 								{header()}
+
+								<Route path="/api/v1/signup" exact component={SignUpForm} />
 
 								{/* RenderProps method to pass handleLogin */}
 								<Route 
@@ -80,9 +84,9 @@ class App extends Component {
 								<Route path="/api/v1/about" exact component={AboutContainer} />
 							</Grid.Column>
 						</Grid>
-					</Container>
-				</Switch>
-			</Router>
+					</Switch>
+				</Router>
+			</Container>
 		);
 	};
 }
