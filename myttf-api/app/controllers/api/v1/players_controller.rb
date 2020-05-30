@@ -40,17 +40,17 @@ class Api::V1::PlayersController < ApplicationController
     def create
         # player = Player.create(player_params)
         # render json: @player, status: 200
-        player = Player.new(player_params)
-        if player.save
+        @player = Player.new(player_params)
+        if @player.save
             login! # bang at the end will mutate player with new info.
             render json: {
                 status: :created,
-                player: player
+                player: @player
             }
         else
             render json: {
                 status: 500,
-                errors: player.errors.full_messages
+                errors: @player.errors.full_messages
             }
         end
     end
@@ -72,7 +72,7 @@ class Api::V1::PlayersController < ApplicationController
     # private
 
     def player_params
-        params.require(:player).permit(:username, :profileImage, :wins, :losses, :password_confirmation)
+        params.require(:player).permit(:username, :email, :password, :password_confirmation, :profileImage, :wins, :losses)
     end
 
 end

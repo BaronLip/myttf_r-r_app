@@ -13,16 +13,17 @@ const signupUser = (player) => {
 }
 
 const redirect = (player, history) => {
-	history.push('/login', player);
+	history.push('/api/v1/login', player);
 }
 
 export const signUpPlayer = (player, history) => {
 	console.log(player, history);
 	return function (dispatch) {
 		return Axios.post(
-			'http://localhost:3001/users', {player}, {withCredentials: true}
+			'http://localhost:3000/api/v1/players', {player}, {withCredentials: true}
 		)
 		.then( (response) => {
+			// debugger;
 			console.log(response);
 			if (response.data.status === 'created') {
 				let player = response.data.player;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { signUpPlayer } from "../actions/SignUpFormActions";
 import { Link, withRouter } from 'react-router-dom'
 
-class SignUp extends Component {
+class SignUpForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
@@ -16,10 +16,11 @@ class SignUp extends Component {
 	}
 	
 	handleChange = (event) => {
-		const {name, value} = event.target
+		const {name, value} = event.target;
 		this.setState({
 			[name]: value
-		})
+        });
+        console.log(this.state)
 	};
 	
 	handleSubmit = (event) => {
@@ -33,7 +34,7 @@ class SignUp extends Component {
 			password_confirmation: password_confirmation
 		};
 		console.log("This is form playerInfo", playerInfo);
-		this.props.signup(playerInfo, this.props.history);
+		this.props.signUpPlayer(playerInfo, this.props.history);
 	};
 	
 	handleErrors = () => {
@@ -56,6 +57,7 @@ class SignUp extends Component {
 			<div>
 				<h1>Sign Up</h1>
 				<form onSubmit={this.handleSubmit}>
+                    <label>Username:</label> <br/>
 					<input
 						placeholder="username"
 						type="text"
@@ -64,6 +66,8 @@ class SignUp extends Component {
 						onChange={this.handleChange}
 					/>
 					<br/>
+					<br/>
+                    <label>Email:</label><br/>
 					<input
 						placeholder="email"
 						type="text"
@@ -72,6 +76,8 @@ class SignUp extends Component {
 						onChange={this.handleChange}
 					/>
 					<br/>
+					<br/>
+                    <label>Password:</label><br/>
 					<input 
 						placeholder="password"
 						type="password"
@@ -80,6 +86,8 @@ class SignUp extends Component {
 						onChange={this.handleChange}
 					/>
 					<br/>
+					<br/>
+                    <label>Password Confirmation:</label><br/>
 					<input
 						placeholder="password confirmation"
 						type="password"
@@ -88,9 +96,11 @@ class SignUp extends Component {
 						onChange={this.handleChange}
 					/>
 					<br/>
-					<button placeholder="submit" type="submit">
+					<br/>
+                    <input type="submit" value="Sign-Up" />
+					{/* <button placeholder="submit" type="submit">
 						Sign Up
-					</button>
+					</button> */}
 				</form>
 
 				<div>
@@ -112,12 +122,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) =>{
 	return {
 		signUpPlayer: (playerInfo, history) => dispatch(signUpPlayer(playerInfo, history)),
-		// login: (playerInfo) => dispatch(login(playerInfo))
 	}
 }
 
-// Use the connect() in conjunction with mapStateToProps & mapDispatchToProps to connect the Redux Store to a React component.
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUpForm))
 
 
 
@@ -148,7 +156,5 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp))
 // }
  
 // const mapStateToProps = ({ username, email, password }) => ({ username, email, password });
-
-// export default connect(mapStateToProps)(SignUpForm);
 
 // export default connect(mapStateToProps, { updateSignUpForm })(SignUpForm);
