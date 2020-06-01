@@ -15,7 +15,7 @@ class Api::V1::SessionsController < ApplicationController
         else
             render json: {
                 status: 401,
-                errors: ["no such player, verify credentials and try agin or signup"]
+                errors: ["no such player, verify credentials and try again or signup"]
             }
         end
     end

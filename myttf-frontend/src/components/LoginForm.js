@@ -1,48 +1,57 @@
+// External imports:
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+// Local imports:
 import { login } from '../actions/LoginFormActions';
-// import { Link } from 'react-router-dom';
+
+let formInfo = {};
 
 class LoginForm extends Component {
-	
-	render() {
-		let player = {};
-		
-		const handleChange = (event) => {
-			let { name, value } = event.target;
-			player[name] = value;
-			console.log(player)
+	constructor(props) {
+		super(props);
+		this.state = { 
+			username: '',
+			email: '',
+			password: '',
+			errors: ''
+		};
+	}
+
+	handleChange = (event) => {
+		let { name, value } = event.target;
+		this.setState({
+			[name]: value,
+		})
+	};
+
+	handleSubmit = (event) => {
+		event.preventDefault();
+		const {username, email, password} = this.state;
+
+		formInfo = {
+			username: username,
+			email: email,
+			password: password
 		};
 
-		const handleSubmit = (e) => {
-			e.preventDefault();
-			console.log(player);
-			
-			let username = e.target[0].value;
-			let email = e.target[1].value;
-			let password = e.target[2].value;
-	
-			player = {
-				username: username,
-				email: email,
-				password: password
-			};
+		this.props.login(formInfo, this.props.history);
+	};
 
-			login(player);
-		}
-
+	render() {
 		return (
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={this.handleSubmit}>
 				<label>Username:</label> <br />
-				<input name="username" type="text" onChange={handleChange} />
+				<input name="username" type="text" onChange={this.handleChange} />
 				<br />
 				<label>Email:</label>
 				<br />
-				<input name="email" label="email" type="text" onChange={handleChange} />
+				<input name="email" label="email" type="text" onChange={this.handleChange} />
 				<br />
 				<label>Password:</label>
 				<br />
-				<input name="password" label="password" type="text" onChange={handleChange} />
+				<input name="password" label="password" type="text" onChange={this.handleChange} />
 				<br />
 				<input type="submit" value="log in" />
 			</form>
@@ -50,7 +59,25 @@ class LoginForm extends Component {
 	}
 };
 
-const mapStateToProps = ({ username, email, password }) => ({ username, email, password });
+const mapStateToProps = (state) => {
+	console.log(state);
+	return {
+		session: state.session,
+		user: state.user
+	}
+}
+
+// // Longhand of mapDispatchToProps:
+const mapDispatchToProps = (dispatch)  => {
+	return {
+		login: (playerInfo, history) => (dispatch(login(playerInfo, history))),
+	}
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
+
+// Prior code, that probably needs to be deleted. -----
+// const mapStateToProps = ({ username, email, password }) => ({ username, email, password });
 // //Longhand of mapStateToProps
 // const mapStateToProps = (state) => ({
 //     username: state.login_form.username,
@@ -60,12 +87,4 @@ const mapStateToProps = ({ username, email, password }) => ({ username, email, p
 
 // Connect is "connecting" mapStateToProps and mapDispatchToProps to the Redux store.
 // // Connect statement with destructured syntax for mapDispatchToProps:
-export default connect(null, { login })(LoginForm);
-
-// // Longhand of mapDispatchToProps:
-// const mapDispatchToProps = (dispatch)  => {
-// 	return {
-// 		login: (player) => dispatch(login(player))
-// 	}
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+// export default connect(null, { login })(LoginForm);

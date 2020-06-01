@@ -1,24 +1,23 @@
 const initialState = {
-    username: "",
-    email: "",
-    password: "",
-    errors: "",
     isLoggedIn: false,
 }
 
-export default (state = initialState, action) => {
-
+const loginFormReducer = (state = initialState, action) => {
+    console.log(state, action);
     switch (action.type) {
-        
         case "LOGIN_PLAYER":
-            console.log("LoginFormReducer");
-            console.log(action)
-            // return action.formData;
-            break
-
+            return {
+                isLoggedIn: true,
+                player: action.player,
+            }
+        case "LOGOUT":
+            return {
+                isLoggedIn: false,
+                player: {},
+            }
         default:
             return state;
     }
-
 }
 
+export default loginFormReducer;
