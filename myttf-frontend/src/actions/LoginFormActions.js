@@ -18,7 +18,7 @@ const logoutPlayer = () => {
 }
 
 const redirectDashboard = (player, history) => {
-    history.push('/api/v1/dashboard', player)
+    history.push(`/api/v1/players/${player.id}/dashboard`, player)
 }
 
 export const login = (player, historyProp) => {

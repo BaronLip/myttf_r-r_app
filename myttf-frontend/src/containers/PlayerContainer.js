@@ -10,13 +10,13 @@ import { deleteMatch, bookmark } from "../actions/MatchActions";
 class Dashboard extends Component {
 
     componentDidMount() {
-        console.log("Component Did Mount")
-        this.props.fetchPlayer();
+        console.log("Component Did Mount", this.props)
+        // this.props.fetchPlayer();
     }
 
     render() {
         console.log("PlayerContainer.js", this.props);
-
+        // console.log(player)
         let {player, matches, games} = this.props.player
         // let player = this.props.player.player;
         // let matches = this.props.player.matches;

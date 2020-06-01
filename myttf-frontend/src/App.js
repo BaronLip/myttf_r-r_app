@@ -56,32 +56,22 @@ class App extends Component {
 	render () {
 		return (
 			<Container>
-				<Router>
+				<Router basename="/api/v1">
 					<Switch>
 						<Grid textAlign="center" style={{ height: '90vh' }} verticalAlign="top">
 							<Grid.Column style={{ maxWidth: 1000 }}>
 								{header()}
 
-								<Route path="/api/v1/signup" exact component={SignUpForm} />
+								<Route path="/signup" exact component={SignUpForm} />
 
-								{/* RenderProps method to pass handleLogin */}
-								<Route 
-									path="/api/v1/login" 
-									// exact component={LoginForm} 
-									render={(handleLogin) => 
-										<LoginForm
-											handleLogin={handleLogin}
-										/>
-									}	
-								/>
-								
-								{/* <Route path="/api/v1/login" exact component={LoginForm} /> */}
+								<Route path="/login" exact component={LoginForm} />
 
-								<Route path="/api/v1/dashboard" exact component={Dashboard} />
+								<Route path="/players/:id/dashboard" exact component={Dashboard} />
+								{/* <Route path="/api/v1/dashboard" exact component={Dashboard} /> */}
 								
-								<Route path="/api/v1/players/:id/matches/:id" exact component={EditMatchContainer} />
+								<Route path="/players/:id/matches/:id" exact component={EditMatchContainer} />
 								
-								<Route path="/api/v1/about" exact component={AboutContainer} />
+								<Route path="/about" exact component={AboutContainer} />
 							</Grid.Column>
 						</Grid>
 					</Switch>
