@@ -4,6 +4,7 @@ const initialState = {
 
 const loginFormReducer = (state = initialState, action) => {
     console.log(state, action);
+    // debugger;
     switch (action.type) {
         case "LOGIN_PLAYER":
             return {
@@ -14,6 +15,10 @@ const loginFormReducer = (state = initialState, action) => {
             return {
                 isLoggedIn: false,
                 player: {},
+            }
+        case "ERROR":
+            return {
+                errors: action.errors
             }
         default:
             return state;

@@ -1,6 +1,7 @@
 // Action constants:
 const LOGIN = "LOGIN";
-const LOGOUT = "LOGOUT";
+// const LOGOUT = "LOGOUT";
+const ERROR = "ERROR"
 
 // Action creators:
 const loginPlayer = (player) => {
@@ -11,18 +12,26 @@ const loginPlayer = (player) => {
 	}
 }
 
-const logoutPlayer = () => {
+// const logoutPlayer = () => {
+//     return {
+//         type: LOGOUT,
+//     }
+// }
+
+const loginError = (errors) => {
+    debugger;
     return {
-        type: LOGOUT,
+        type: ERROR,
+        errors: errors,
     }
 }
 
 const redirectDashboard = (player, history) => {
-    history.push(`/api/v1/players/${player.id}/dashboard`, player)
+    history.push(`/players/${player.id}/dashboard`, player)
 }
 
 export const login = (player, historyProp) => {
-    console.log(player);
+    // console.log(player);
     return async (dispatch) => {
         return fetch('http://localhost:3000/api/v1/login', { 
             method: 'POST',
@@ -35,12 +44,17 @@ export const login = (player, historyProp) => {
         })
         .then((json) => {
             console.log(json);
+            if (json.errors) {
+                dispatch(loginError(json.errors))
+            }
             dispatch(loginPlayer(json.player))
             if (json.logged_in === true) {
                 redirectDashboard(json.player, historyProp)
             }
         })
-        .catch((error) => console.log('api errors:', error))
+        .catch((errors) => {
+            console.log('api errors:', errors);
+        })
     }
 }
 

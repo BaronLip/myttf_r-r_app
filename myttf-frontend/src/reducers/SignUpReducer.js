@@ -3,7 +3,6 @@ const initialState = {
 	email: '',
 	password: '',
 	errors: ''
-	
 }
 
 const signUpReducer = (state = initialState, action) => {

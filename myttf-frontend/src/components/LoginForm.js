@@ -39,22 +39,33 @@ class LoginForm extends Component {
 		this.props.login(formInfo, this.props.history);
 	};
 
+	handleErrors = (errors) => {
+		debugger;
+		// event.preventDefault();
+		errors.map( error  => {
+			return <p>{error}</p>
+		})
+	}
+
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label>Username:</label> <br />
-				<input name="username" type="text" onChange={this.handleChange} />
-				<br />
-				<label>Email:</label>
-				<br />
-				<input name="email" label="email" type="text" onChange={this.handleChange} />
-				<br />
-				<label>Password:</label>
-				<br />
-				<input name="password" label="password" type="text" onChange={this.handleChange} />
-				<br />
-				<input type="submit" value="log in" />
-			</form>
+			<div>
+				<form onSubmit={this.handleSubmit}>
+					<label>Username:</label> <br />
+					<input name="username" type="text" onChange={this.handleChange} />
+					<br />
+					<label>Email:</label>
+					<br />
+					<input name="email" label="email" type="text" onChange={this.handleChange} />
+					<br />
+					<label>Password:</label>
+					<br />
+					<input name="password" label="password" type="text" onChange={this.handleChange} />
+					<br />
+					<input type="submit" value="log in" />
+				</form>
+				{ this.state.errors ? this.handleErrors(this.state.errors) : null };
+			</div>
 		);
 	}
 };
