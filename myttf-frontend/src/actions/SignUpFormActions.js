@@ -3,6 +3,7 @@ import Axios from 'axios'
 
 // Action Constant(s)
 const SIGNUP = "SIGNUP"
+const ERROR = "ERROR"
 
 // Action Creator(s)
 const signupUser = (player) => {
@@ -10,6 +11,13 @@ const signupUser = (player) => {
 		type: SIGNUP, 
 		player: player 
 	};
+}
+
+const signUpError = (errors) => {
+	return {
+		type: ERROR,
+		errors: errors,
+	}
 }
 
 const redirect = (player, history) => {
@@ -23,8 +31,10 @@ export const signUpPlayer = (player, history) => {
 			'http://localhost:3000/api/v1/players', {player}, {withCredentials: true}
 		)
 		.then( (response) => {
-			// debugger;
 			console.log(response);
+			if (response.data.errors) {
+                dispatch(signUpError(response.data.errors))
+            }
 			if (response.data.status === 'created') {
 				let player = response.data.player;
 				// Dispatch using action creator

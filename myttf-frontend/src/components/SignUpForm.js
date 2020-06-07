@@ -39,13 +39,13 @@ class SignUpForm extends Component {
 	
 	handleErrors = () => {
 		return (
-		<div>
-			<ul>{this.state.errors.map( (error) => {
-				return <li key={error}>{error}</li>
-			})}
-			</ul>
-			<Link to='/login'>Log In</Link>
-		</div>
+			<div>
+				<ul>
+					{this.props.errors.map( (error) => {
+						return <li key={error}>{error}</li>
+					})}
+				</ul>
+			</div>
 		)
 	}
 	
@@ -104,7 +104,7 @@ class SignUpForm extends Component {
 				</form>
 
 				<div>
-				{ this.state.errors ? this.handleErrors() : null }
+				{ this.props.errors ? this.handleErrors() : null }
 				</div>
 			</div>
 		);
@@ -112,10 +112,11 @@ class SignUpForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
+	console.log("Rendering Signup Form and state.", state);
 	return {
 		session: state.session,
-		user: state.user
+		player: state.player,
+		errors: state.signUp.errors,
 	}
 }
 

@@ -47,8 +47,7 @@ class LoginForm extends Component {
 			<ul>
 				{this.props.errors.map(error => {
 					return <li key={error}>{error}</li>
-					})
-				}
+				})}
 			</ul>
 		</div>
 		)

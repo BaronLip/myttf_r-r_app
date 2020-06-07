@@ -12,6 +12,10 @@ const signUpReducer = (state = initialState, action) => {
 			return {
 				player: action.player
 			}
+		case "ERROR":
+			return {
+				errors: action.errors
+			}
 	default:
 		return state;
 	}
