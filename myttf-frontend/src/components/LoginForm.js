@@ -97,16 +97,3 @@ const mapDispatchToProps = (dispatch)  => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
-
-// Prior code, that probably needs to be deleted. -----
-// const mapStateToProps = ({ username, email, password }) => ({ username, email, password });
-// //Longhand of mapStateToProps
-// const mapStateToProps = (state) => ({
-//     username: state.login_form.username,
-//     email: state.login_form.email,
-//     password: state.login_form.password
-// })
-
-// Connect is "connecting" mapStateToProps and mapDispatchToProps to the Redux store.
-// // Connect statement with destructured syntax for mapDispatchToProps:
-// export default connect(null, { login })(LoginForm);
