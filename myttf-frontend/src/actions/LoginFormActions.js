@@ -19,7 +19,6 @@ const loginPlayer = (player) => {
 // }
 
 const loginError = (errors) => {
-    debugger;
     return {
         type: ERROR,
         errors: errors,
@@ -57,8 +56,3 @@ export const login = (player, historyProp) => {
         })
     }
 }
-
-// export const loginPlayer = (player) => {
-//     console.log("Logging in player!", player);
-//     return { type: "LOGIN_PLAYER", player };
-// }

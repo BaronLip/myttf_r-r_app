@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 // Local imports:
 import { login } from '../actions/LoginFormActions';
+import { store } from '../store'
+// Import store so that global state can be checked using the .getState() method. See line 53.
 
 let formInfo = {};
 
@@ -39,15 +41,22 @@ class LoginForm extends Component {
 		this.props.login(formInfo, this.props.history);
 	};
 
-	handleErrors = (errors) => {
-		debugger;
-		// event.preventDefault();
-		errors.map( error  => {
-			return <p>{error}</p>
-		})
+	handleErrors = () => {
+		return (
+		<div>
+			<ul>
+				{this.props.errors.map(error => {
+					return <li key={error}>{error}</li>
+					})
+				}
+			</ul>
+		</div>
+		)
 	}
 
 	render() {
+		console.log("rendering LoginForm & global state", store.getState())
+		console.log(this.props)
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
@@ -64,7 +73,9 @@ class LoginForm extends Component {
 					<br />
 					<input type="submit" value="log in" />
 				</form>
-				{ this.state.errors ? this.handleErrors(this.state.errors) : null };
+				<div>
+					{ this.props.errors ? this.handleErrors() : null }
+				</div>
 			</div>
 		);
 	}
@@ -73,8 +84,9 @@ class LoginForm extends Component {
 const mapStateToProps = (state) => {
 	console.log(state);
 	return {
-		session: state.session,
-		user: state.user
+		isLoggedIn: state.login.isLoggedIn,
+		player: state.player,
+		errors: state.login.errors,
 	}
 }
 

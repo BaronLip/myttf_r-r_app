@@ -1,5 +1,6 @@
 const initialState = {
     isLoggedIn: false,
+    errors: null
 }
 
 const loginFormReducer = (state = initialState, action) => {
