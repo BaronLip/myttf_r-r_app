@@ -4,6 +4,7 @@ import { Header, Button, Grid } from 'semantic-ui-react';
 
 const header = () => {
 	console.log('Header.js');
+	// if ()
 	return (
 		<Header as="h1" block textAlign="center" color="blue">
 			<Grid columns={3}>
@@ -19,6 +20,10 @@ const header = () => {
                     </Grid.Column>
                     
                     <Grid.Column>
+
+                        {/* <Link to='/logout'>
+                            <Button floated='right'>Logout</Button>
+                        </Link> */}
                         <Link to='/login'>
                             <Button floated='right'>Login</Button>
                         </Link>

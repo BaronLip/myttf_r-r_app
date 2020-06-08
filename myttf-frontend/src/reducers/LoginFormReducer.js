@@ -5,9 +5,9 @@ const initialState = {
 
 const loginFormReducer = (state = initialState, action) => {
     console.log(state, action);
-    // debugger;
+    debugger;
     switch (action.type) {
-        case "LOGIN_PLAYER":
+        case "LOGIN":
             return {
                 isLoggedIn: true,
                 player: action.player,

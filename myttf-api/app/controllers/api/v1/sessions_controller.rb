@@ -4,6 +4,7 @@ class Api::V1::SessionsController < ApplicationController
 
     def create
         @player = Player.find_by(email: params[:session][:email])
+        # binding.pry
         # session_params is referencing strong params.
         # authenticate() is a built-in method of ActiveRecord in conjunction with BCrypt gem.
         if @player && @player.authenticate(params[:session][:password])

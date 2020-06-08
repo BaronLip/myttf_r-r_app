@@ -44,11 +44,11 @@ export const login = (player, historyProp) => {
         .then((json) => {
             console.log(json);
             if (json.errors) {
-                dispatch(loginError(json.errors))
+                dispatch(loginError(json.errors));
             }
-            dispatch(loginPlayer(json.player))
             if (json.logged_in === true) {
-                redirectDashboard(json.player, historyProp)
+                dispatch(loginPlayer(json.player));
+                redirectDashboard(json.player, historyProp);
             }
         })
         .catch((errors) => {

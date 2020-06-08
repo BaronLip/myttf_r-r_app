@@ -1,5 +1,5 @@
 // External imports:
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container, Grid } from 'semantic-ui-react';
 // Local imports:
@@ -58,6 +58,7 @@ class App extends Component {
 			<Container>
 				<Router basename="/api/v1">
 					<Switch>
+						<Fragment>
 						<Grid textAlign="center" style={{ height: '90vh' }} verticalAlign="top">
 							<Grid.Column style={{ maxWidth: 1000 }}>
 								{header()}
@@ -74,6 +75,7 @@ class App extends Component {
 								<Route path="/about" exact component={AboutContainer} />
 							</Grid.Column>
 						</Grid>
+						</Fragment>
 					</Switch>
 				</Router>
 			</Container>

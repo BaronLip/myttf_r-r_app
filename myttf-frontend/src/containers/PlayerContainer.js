@@ -1,16 +1,21 @@
+// External imports:
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Header, Grid, Image, Segment, Divider } from 'semantic-ui-react';
+
+// Local imports:
 import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
 import { fetchPlayer } from "../actions/PlayerActions";
 import { deleteMatch, bookmark } from "../actions/MatchActions";
+import { store } from "../store"
 
 class Dashboard extends Component {
 
     componentDidMount() {
-        console.log("Component Did Mount", this.props)
+        console.log("Component Did Mount", this.props);
+        console.log(store.getState());
         // this.props.fetchPlayer();
     }
 
