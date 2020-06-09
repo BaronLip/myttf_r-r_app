@@ -1,16 +1,18 @@
+import { showPlayer } from "./PlayerActions";
+
 // Action constants:
 const LOGIN = "LOGIN";
 // const LOGOUT = "LOGOUT";
 const ERROR = "ERROR"
 
 // Action creators:
-const loginPlayer = (player) => {
-	console.log(player)
+const loginPlayer = () => {
 	return {
 		type: LOGIN,
-		player,
 	}
 }
+
+
 
 // const logoutPlayer = () => {
 //     return {
@@ -47,7 +49,8 @@ export const login = (player, historyProp) => {
                 dispatch(loginError(json.errors));
             }
             if (json.logged_in === true) {
-                dispatch(loginPlayer(json.player));
+                dispatch(loginPlayer());
+                dispatch(showPlayer(json.player));
                 redirectDashboard(json.player, historyProp);
             }
         })

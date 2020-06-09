@@ -7,17 +7,19 @@ import { Header, Grid, Image, Segment, Divider } from 'semantic-ui-react';
 import MatchesForm from '../components/MatchesForm';
 import MatchesHeader from '../components/MatchesHeader';
 import MatchCard from '../components/MatchCard'
-import { fetchPlayer } from "../actions/PlayerActions";
+// import { fetchPlayer } from "../actions/PlayerActions";
 import { deleteMatch, bookmark } from "../actions/MatchActions";
-import { store } from "../store"
 
 class Dashboard extends Component {
 
-    componentDidMount() {
-        console.log("Component Did Mount", this.props);
-        console.log(store.getState());
-        // this.props.fetchPlayer();
-    }
+
+    // Do not need componentDidMount since fetchPlayer is no longer needed.
+    // Also removed fetchPlayer from connect statement.
+    // componentDidMount() {
+    //     console.log("Component Did Mount", this.props);
+    //     console.log(store.getState());
+    //     this.props.fetchPlayer();
+    // }
 
     render() {
         console.log("PlayerContainer.js", this.props);
@@ -96,7 +98,7 @@ const mapStateToProps = ({player}) => ({
 
 
 // ES6 syntax for connect.
-export default connect(mapStateToProps, { deleteMatch, bookmark, fetchPlayer })(Dashboard);
+export default connect(mapStateToProps, { deleteMatch, bookmark })(Dashboard);
 
 // // Longhand of mDTP:
 // const mapDispatchToProps = (dispatch) => {

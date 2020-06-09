@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signUpPlayer } from "../actions/SignUpFormActions";
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class SignUpForm extends Component {
 	constructor(props) {
