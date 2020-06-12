@@ -31,7 +31,7 @@ class Dashboard extends Component {
 
         matches.sort((a,b) => b.bookmarked - a.bookmarked);
         
-        console.log(matches);
+        console.log("this is the games", games);
         
         let wins = matches.filter(match => match.win).length
 

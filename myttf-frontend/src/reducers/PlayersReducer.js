@@ -7,8 +7,6 @@ export default (state =
         "player": {
             "username": "",
             "profileImage": "",
-            "wins": 0,
-            "losses": 0,
         },
         "matches": []
     }
@@ -16,7 +14,7 @@ export default (state =
     
     switch (action.type) {
     
-    //***** PLAYER REDUCERS: *****
+        //***** PLAYER REDUCERS: *****
         case "FETCH_PLAYER":
             console.log("You're fetching a player", state, action);
             // debugger
@@ -27,7 +25,7 @@ export default (state =
             return { ...state, ...action.player };
 
 
-    //***** MATCH REDUCERS: *****
+        //***** MATCH REDUCERS: *****
         case "BOOKMARK_MATCH":
             console.log("You're bookmarking a match", state, action);
 
