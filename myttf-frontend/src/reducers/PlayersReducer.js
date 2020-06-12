@@ -8,7 +8,8 @@ export default (state =
             "username": "",
             "profileImage": "",
         },
-        "matches": []
+        "matches": [],
+        "games": [],
     }
     , action) => {
     
